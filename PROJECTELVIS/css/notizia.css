@@ -1,0 +1,29 @@
+.articolo {
+  padding:2em 2em;
+}
+.articolo p{
+    font-size: 1em;
+    border-spacing: 50px;
+}
+.imgn img{
+    margin-left: 8%;
+    margin-right: 8%;
+    width:83%;
+    font-style: italic;
+}
+.imgn{
+    padding: 1% 1% 1% 1%;
+}
+.content {
+    background-color: white;
+}
+.titolon{
+    padding:2em 2em ;
+}
+.titolon h1{
+    color:#505050;
+    text-align: center;
+}
+.content{
+    margin-top: 7%;
+}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>Campionato</title>
+    <link rel="stylesheet" type="text/css" href="../css/body.css">
+    <link rel="stylesheet" type="text/css" href="../css/campionato.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<header id="header">
+<h1><a href="home1.html"><img src="../img/loghi/logooff.png" alt="logo" lang="it"></a> Easyfootball</h1>
+    <div id="boxuf">
+    <div class="wrap">
+        <div class="search">
+        <input type="text" class="searchTerm" placeholder="Ricerca Squadre o Campionati">
+        <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i> 
+       </button>
+        </div>
+    </div>
+        <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.html">Login/Registati</a> </div></div>
+        
+        </div>
+    </div>
+    </header>
+    
+    
+<main class="content">
+<div id="menucampionato">
+    <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+<img src="../img/loghi/seriea.png" alt="logo campionato italiano">
+
+<div class="topnav" id="navcamp" >
+<a href="#content1" id="news" class="menuHandler current">Notizie</a>
+<a href="#content2" id="partite" class="menuHandler">Partite</a>
+<a href="#content3" id="classifica" class="menuHandler">Classifica</a>
+</div>
+    </div>
+    <div id="content1" class="active">
+         <div class="news">
+    <a href="GETnews" >
+        <span class="imgContainer">
+            <img src="../img/news/imgprof.jpg" alt="news photo">
+        </span>
+                <span class="newsdescr">L'EuropaLeague dei Rojiblancos ed festa a Madrid!</span>
+        </a>
+    </div>
+     <div class="news">
+        <a href="notizia.html" >
+        <span class="imgContainer">
+            <img src="../img/news/brasil.jpg" alt="news photo">
+        </span>
+            <span class="newsdescr">Probabili convocati della Selecao per Russia 2018.</span>
+        </a>
+        </div>
+      <div class="news">
+        <a href="GET.news" >
+        <span class="imgContainer">
+            <img src="../img/news/juvescud.jpg" alt="news photo">
+        </span>
+          <span class="newsdescr">Settimo scudetto consecutivo Juve inarrestabile in Patria. </span>
+        </a>
+        </div>
+        <div class="news">
+        <a href="GET.news" >
+        <span class="imgContainer">
+            <img src="../img/news/conte.jpg" alt="news photo">
+        </span>
+            <span class="newsdescr">Chalsea vince FA Cup a casa decisivo Hazard. </span>
+        </a>
+        </div>
+    </div>
+    
+    
+    <div id="content2">
+        <div class="partite">
+            <table>
+					<thead>
+						<tr>
+							<th>Casa</th>
+							<th>GC</th>
+                            <th></th>
+							<th>GO</th>
+                            <th>Ospite</th>
+						</tr>
+					</thead>
+					<tbody>
+                        <tr>
+                        <td><img src="../img/loghi/Milan.png">  </td>
+                        <td>1</td>
+                        <td> : </td>
+                        <td>1</td>
+                        <td> <img src="../img/loghi/Juventus.png"> </td>
+                        </tr>
+                    </tbody>
+            </table>
+        </div>
+     </div>
+    
+    <div id="content3">
+         <div class="wrapper">
+                    <h1>Classifica</h1>
+				<table>
+					<thead>
+						<tr>
+							<th>Posizione</th>
+							<th>Squadra</th>
+							<th>Punti</th>
+							<th>+/-</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+                <td class="rank">1</td>
+                <td class="team">Spain</td>
+                <td class="points">1460</td>
+                <td class="up-down">0</td>
+              </tr>
+					  <tr>
+                <td class="rank">2</td>
+                <td class="team">Germany</td>
+                <td class="points">1340</td>
+                <td class="up-down">0</td>
+              </tr>
+            	<tr>
+                <td class="rank">3</td>
+                <td class="team">Portugal</td>
+                <td class="points">1245</td>
+                <td class="up-down">0</td>
+              </tr>
+            	<tr>
+                <td class="rank">4</td>
+                <td class="team">Brazil</td>
+                <td class="points">1210</td>
+                <td class="up-down">+2</td>
+              </tr>
+            	<tr>
+                <td class="rank">5</td>
+                <td class="team">Colombia</td>
+                <td class="points">1186</td>
+                <td class="up-down">-1</td>
+              </tr>
+            	<tr>
+                <td class="rank">6</td>
+                <td class="team">Uruguay</td>
+                <td class="points">1181</td>
+                <td class="up-down">-1</td>
+              </tr>
+            	<tr>
+                <td class="rank">7</td>
+                <td class="team">Argentina</td>
+                <td class="points">1178</td>
+                <td class="up-down">-1</td>
+              </tr>
+            	<tr>
+                <td class="rank">8</td>
+                <td class="team">Switzerland</td>
+                <td class="points">1161</td>
+                <td class="up-down">0</td>
+              </tr>
+            	<tr>
+                <td class="rank">9</td>
+                <td class="team">Italy</td>
+                <td class="points">1115</td>
+                <td class="up-down">0</td>
+              </tr>
+						<tr>
+                <td class="rank">10</td>
+                <td class="team">Greece</td>
+                <td class="points">1082</td>
+                <td class="up-down">0</td>
+              </tr>
+					  <tr>
+                <td class="rank">11</td>
+                <td class="team">England</td>
+                <td class="points">1043</td>
+                <td class="up-down">0</td>
+              </tr>
+            	<tr>
+                <td class="rank">12</td>
+                <td class="team">Belgium</td>
+                <td class="points">1039</td>
+                <td class="up-down">0</td>
+              </tr>
+            	<tr>
+                <td class="rank">13</td>
+                <td class="team">Chile</td>
+                <td class="points">1037</td>
+                <td class="up-down">+1</td>
+              </tr>
+            	<tr>
+                <td class="rank">14</td>
+                <td class="team">USA</td>
+                <td class="points">1015</td>
+                <td class="up-down">-1</td>
+              </tr>
+            	<tr>
+                <td class="rank">15</td>
+                <td class="team">Netherlands</td>
+                <td class="points">967</td>
+                <td class="up-down">0</td>
+              </tr>
+            	<tr>
+                <td class="rank">16</td>
+                <td class="team">France</td>
+                <td class="points">935</td>
+                <td class="up-down">0</td>
+              </tr>
+            	<tr>
+                <td class="rank">17</td>
+                <td class="team">Ukraine</td>
+                <td class="points">913</td>
+                <td class="up-down">0</td>
+              </tr>
+            	<tr>
+                <td class="rank">18</td>
+                <td class="team">Russia</td>
+                <td class="points">903</td>
+                <td class="up-down">0</td>
+              </tr>
+            	<tr>
+                <td class="rank">19</td>
+                <td class="team">Mexico</td>
+                <td class="points">877</td>
+                <td class="up-down">0</td>
+              </tr>
+            	<tr>
+                <td class="rank">20</td>
+                <td class="team">Croatia</td>
+                <td class="points">871</td>
+                <td class="up-down">0</td>
+              </tr>
+					</tbody>
+				</table>
+			</div>
+    </div>
+
+
+</main>
+        <script>
+    $('.menuHandler').on('click', function() {
+        $('a[href="#'+$('.active').attr("id")+'"]').removeClass('current');
+        $('.active').removeClass('active').hide();
+        $($(this).attr('href')).addClass('active').show();
+        $(this).addClass('current');
+        return false;
+    });
+
+    </script>
+    <footer id="footer">
+        <h3>Chi Siamo</h3>
+    <li>
+       <a href=""> <ul>L'Azienda</ul></a>
+        <a href=""><ul>Lavora con noi</ul></a>
+        <a href=""><ul>Contatti</ul></a>
+    </li>
+   <div id="motto"> 
+       <span>&copy; EasyFootball-Because football is much then just a sport.</span>
+    </div>
+    </footer>
+
+</body>
+</html>

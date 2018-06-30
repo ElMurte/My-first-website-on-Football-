@@ -1,0 +1,236 @@
+/*MENU CAMPIONATO*/
+/* Add a black background color to the top navigation */
+.topnav {
+    overflow: hidden;
+    margin-top: 1%;
+    border-bottom: 1px solid #808080;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    min-width: 10em;
+    float: left;
+    display:inline-block;
+    color: black;
+    text-align: center;
+    padding: 0.3em 0.3em;
+    margin-left: 0.5em;
+    font-size: 1em;
+    margin-bottom: 0.1%;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+border-bottom: 3px solid #336633;
+}
+
+/* Add an active class to highlight the current page */
+.current{
+    border-bottom: 3px solid #336633;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+    display: none;
+}
+
+
+#menucampionato img{
+    width:10%;
+    min-width:6em;
+}
+/*MENU CAMPIONATO END*/
+
+
+/*table start*/
+
+
+.wrapper {
+	
+	overflow: hidden;
+}
+
+#content3 table {
+    border-collapse: collapse;
+    width: 70%;
+    background: #fff;
+}
+
+#content3 th {
+    background-color: #336633;
+    font-weight: bold;
+    color: #fff;
+   
+}
+
+#content3 td, th {
+    padding: 1em 1.5em;
+    text-align: center;
+}
+
+#content3 tbody th {
+	background-color: #2ea879;
+}
+#content3 tbody tr:nth-child(2n-1) {
+    background-color: #f5f5f5;
+ 
+}
+#content3 tbody tr:hover {
+    background-color: darkgrey;
+}
+
+#content3 td.rank {
+	text-transform: capitalize;
+}
+
+
+/*Content1*/
+@media  screen and (max-width:640px)
+{
+    #content1 .news{
+        width:100%;
+        font-size: 0.8em;
+    }
+    
+     #content1 .news img{
+       height: 8em;
+    }
+    /*media query MENU*/
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+    .topnav a{
+        width:100%;
+        float:left;
+    
+    }
+/*END MEDIA QUERY MENU*/
+    /*CONTENT 3*/
+    #content3 table,#content3 thead,#content3 tbody,#content3 th,#content3 td,#content3 tr { 
+        display: block; 
+	}
+}
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	#content3 table,#content3 thead,#content3 tbody,#content3 th,#content3 td,#content3 tr { 
+        display: block; 
+	}
+	 .news{
+        
+        width:100%;
+        font-size: 0.8em;
+    }
+	/* Hide table headers (but not display: none;, for accessibility) */
+}
+/*end*/
+@media only screen and (min-width : 641px) and (max-width:1024px){
+   
+     #content1 .news{
+        margin-left:1%; 
+        width:48%;
+        font-size: 0.8em;
+    }
+ 
+    
+}
+#content1{
+    width: 100%;
+}
+.news{
+    margin-top: 2%;
+    margin-left: 1.5%;
+    background-color:#303030;
+    width:23%;
+    border:1px solid #303030;
+    border-radius: 0.5em;
+    float: left;
+}
+.news img, .news span {
+    display: block;
+}
+.newsdescr{
+    height:4em;
+    overflow: hidden;
+}
+
+.news span{
+    
+    font-size: 1.3em;
+    color: white;
+    padding: 2% 2% 5% 2%;
+}
+span.imgContainer {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+}
+.news img{
+    width:100%;
+    height: 7em;
+    border-top-left-radius: 0.3em;
+    border-top-right-radius: 0.3em;
+    -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.news img:hover,.news:hover {
+    background-color: black;
+    border-color: black;
+}
+.news img:hover { 
+    transform: scale(1.1);
+     
+}
+.fournews {
+    width: 100%;
+}
+/*Fine news*//*F
+/*content1*/
+
+/*content2*/
+#content2 table {
+    border-collapse: collapse;
+    width: 70%;
+    background: #fff;
+    display: inline-table;
+}
+
+#content2 th {
+    background-color: #336633;
+    font-weight: bold;
+    color: #fff;
+    
+}
+
+#content2 td, th {
+    padding: 0.5em;
+    text-align: center;
+    white-space:normal;
+}
+
+#content2 tbody th {
+	background-color: #2ea879;
+}
+#content2 tbody tr:nth-child(2n-1) {
+    background-color: #f5f5f5;
+}
+#content2 tbody tr:hover {
+    background-color: darkgrey;
+}
+#content2 img{
+    width: 3em;
+    height:4.5em;
+}
+/*end content2*/
+
+
+
+
+
+#content2,#content3{
+    display: none;
+    margin-top: 1%;
+}
