@@ -21,7 +21,8 @@ CREATE TABLE IF NOT EXISTS `Utente` (
 `nome` VARCHAR(50) NOT NULL,
 `cognome` VARCHAR(50) NOT NULL,
 `email` VARCHAR(100) NOT NULL,
-`squadrafu` VARCHAR(50) NOT NULL,
+`squadrapref` VARCHAR(50) NOT NULL,
+`moderatore` BOOLEAN DEFAULT 0,
 PRIMARY KEY (`email`),
     FOREIGN KEY (`squadrafu`)
     REFERENCES `Squadra` (`nome`)
@@ -56,6 +57,7 @@ ENGINE = InnoDB;
 -- Table `Squadra`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Squadra` (
+  `logo` VARCHAR(50) NOT NULL,
   `nome` VARCHAR(50) NOT NULL,
   `città` VARCHAR(50) NOT NULL,
   `fondazione` INT UNSIGNED NULL,
@@ -77,11 +79,13 @@ ENGINE = InnoDB;
 -- Table `Notizie`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Notizie` (
+  `idnotizia` INT UNSIGNED NOT NULL,
   `datan` DATETIME NOT NULL,
   `titolo` VARCHAR(50) NOT NULL,
   `immagine` VARCHAR(100) NOT NULL,
   `articolo` text NOT NULL,
   `tag` VARCHAR(250) NOT NULL
+  PRIMARY KEY (`idnotizia`)
   )
 ENGINE = InnoDB;
 -- -----------------------------------------------------
@@ -227,11 +231,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 
 
-INSERT INTO `Campionato` (`idCampionato`, `nome`, `stagione`, `fondazione`, `Paese`) VALUES ('SerieA1617', 'Serie A', '2016-2017', 1898, 'Italia');
-INSERT INTO `Campionato` (`idCampionato`, `nome`, `stagione`, `fondazione`, `Paese`) VALUES ('serieA1516', 'Serie A', '2015-2016', 1898, 'Italia');
-INSERT INTO `Campionato` (`idCampionato`, `nome`, `stagione`, `fondazione`, `Paese`) VALUES ('LigaSant1617', 'Liga Santander', '2016-2017', 1928, 'Spagna');
-
-
+INSERT INTO `Campionato` (`idCampionato`, `logoc`, `nome`, `stagione`, `fondazione`, `Paese`) VALUES ('SerieA1617', 'seriea.png', 'Serie A', '2016-2017', 1898, 'Italia');
+INSERT INTO `Campionato` (`idCampionato`, `logoc`, `nome`, `stagione`, `fondazione`, `Paese`) VALUES ('serieA1516', 'seriea.png', '2015-2016', 1898, 'Italia');
+INSERT INTO `Campionato` (`idCampionato`, `logoc`, `nome`, `stagione`, `fondazione`, `Paese`) VALUES ('LigaSant1617', 'liga.png', 'Liga Santander', '2016-2017', 1928, 'Spagna');
+INSERT INTO `Campionato` (`idCampionato`, `logoc`, `nome`, `stagione`, `fondazione`, `Paese`) VALUES ('PremierL1617', 'premierl.png', 'Premier League', '2016-2017', 1888, 'Inghilterra');
+INSERT INTO `Campionato` (`idCampionato`, `logoc`, `nome`, `stagione`, `fondazione`, `Paese`) VALUES ('Bundes1617', 'bundesliga.png', 'Bundesliga', '2016-2017', 1971, 'Germania');
 
 
 -- -----------------------------------------------------
@@ -265,26 +269,26 @@ INSERT INTO `Stadio` (`idstadio`, `nome`, `inaugurazione`, `capienza`, `propriet
 -- -----------------------------------------------------
 
 
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('Atalanta BC', 'Bergamo', 1907, 'Antonio Percassi', 'sit002', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('Bologna FC 1909', 'Bologna', 1909, 'Joey Saputo', 'sit003', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('AC Chievo Verona', 'Verona', 1928, 'Luca Campedelli', 'sit016', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('Cagliari Calcio', 'Cagliari', 1920, 'Tommaso Giulini', 'sit011', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('Empoli FC', 'Empoli', 1920, 'Fabrizio Corsi', 'sit012', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('US Sassuolo', 'Sassuolo', 1920, 'Carlo Rossi', 'sit018', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('Juventus FC', 'Torino', 1897, 'Andrea Agnelli', 'sit001', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('AS Roma', 'Roma', 1927, 'James Pallotta', 'sit010', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('FC Internazionale', 'Milano', 1908, 'Erick Thohir', 'sit004', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('AC Milan', 'Milano', 1899, 'Li Yonghong', 'sit004', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('SS Lazio', 'Roma', 1900, 'Claudio Lotito', 'sit010', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('Delfino Pescara 1936', 'Pescara', 1936, 'Daniele Sebastiani', 'sit017', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('US città di Palermo', 'Palermo', 1900, 'Paul Baccaglini', 'sit007', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('Udinese Calcio', 'Udine', 1896, 'Giampaolo Pozzo', 'sit015', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('UC Sampdoria', 'Genova', 1946, 'Massimo Ferrero', 'sit014', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('Genoa CFC', 'Genova', 1893, 'Enrico Preziosi', 'sit014', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('FC Crotone', 'Crotone', 1922, 'Raffaele Vrenna', 'sit013', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('Torino FC', 'Torino', 1906, 'Urbano Cairo', 'sit008', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('ACF Fiorentina', 'Firenze', 1926, 'Mario Cognigni', 'sit006', 'SerieA1617');
-INSERT INTO `Squadra` (`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('SSC Napoli', 'Napoli', 1926, 'Aurelio de Laurentis', 'sit009', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('atalanta.png', 'Atalanta BC', 'Bergamo', 1907, 'Antonio Percassi', 'sit002', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('bologna.png', 'Bologna FC 1909', 'Bologna', 1909, 'Joey Saputo', 'sit003', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('chievo.png', 'AC Chievo Verona', 'Verona', 1928, 'Luca Campedelli', 'sit016', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('cagliari.png', 'Cagliari Calcio', 'Cagliari', 1920, 'Tommaso Giulini', 'sit011', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('empoli.png', 'Empoli FC', 'Empoli', 1920, 'Fabrizio Corsi', 'sit012', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('sassuolo.png', 'US Sassuolo', 'Sassuolo', 1920, 'Carlo Rossi', 'sit018', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('juventus.png', 'Juventus FC', 'Torino', 1897, 'Andrea Agnelli', 'sit001', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('roma.png', 'AS Roma', 'Roma', 1927, 'James Pallotta', 'sit010', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('inter.png', 'FC Internazionale', 'Milano', 1908, 'Erick Thohir', 'sit004', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('milan.png', 'AC Milan', 'Milano', 1899, 'Li Yonghong', 'sit004', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('lazio.png', 'SS Lazio', 'Roma', 1900, 'Claudio Lotito', 'sit010', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('pescara.png', 'Delfino Pescara 1936', 'Pescara', 1936, 'Daniele Sebastiani', 'sit017', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('palermo.png', 'US città di Palermo', 'Palermo', 1900, 'Paul Baccaglini', 'sit007', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('udinese.png', 'Udinese Calcio', 'Udine', 1896, 'Giampaolo Pozzo', 'sit015', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('sampdoria.png', 'UC Sampdoria', 'Genova', 1946, 'Massimo Ferrero', 'sit014', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('genoa.png', 'Genoa CFC', 'Genova', 1893, 'Enrico Preziosi', 'sit014', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('crotone.png', 'FC Crotone', 'Crotone', 1922, 'Raffaele Vrenna', 'sit013', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('torino.png', 'Torino FC', 'Torino', 1906, 'Urbano Cairo', 'sit008', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('fiorentina.png', 'ACF Fiorentina', 'Firenze', 1926, 'Mario Cognigni', 'sit006', 'SerieA1617');
+INSERT INTO `Squadra` (`logo`,`nome`, `città`, `fondazione`, `presidente`, `stadio`, `campionato`) VALUES ('napoli.png', 'SSC Napoli', 'Napoli', 1926, 'Aurelio de Laurentis', 'sit009', 'SerieA1617');
 
 
 
