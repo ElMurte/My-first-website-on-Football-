@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `Utente` (
 `squadrapref` VARCHAR(50) NOT NULL,
 `moderatore` BOOLEAN DEFAULT 0,
 PRIMARY KEY (`email`),
-    FOREIGN KEY (`squadrafu`)
+    FOREIGN KEY (`squadrapref`)
     REFERENCES `Squadra` (`nome`)
     ON DELETE NO ACTION
     ON UPDATE CASCADE
@@ -32,6 +32,7 @@ PRIMARY KEY (`email`),
 ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `Campionato` (
   `idCampionato` VARCHAR(13) NOT NULL,
+  `logoc` VARCHAR(50) NOT NULL,
   `nome` VARCHAR(50) NOT NULL,
   `stagione` VARCHAR(15) NOT NULL,
   `fondazione` INT NOT NULL,
@@ -84,7 +85,8 @@ CREATE TABLE IF NOT EXISTS `Notizie` (
   `titolo` VARCHAR(50) NOT NULL,
   `immagine` VARCHAR(100) NOT NULL,
   `articolo` text NOT NULL,
-  `tag` VARCHAR(250) NOT NULL
+  `tag` VARCHAR(250) NOT NULL,
+  `fonte` VARCHAR(50) NOT NULL DEFAULT 'Easyfootball',
   PRIMARY KEY (`idnotizia`)
   )
 ENGINE = InnoDB;
@@ -232,9 +234,9 @@ ENGINE = InnoDB;
 
 
 INSERT INTO `Campionato` (`idCampionato`, `logoc`, `nome`, `stagione`, `fondazione`, `Paese`) VALUES ('SerieA1617', 'seriea.png', 'Serie A', '2016-2017', 1898, 'Italia');
-INSERT INTO `Campionato` (`idCampionato`, `logoc`, `nome`, `stagione`, `fondazione`, `Paese`) VALUES ('serieA1516', 'seriea.png', '2015-2016', 1898, 'Italia');
+INSERT INTO `Campionato` (`idCampionato`, `logoc`, `nome`, `stagione`, `fondazione`, `Paese`) VALUES ('serieA1516', 'seriea.png', 'Serie A', '2015-2016', 1898, 'Italia');
 INSERT INTO `Campionato` (`idCampionato`, `logoc`, `nome`, `stagione`, `fondazione`, `Paese`) VALUES ('LigaSant1617', 'liga.png', 'Liga Santander', '2016-2017', 1928, 'Spagna');
-INSERT INTO `Campionato` (`idCampionato`, `logoc`, `nome`, `stagione`, `fondazione`, `Paese`) VALUES ('PremierL1617', 'premierl.png', 'Premier League', '2016-2017', 1888, 'Inghilterra');
+INSERT INTO `Campionato` (`idCampionato`, `logoc`, `nome`, `stagione`, `fondazione`, `Paese`) VALUES ('PremierL1617', 'premier.png', 'Premier League', '2016-2017', 1888, 'Inghilterra');
 INSERT INTO `Campionato` (`idCampionato`, `logoc`, `nome`, `stagione`, `fondazione`, `Paese`) VALUES ('Bundes1617', 'bundesliga.png', 'Bundesliga', '2016-2017', 1971, 'Germania');
 
 
