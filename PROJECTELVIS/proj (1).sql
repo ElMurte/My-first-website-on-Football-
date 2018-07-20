@@ -17,12 +17,13 @@ DROP TABLE IF EXISTS `Notizie`;
 -- Table `Utente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Utente` (
-`username` VARCHAR(50) NOT NULL,
+`username` VARCHAR(50) NOT NULL UNIQUE,
 `nome` VARCHAR(50) NOT NULL,
 `cognome` VARCHAR(50) NOT NULL,
 `email` VARCHAR(100) NOT NULL,
+`password` VARCHAR(20) NOT NULL,
 `squadrapref` VARCHAR(50) NOT NULL,
-`moderatore` BOOLEAN DEFAULT 0,
+`moderatore` BOOLEAN,
 PRIMARY KEY (`email`),
     FOREIGN KEY (`squadrapref`)
     REFERENCES `Squadra` (`nome`)
@@ -80,7 +81,7 @@ ENGINE = InnoDB;
 -- Table `Notizie`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Notizie` (
-  `idnotizia` INT UNSIGNED NOT NULL,
+  `idnotizia` VARCHAR(20) NOT NULL,
   `datan` DATETIME NOT NULL,
   `titolo` VARCHAR(50) NOT NULL,
   `immagine` VARCHAR(100) NOT NULL,
@@ -264,6 +265,25 @@ INSERT INTO `Stadio` (`idstadio`, `nome`, `inaugurazione`, `capienza`, `propriet
 INSERT INTO `Stadio` (`idstadio`, `nome`, `inaugurazione`, `capienza`, `proprietario`) VALUES ('sit018', 'Mapei Stadium - Città del Tricolore', 1995, 23717, 'Mapei S.p.A.');
 
 
+
+-- -----------------------------------------------------
+-- Data for table `Utente`
+-- -----------------------------------------------------
+
+
+INSERT INTO `Utente` (`username`, `nome`, `cognome`, `email`, `password`, `squadrapref`, `moderatore`) VALUES ('user', 'Gino', 'Rossi', 'utente@gmail.com', 'user', 'Juventus FC', false );
+INSERT INTO `Utente` (`username`, `nome`, `cognome`, `email`, `password`, `squadrapref`, `moderatore`) VALUES ('admin', 'Jack', 'Rossi', 'admin@gmail.com', 'admin', 'Juventus FC', true );
+
+-- -----------------------------------------------------
+-- Data for table `Notizie`
+-- -----------------------------------------------------
+
+
+INSERT INTO `Notizie` (`idnotizia`, `datan`, `titolo`, `immagine`, `articolo`,`tag`,`fonte`) VALUES ('not000000001', '2018-07-14', 'Cristiano Ronaldo alla Juve incredibile!!!', 'cristianojuve.png', 'Suspendisse ullamcorper ac turpis dignissim consequat. Fusce id vulputate est, non hendrerit quam. Curabitur et ullamcorper ante. In faucibus, nulla in viverra pretium, massa turpis mattis magna, ut ornare justo erat quis enim. Vestibulum scelerisque dolor condimentum nibh tempor consequat. Nullam at mi ornare, volutpat velit ut, finibus libero. Ut ligula nisl, porttitor eget quam nec, hendrerit tempor neque. Nullam justo nisi, feugiat et luctus eu, luctus nec urna. Praesent vitae maximus odio. Pellentesque maximus odio et tempus facilisis. Phasellus blandit ornare lorem sed pulvinar. Morbi sed metus interdum, fermentum neque vel, feugiat urna. Praesent mattis iaculis porta. Nunc finibus placerat sapien maximus efficitur. Fusce in tristique metus.
+
+Aliquam a urna non diam viverra scelerisque. Quisque turpis diam, interdum sed nisl vel, commodo molestie elit. Aliquam fermentum rhoncus felis, vitae interdum ante consequat vel. Quisque a cursus nunc, vel placerat massa. Integer ut neque enim. Sed pulvinar turpis nec lectus rhoncus malesuada. Aliquam suscipit tortor magna, id consequat ante dignissim quis. Ut a rhoncus magna, sed vulputate massa.
+
+Fusce quis lacus rhoncus tellus venenatis aliquet ac in diam. Etiam dapibus mauris nec dolor tincidunt dignissim. Fusce ullamcorper augue eu mi molestie aliquam. Vivamus turpis elit, lobortis a varius et, aliquam id arcu. Praesent tempus mauris sit amet odio malesuada, sit amet mollis nisi congue. Cras luctus enim urna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;',  'serieA1617,Juventus FC,calciomercato,bignews,Portogallo','Goal.com');
 
 
 -- -----------------------------------------------------

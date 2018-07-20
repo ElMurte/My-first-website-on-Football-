@@ -192,12 +192,13 @@ span.imgContainer {
 
 /*content2*/
 #content2 table {
+    margin-left: 2.5%;
+    float: left;
     border-collapse: collapse;
-    width: 70%;
+    width: 45%;
     background: #fff;
     display: inline-table;
 }
-
 #content2 th {
     background-color: #336633;
     font-weight: bold;
@@ -226,11 +227,11 @@ span.imgContainer {
 }
 /*end content2*/
 
-
-
-
-
 #content2,#content3{
     display: none;
     margin-top: 1%;
+}
+
+th1 {
+    background-color: aqua;
 }
