@@ -9,14 +9,16 @@
 </head>
 <body>
 <header id="header">
-<h1><a href="home1.html"><img src="../img/loghi/logooff.png" alt="logo" lang="it"></a> Easyfootball</h1>
+<h1><a href="home1.html"><img src="../immagini/loghi/logooff.png" alt="logo"></a> Easyfootball</h1>
     <div id="boxuf">
     <div class="wrap">
         <div class="search">
-        <input type="text" class="searchTerm" placeholder="Ricerca Squadre o Campionati">
-        <button type="submit" class="searchButton">
+            <form action="search.php" method="get">
+        <input type="text" class="searchTerm" placeholder="Ricerca Squadre o Campionati" name="query">
+        <button type="submit" class="searchButton" value="search">
         <i class="fa fa-search"></i> 
        </button>
+            </form>
         </div>
     </div>
         <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.html">Login/Registati</a> </div></div>
@@ -28,10 +30,10 @@
 <div class="principali">
   <h1>Campionati principali</h1>
     <div class=principale>
-        <a href="get.competizione"><img src="../img/loghi/liga.png" alt="logo campionato spagnolo"></a>
-        <a href="get.competizione"><img src="../img/loghi/premier.png" alt="logo campionato inglese"></a>
-        <a href="campionato.html"><img src="../img/loghi/seriea.png" alt="logo campionato italiano"></a>
-        <a href="get.competizione"><img src="../img/loghi/bundesliga.png" alt="logo campionato tedesco"></a>
+        <a href="get.competizione"><img src="../immagini/loghi/liga.png" alt="logo campionato spagnolo"></a>
+        <a href="get.competizione"><img src="../immagini/loghi/premier.png" alt="logo campionato inglese"></a>
+        <a href="campionato.html"><img src="../immagini/loghi/seriea.png" alt="logo campionato italiano"></a>
+        <a href="get.competizione"><img src="../immagini/loghi/bundesliga.png" alt="logo campionato tedesco"></a>
     </div>
         
 </div>
@@ -40,7 +42,7 @@
     <div class="mainnews">
         <div>
         <a href="#"><span class="BimgContainer">
-            <img src="../img/news/imgprof1.jpg" alt="notizia bomba"></span>
+            <img src="../immagini/news/imgprof1.jpg" alt="notizia bomba"></span>
             <span class="newsdescrBig">Buffon si ritira, un era che si chiude dopo 17 anni!</span>
         </a>
         </div>
@@ -49,7 +51,7 @@
   <div class="news">
     <a href="GETnews" >
         <span class="imgContainer">
-            <img src="../img/news/imgprof.jpg" alt="news photo">
+            <img src="../immagini/news/atletico.jpg" alt="news photo">
         </span>
                 <span class="newsdescr">L'EuropaLeague dei Rojiblancos ed festa a Madrid!</span>
         </a>
@@ -57,7 +59,7 @@
      <div class="news">
         <a href="notizia.html" >
         <span class="imgContainer">
-            <img src="../img/news/brasil.jpg" alt="news photo">
+            <img src="../immagini/news/brasil.jpg" alt="news photo">
         </span>
             <span class="newsdescr">Probabili convocati della Selecao per Russia 2018.</span>
         </a>
@@ -65,7 +67,7 @@
       <div class="news">
         <a href="GET.news" >
         <span class="imgContainer">
-            <img src="../img/news/juvescud.jpg" alt="news photo">
+            <img src="../immagini/news/juvescud.jpg" alt="news photo">
         </span>
           <span class="newsdescr">Settimo scudetto consecutivo Juve inarrestabile in Patria. </span>
         </a>
@@ -73,7 +75,7 @@
         <div class="news">
         <a href="GET.news" >
         <span class="imgContainer">
-            <img src="../img/news/conte.jpg" alt="news photo">
+            <img src="../immagini/news/conte.jpg" alt="news photo">
         </span>
             <span class="newsdescr">Chalsea vince FA Cup a casa decisivo Hazard. </span>
         </a>

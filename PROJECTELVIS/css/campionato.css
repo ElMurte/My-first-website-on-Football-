@@ -235,3 +235,11 @@ span.imgContainer {
 th1 {
     background-color: aqua;
 }
+noscript p{
+ color:red;
+    text-align: center;
+}
+noscript img{
+    width:5em;
+    margin-left: 0.4em;
+}
