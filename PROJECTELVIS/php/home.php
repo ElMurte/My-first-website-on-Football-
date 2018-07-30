@@ -15,7 +15,7 @@
         <div class="search">
             <form action="search.php" method="get"> 
         <input type="text" class="searchTerm" placeholder="Ricerca Squadre o Campionati" name="query">
-        <button type="submit" class="searchButton" value="search">
+        <button type="submit" class="searchButton" value="search" onsubmit="<a href='search.php?query='$query'</a>" >
         <i class="fa fa-search"></i> 
        </button>
             </form>
@@ -25,9 +25,7 @@
         
         </div>
     </div>
-	<?php
-	include '../php/search.php';
-	?>
+	
     </header>
 <main class="content">
 

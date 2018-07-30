@@ -14,20 +14,23 @@ $idc=$_GET["idc"];
 </head>
 <body>
 <header id="header">
-<h1><a href="home.php"><img src="../immagini/loghi/logooff.png" alt="logo" lang="it"></a> Easyfootball</h1>
+<h1><a href="home.php"><img src="../immagini/loghi/logooff.png" alt="logo"></a> Easyfootball</h1>
     <div id="boxuf">
     <div class="wrap">
         <div class="search">
-        <input type="text" class="searchTerm" placeholder="Ricerca Squadre o Campionati">
-        <button type="submit" class="searchButton">
+            <form action="search.php" method="get"> 
+        <input type="text" class="searchTerm" placeholder="Ricerca Squadre o Campionati" name="query">
+        <button type="submit" class="searchButton" value="search" onsubmit="<a href='search.php?query='$query'</a>" >
         <i class="fa fa-search"></i> 
        </button>
+            </form>
         </div>
     </div>
         <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.html">Login/Registati</a> </div></div>
         
         </div>
     </div>
+	
     </header>
     
     <noscript>
@@ -47,6 +50,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
    <div id='campionato'><img src='../immagini/loghi/".$row["logoc"]."' alt='logo ".$row["nome"]."' ></div>";
 		};
 	};
+
 	?>
 
 <div class="topnav" id="navcamp" >
@@ -56,9 +60,10 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 </div>
     </div>
     <div id="content1" class="active">
+	
          <?php
 		include '../php/connessionedb.php';
-		$sql="SELECT idnotizia,immagine,titolo FROM `notizie` WHERE (tag LIKE '%$idc%') ORDER BY datan DESC LIMIT 4;";
+		$sql="SELECT idnotizia,immagine,titolo FROM `notizie` WHERE (tag COLLATE UTF8_GENERAL_CI LIKE '%$idc%') ORDER BY datan DESC LIMIT 4;";
 		$resultnews= $DB->query($sql);
 		if($result->num_rows>0){
 		while($row=$resultnews->fetch_assoc()){
@@ -68,14 +73,13 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
             <img src='../immagini/news/".$row["immagine"]."' alt='fotonews'>
         </span>
             <span class='newsdescr'>".$row["titolo"]."</span>
-        </a>
-        </div>";
+        </a>  </div>";
 		};
 	};
 	$DB->close();
 	?>
+  
     </div>
-    
     
     <div id="content2">
         <div class="partite" lang="it">
@@ -128,11 +132,11 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 					</thead>
 					<tbody>
                         <tr>
-                        <td><img src="../img/loghi/Milan.png">  </td>
+                        <td><img src="../immagini/loghi/Milan.png">  </td>
                         <td>1</td>
                         <td> : </td>
                         <td>1</td>
-                        <td> <img src="../img/loghi/Juventus.png"> </td>
+                        <td> <img src="../immagini/loghi/Juventus.png"> </td>
                         </tr>
                     </tbody>
             </table>
