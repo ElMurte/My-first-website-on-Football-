@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Risultati</title>
+     <link rel="stylesheet" type="text/css" href="../css/search.css">
+</head>
+<body>
+
 <?php
 include '../php/connessionedb.php';
  $query=false;
@@ -43,3 +53,8 @@ include '../php/connessionedb.php';
         
     }
 ?>
+    <main class="risultati">
+    
+    </main>
+</body>
+</html>

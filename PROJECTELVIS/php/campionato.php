@@ -1,3 +1,6 @@
+<?php
+$idc=$_GET["idc"];
+?>
 <!DOCTYPE html>
 <html lang=it>
 <head>
@@ -31,9 +34,20 @@
     <p><img src="../immagini/immaginivarie/attenzione.png" alt="attenzione">   Per favore attivare javascript sul browser altrimenti il contenuto non è completamente accessibile</p>
     </noscript>
 <main class="content">
+   
 <div id="menucampionato">
     <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
-    <div id="campionato"><img src="../immagini/loghi/seriea.png" alt="logo campionato italiano"><p>SerieA</p></div>
+    <?php 
+include '../php/connessionedb.php';
+$logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
+ $result= $DB->query($logo);
+	if($result->num_rows>0){
+		while($row=$result->fetch_assoc()){
+			echo "
+   <div id='campionato'><img src='../immagini/loghi/".$row["logoc"]."' alt='logo ".$row["nome"]."' ></div>";
+		};
+	};
+	?>
 
 <div class="topnav" id="navcamp" >
 <a href="#content1" id="news" class="menuHandler current">Notizie</a>
@@ -42,38 +56,24 @@
 </div>
     </div>
     <div id="content1" class="active">
-         <div class="news">
-    <a href="GETnews" >
-        <span class="imgContainer">
-            <img src="../immagini/news/imgprof.jpg" alt="news photo">
+         <?php
+		include '../php/connessionedb.php';
+		$sql="SELECT idnotizia,immagine,titolo FROM `notizie` WHERE (tag LIKE '%$idc%') ORDER BY datan DESC LIMIT 4;";
+		$resultnews= $DB->query($sql);
+		if($result->num_rows>0){
+		while($row=$resultnews->fetch_assoc()){
+			echo"<div class='news'>
+        <a href='notizia.php?val=".$row["idnotizia"]."' >
+        <span class='imgContainer'>
+            <img src='../immagini/news/".$row["immagine"]."' alt='fotonews'>
         </span>
-                <span class="newsdescr">L'EuropaLeague dei Rojiblancos ed festa a Madrid!</span>
+            <span class='newsdescr'>".$row["titolo"]."</span>
         </a>
-    </div>
-     <div class="news">
-        <a href="notizia.html" >
-        <span class="imgContainer">
-            <img src="../img/news/brasil.jpg" alt="news photo">
-        </span>
-            <span class="newsdescr">Probabili convocati della Selecao per Russia 2018.</span>
-        </a>
-        </div>
-      <div class="news">
-        <a href="GET.news" >
-        <span class="imgContainer">
-            <img src="../img/news/juvescud.jpg" alt="news photo">
-        </span>
-          <span class="newsdescr">Settimo scudetto consecutivo Juve inarrestabile in Patria. </span>
-        </a>
-        </div>
-        <div class="news">
-        <a href="GET.news" >
-        <span class="imgContainer">
-            <img src="../img/news/conte.jpg" alt="news photo">
-        </span>
-            <span class="newsdescr">Chalsea vince FA Cup a casa decisivo Hazard. </span>
-        </a>
-        </div>
+        </div>";
+		};
+	};
+	$DB->close();
+	?>
     </div>
     
     

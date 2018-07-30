@@ -13,7 +13,7 @@
     <div id="boxuf">
     <div class="wrap">
         <div class="search">
-            <form action="search.php" method="get">
+            <form action="search.php" method="get"> 
         <input type="text" class="searchTerm" placeholder="Ricerca Squadre o Campionati" name="query">
         <button type="submit" class="searchButton" value="search">
         <i class="fa fa-search"></i> 
@@ -43,7 +43,7 @@ $logo="SELECT idcampionato,logoc,nome FROM `campionato` WHERE (nome=('Bundesliga
 	if($result->num_rows>0){
 		while($row=$result->fetch_assoc()){
 			echo "
-			<a href='campionato.".$row["idcampionato"]."'>
+			<a href='campionato.php?idc=".$row["idcampionato"]."'>
 			<img src='../immagini/loghi/".$row["logoc"]."' alt='logo ".$row["nome"]."' >
 			</a> 
 			";
@@ -67,7 +67,7 @@ $logo="SELECT idcampionato,logoc,nome FROM `campionato` WHERE (nome=('Bundesliga
 		$row=$resultnews->fetch_assoc();
 		
 		if($result->num_rows>0){
-			echo "<a href='notizia.php".$row["idnotizia"]."'>
+			echo "<a href='notizia.php?val=".$row["idnotizia"]."'>
 		<span class='BimgContainer'>
 			<img src='../immagini/news/".$row["immagine"]."' alt='immagine notizia' ></span>
 			<span class='newsdescrBig'>".$row["titolo"]."</span>
@@ -77,7 +77,7 @@ $logo="SELECT idcampionato,logoc,nome FROM `campionato` WHERE (nome=('Bundesliga
 			<div>";
 		while($row=$resultnews->fetch_assoc()){
 			echo"<div class='news'>
-        <a href='notizia.php".$row["idnotizia"]."' >
+        <a href='notizia.php?val=".$row["idnotizia"]."' >
         <span class='imgContainer'>
             <img src='../immagini/news/".$row["immagine"]."' alt='fotonews'>
         </span>
