@@ -208,11 +208,12 @@ span.imgContainer {
 
 #content2 td, th {
     padding: 0.5em;
-    text-align: center;
+    text-align:center;
     white-space:normal;
 }
 
 #content2 tbody th {
+    text-align: center;
 	background-color: #2ea879;
 }
 #content2 tbody tr:nth-child(2n-1) {

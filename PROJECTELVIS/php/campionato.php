@@ -87,27 +87,51 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 					<thead>
                         <tr>
 							<th></th>
-                            <th></th>
-                            <th>Giornata 1</th>
-                            <th></th>
-                            <th></th>
+                        
+						
+                            <th>Ultima giornata</th>
+                           
+							
+							<th></th>
 						</tr>
 						<tr>
 							<th>Casa</th>
-							<th>GC</th>
-                            <th></th>
-							<th>GO</th>
-                            <th>Ospite</th>
+							
+							<th>Risultato</th>
+                            
+							
+                            <th>Ospite</th>						
 						</tr>
 					</thead>
 					<tbody>
-                        <tr>
-                        <td><img src="../immagini/loghi/Milan.png">  </td>
-                        <td>4</td>
-                        <td> : </td>
-                        <td>7</td>
-                        <td> <img src="../immagini/loghi/Juventus.png"> </td>
+					<?php
+					include '../php/connessionedb.php';
+				$giornata="SELECT logoc,squadracasa,golcasa,golospite,logoo,squadraospite FROM 
+				(SELECT idpartita,logo as logoc,squadracasa,ngiornata,golcasa from (SELECT * FROM `partita` WHERE 
+				campionato COLLATE UTF8_GENERAL_CI ='$idc' AND datap<=CURRENT_DATE() ORDER BY datap DESC LIMIT 10)as parti 
+				join `squadra` as sqd WHERE parti.squadracasa=sqd.nome) as casa JOIN
+				(SELECT idpartita,logo as logoo,squadraospite,golospite from 
+				(SELECT * FROM `partita` WHERE campionato COLLATE UTF8_GENERAL_CI ='$idc' AND datap<=CURRENT_DATE() 
+				ORDER BY datap DESC LIMIT 10)as parti join `squadra` as sqd WHERE parti.squadraospite=sqd.nome)as ospite 
+				WHERE casa.idpartita=ospite.idpartita;";
+				 $result= $DB->query($giornata);
+					if($result->num_rows>0){
+						while($row=$result->fetch_assoc()){
+							echo "
+							 <tr>
+                        <td><img src='../immagini/loghi/".$row["logoc"]."' alt='".$row["squadracasa"]."'>  </td>
+                       
+                        <td>".$row["golcasa"]." : ".$row["golospite"]."</td>
+                       
+                        <td> <img src='../immagini/loghi/".$row["logoo"]."' alt='".$row["squadraospite"]."'></td>
                         </tr>
+							";
+		};
+	};
+	$DB->close();
+					?>
+					
+                       
                     </tbody>
             </table>
         </div>
@@ -117,27 +141,46 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 					<thead>
                          <tr>
 							<th></th>
-                            <th></th>
-                            <th>prossima giornata</th>
-                            <th></th>
+                           
+                            <th>Prossima giornata</th>
+                           
                             <th></th>
 						</tr>
                         <tr>    
 							<th>Casa</th>
-							<th>GC</th>
-                            <th></th>
-							<th>GO</th>
+						
+                            <th>ora</th>
+							
                             <th>Ospite</th>
 						</tr>
 					</thead>
 					<tbody>
-                        <tr>
-                        <td><img src="../immagini/loghi/Milan.png">  </td>
-                        <td>1</td>
-                        <td> : </td>
-                        <td>1</td>
-                        <td> <img src="../immagini/loghi/Juventus.png"> </td>
+										<?php
+					include '../php/connessionedb.php';
+				$giornata="SELECT logoc,squadracasa,datap,ora,logoo,squadraospite FROM 
+				(SELECT idpartita,logo as logoc,squadracasa,ngiornata,datap,ora from (SELECT * FROM `partita` WHERE 
+				campionato COLLATE UTF8_GENERAL_CI ='$idc' AND datap>CURRENT_DATE() ORDER BY datap ASC LIMIT 10)as parti 
+				join `squadra` as sqd WHERE parti.squadracasa COLLATE UTF8_GENERAL_CI=sqd.nome) as casa JOIN
+				(SELECT idpartita,logo as logoo,squadraospite from 
+				(SELECT * FROM `partita` WHERE campionato COLLATE UTF8_GENERAL_CI ='$idc' AND datap>CURRENT_DATE() 
+				ORDER BY datap ASC LIMIT 10)as parti join `squadra` as sqd WHERE parti.squadraospite COLLATE UTF8_GENERAL_CI =sqd.nome)as ospite 
+				WHERE casa.idpartita=ospite.idpartita;";
+				 $result= $DB->query($giornata);
+					if($result->num_rows>0){
+						while($row=$result->fetch_assoc()){
+							echo "
+							 <tr>
+                        <td><img src='../immagini/loghi/".$row["logoc"]."' alt='".$row["squadracasa"]."'>  </td>
+                       
+                        <td> ".$row["datap"]." ".$row["ora"]."</td>
+                        
+                        <td> <img src='../immagini/loghi/".$row["logoo"]."' alt='".$row["squadraospite"]."'> </td>
                         </tr>
+							";
+		};
+	};
+	$DB->close();
+					?>
                     </tbody>
             </table>
         </div>
@@ -157,7 +200,65 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+					<?php
+					include '../php/connessionedb.php';
+			$logo="SET @cnt=0;
+SELECT   (@cnt := @cnt + 1) AS posizione,logo,squadra,partite,vittorie,pareggi,sconfitte,punti,golf,gols,diff_reti FROM (squadra as sqd
+JOIN
+(SELECT
+    squadra,
+    COUNT(squadra) AS partite,
+    SUM(IF(punteggio = 3, 1, 0)) AS vittorie,
+    SUM(IF(punteggio = 1, 1, 0)) AS pareggi,
+    SUM(IF(punteggio = 0, 1, 0)) AS sconfitte,
+    SUM(punteggio) AS punti,
+    SUM(fatti) AS golf,
+    SUM(subiti) AS gols,
+    SUM(fatti) - SUM(subiti) AS diff_reti
+FROM
+    (
+    SELECT
+        squadracasa AS squadra,
+        golcasa AS fatti,
+        golospite AS subiti,
+        'C' AS dove,
+        CASE WHEN golcasa > golospite THEN 3 WHEN golcasa = golospite THEN 1 ELSE 0
+END AS punteggio
+FROM
+    Partita
+WHERE
+    campionato = 'SerieA1617'
+UNION ALL
+SELECT
+    squadraospite AS squadra,
+    golospite AS fatti,
+    golcasa AS subiti,
+    'T' AS dove,
+    CASE WHEN golospite > golcasa THEN 3 WHEN golospite = golcasa THEN 1 ELSE 0
+END AS punteggio
+FROM
+    Partita
+WHERE
+    campionato = 'SerieA1617'
+) AS tab
+GROUP BY
+    squadra
+ORDER BY
+    punteggio,diff_reti
+DESC) as sqd2) WHERE sqd.nome = sqd2.squadra ORDER BY punti DESC,diff_reti DESC;";
+			 $result= $DB->query($logo);
+						if($result->num_rows>0){
+							while($row=$result->fetch_assoc()){
+								echo "
+								<a href='campionato.php?idc=".$row["idcampionato"]."'>
+								<img src='../immagini/loghi/".$row["logoc"]."' alt='logo ".$row["nome"]."' >
+								</a> 
+			";
+		};
+	};
+	$DB->close();
+					?>
+					<tr>
                 <td class="rank">1</td>
                 <td class="team">Spain</td>
                 <td class="points">1460</td>

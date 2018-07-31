@@ -5,6 +5,7 @@
 	background-color:white;
 	margin-top:1em;
 	border-radius:1em;
+	border:1px solid black;
 }
 .searched img:hover{
 	border:4px solid black;

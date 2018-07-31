@@ -138,8 +138,8 @@ CREATE TABLE IF NOT EXISTS `Partita` (
   `datap` DATE NOT NULL,
   `ora` TIME NOT NULL ,
   `stadio` VARCHAR(20) NOT NULL,
-  `golcasa` INT NOT NULL,
-  `golospite` INT NOT NULL,
+  `golcasa` INT NOT NULL DEFAULT '0',
+  `golospite` INT NOT NULL DEFAULT '0',
   `arbitro` VARCHAR(3) NOT NULL,
   `campionato` VARCHAR(13) NOT NULL,
   PRIMARY KEY (`idpartita`),
@@ -885,8 +885,17 @@ INSERT INTO `Partita` (`idpartita`, `squadracasa`, `squadraospite`, `ngiornata`,
 INSERT INTO `Partita` (`idpartita`, `squadracasa`, `squadraospite`, `ngiornata`, `stadio`, `golcasa`, `golospite`, `arbitro`, `campionato`,`datap`, `ora`) VALUES ('G1P7', 'Delfino Pescara 1936', 'SSC Napoli', 1, 'sit017', 2, 2, 'A09', 'SerieA1617','2018-06-13', '21:00:00');
 INSERT INTO `Partita` (`idpartita`, `squadracasa`, `squadraospite`, `ngiornata`, `stadio`, `golcasa`, `golospite`, `arbitro`, `campionato`,`datap`, `ora`) VALUES ('G1P8', 'AC Milan', 'Torino FC', 1, 'sit004', 3, 2, 'A04', 'SerieA1617','2018-06-13', '21:00:00');
 INSERT INTO `Partita` (`idpartita`, `squadracasa`, `squadraospite`, `ngiornata`, `stadio`, `golcasa`, `golospite`, `arbitro`, `campionato`,`datap`, `ora`) VALUES ('G1P9', 'Juventus FC', 'ACF Fiorentina', 1, 'sit001', 2, 1, 'A14', 'SerieA1617','2018-06-13', '21:00:00');
-INSERT INTO `Partita` (`idpartita`, `squadracasa`, `squadraospite`, `ngiornata`, `stadio`, `golcasa`, `golospite`, `arbitro`, `campionato`,`datap`, `ora`) VALUES ('GIP10', 'AS Roma', 'Udinese Calcio', 1, 'sit010', 4, 0, 'A05', 'SerieA1617','2018-06-13', '21:00:00');
-
+INSERT INTO `Partita` (`idpartita`, `squadracasa`, `squadraospite`, `ngiornata`, `stadio`, `golcasa`, `golospite`, `arbitro`, `campionato`,`datap`, `ora`) VALUES ('G1P10', 'AS Roma', 'Udinese Calcio', 1, 'sit010', 4, 0, 'A05', 'SerieA1617','2018-06-13', '21:00:00');
+INSERT INTO `Partita` (`idpartita`, `squadracasa`, `squadraospite`, `ngiornata`, `stadio`, `golcasa`, `golospite`, `arbitro`, `campionato`,`datap`, `ora`) VALUES ('G2P1', 'SS Lazio', 'Juventus FC', 2, 'sit010',DEFAULT ,DEFAULT , 'A03', 'SerieA1617','2018-10-12', '21:00:00');
+INSERT INTO `Partita` (`idpartita`, `squadracasa`, `squadraospite`, `ngiornata`, `stadio`, `golcasa`, `golospite`, `arbitro`, `campionato`,`datap`, `ora`) VALUES ('G2P2', 'SS Napoli', 'AC Milan', 2, 'sit009',DEFAULT ,DEFAULT , 'A02', 'SerieA1617','2018-10-12', '18:00:00');
+INSERT INTO `Partita` (`idpartita`, `squadracasa`, `squadraospite`, `ngiornata`, `stadio`, `golcasa`, `golospite`, `arbitro`, `campionato`,`datap`, `ora`) VALUES ('G2P3', 'FC Internazionale', 'US Città di Palermo', 2, 'sit004',DEFAULT ,DEFAULT , 'A01', 'SerieA1617','2018-10-13', '15:00:00');
+INSERT INTO `Partita` (`idpartita`, `squadracasa`, `squadraospite`, `ngiornata`, `stadio`, `golcasa`, `golospite`, `arbitro`, `campionato`,`datap`, `ora`) VALUES ('G2P4', 'UC Sampdoria', 'Atalanta BC', 2, 'sit014',DEFAULT ,DEFAULT , 'A04', 'SerieA1617','2018-10-13', '15:00:00');
+INSERT INTO `Partita` (`idpartita`, `squadracasa`, `squadraospite`, `ngiornata`, `stadio`, `golcasa`, `golospite`, `arbitro`, `campionato`,`datap`, `ora`) VALUES ('G2P5', 'Cagliari Calcio', 'AS Roma', 2, 'sit011',DEFAULT ,DEFAULT , 'A06', 'SerieA1617','2018-10-13', '15:00:00');
+INSERT INTO `Partita` (`idpartita`, `squadracasa`, `squadraospite`, `ngiornata`, `stadio`, `golcasa`, `golospite`, `arbitro`, `campionato`,`datap`, `ora`) VALUES ('G2P6', 'Torino FC', 'Bologna FC 1909', 2, 'sit008',DEFAULT ,DEFAULT , 'A14', 'SerieA1617','2018-10-13', '15:00:00');
+INSERT INTO `Partita` (`idpartita`, `squadracasa`, `squadraospite`, `ngiornata`, `stadio`, `golcasa`, `golospite`, `arbitro`, `campionato`,`datap`, `ora`) VALUES ('G2P7', 'Udinese Calcio', 'Empoli FC', 2, 'sit015',DEFAULT ,DEFAULT , 'A17', 'SerieA1617','2018-10-13', '15:00:00');
+INSERT INTO `Partita` (`idpartita`, `squadracasa`, `squadraospite`, `ngiornata`, `stadio`, `golcasa`, `golospite`, `arbitro`, `campionato`,`datap`, `ora`) VALUES ('G2P8', 'US Sassuolo', 'Delfino Pescara 1936', 2, 'sit018',DEFAULT ,DEFAULT , 'A12', 'SerieA1617','2018-10-13', '15:00:00');
+INSERT INTO `Partita` (`idpartita`, `squadracasa`, `squadraospite`, `ngiornata`, `stadio`, `golcasa`, `golospite`, `arbitro`, `campionato`,`datap`, `ora`) VALUES ('G2P9', 'ACF Fiorentina', 'AC Chievo Verona', 2, 'sit006',DEFAULT ,DEFAULT , 'A11', 'SerieA1617','2018-10-13', '15:00:00');
+INSERT INTO `Partita` (`idpartita`, `squadracasa`, `squadraospite`, `ngiornata`, `stadio`, `golcasa`, `golospite`, `arbitro`, `campionato`,`datap`, `ora`) VALUES ('G2P10', 'FC Crotone', 'Genoa CFC', 2, 'sit008',DEFAULT ,DEFAULT , 'A10', 'SerieA1617','2018-10-13', '21:00:00');
 
 
 
