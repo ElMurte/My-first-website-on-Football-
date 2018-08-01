@@ -110,10 +110,10 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 				(SELECT idpartita,logo as logoc,squadracasa,ngiornata,golcasa from (SELECT * FROM `partita` WHERE 
 				campionato COLLATE UTF8_GENERAL_CI ='$idc' AND datap<=CURRENT_DATE() ORDER BY datap DESC LIMIT 10)as parti 
 				join `squadra` as sqd WHERE parti.squadracasa=sqd.nome) as casa JOIN
-				(SELECT idpartita,logo as logoo,squadraospite,golospite from 
+				(SELECT idpartita,logo as logoo,squadraospite,golospite,datap,ora from 
 				(SELECT * FROM `partita` WHERE campionato COLLATE UTF8_GENERAL_CI ='$idc' AND datap<=CURRENT_DATE() 
 				ORDER BY datap DESC LIMIT 10)as parti join `squadra` as sqd WHERE parti.squadraospite=sqd.nome)as ospite 
-				WHERE casa.idpartita=ospite.idpartita;";
+				WHERE casa.idpartita=ospite.idpartita ORDER BY datap,ora;";
 				 $result= $DB->query($giornata);
 					if($result->num_rows>0){
 						while($row=$result->fetch_assoc()){
@@ -160,10 +160,10 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 				$giornata="SELECT logoc,squadracasa,datap,ora,logoo,squadraospite FROM 
 				(SELECT idpartita,logo as logoc,squadracasa,ngiornata,datap,ora from (SELECT * FROM `partita` WHERE 
 				campionato COLLATE UTF8_GENERAL_CI ='$idc' AND datap>CURRENT_DATE() ORDER BY datap ASC LIMIT 10)as parti 
-				join `squadra` as sqd WHERE parti.squadracasa COLLATE UTF8_GENERAL_CI=sqd.nome) as casa JOIN
+				join `squadra` as sqd WHERE parti.squadracasa =sqd.nome) as casa JOIN
 				(SELECT idpartita,logo as logoo,squadraospite from 
-				(SELECT * FROM `partita` WHERE campionato COLLATE UTF8_GENERAL_CI ='$idc' AND datap>CURRENT_DATE() 
-				ORDER BY datap ASC LIMIT 10)as parti join `squadra` as sqd WHERE parti.squadraospite COLLATE UTF8_GENERAL_CI =sqd.nome)as ospite 
+				(SELECT * FROM `partita` WHERE campionato ='$idc' AND datap>CURRENT_DATE() 
+				ORDER BY datap ASC LIMIT 10)as parti join `squadra` as sqd WHERE parti.squadraospite =sqd.nome)as ospite 
 				WHERE casa.idpartita=ospite.idpartita;";
 				 $result= $DB->query($giornata);
 					if($result->num_rows>0){
@@ -193,17 +193,23 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 				<table>
 					<thead>
 						<tr>
-							<th>Posizione</th>
+							<th>Pos</th>
 							<th>Squadra</th>
+							<th>G</th>
+							<th>V</th>
+							<th>P</th>
+							<th>S</th>
 							<th>Punti</th>
 							<th>+/-</th>
+							<th>DR</th>
 						</tr>
 					</thead>
 					<tbody>
 					<?php
 					include '../php/connessionedb.php';
-			$logo="SET @cnt=0;
-SELECT   (@cnt := @cnt + 1) AS posizione,logo,squadra,partite,vittorie,pareggi,sconfitte,punti,golf,gols,diff_reti FROM (squadra as sqd
+					$pos=1;
+			$ciao="
+SELECT logo,squadra,partite,vittorie,pareggi,sconfitte,punti,golf,gols,diff_reti FROM (squadra as sqd
 JOIN
 (SELECT
     squadra,
@@ -227,7 +233,7 @@ END AS punteggio
 FROM
     Partita
 WHERE
-    campionato = 'SerieA1617'
+    campionato = '$idc' AND datap < CURRENT_DATE()
 UNION ALL
 SELECT
     squadraospite AS squadra,
@@ -239,31 +245,38 @@ END AS punteggio
 FROM
     Partita
 WHERE
-    campionato = 'SerieA1617'
+    campionato = '$idc' AND datap < CURRENT_DATE()
 ) AS tab
 GROUP BY
     squadra
 ORDER BY
     punteggio,diff_reti
 DESC) as sqd2) WHERE sqd.nome = sqd2.squadra ORDER BY punti DESC,diff_reti DESC;";
-			 $result= $DB->query($logo);
+			 $result= $DB->query($ciao);
 						if($result->num_rows>0){
 							while($row=$result->fetch_assoc()){
 								echo "
-								<a href='campionato.php?idc=".$row["idcampionato"]."'>
-								<img src='../immagini/loghi/".$row["logoc"]."' alt='logo ".$row["nome"]."' >
-								</a> 
+				<tr>
+						<td>$pos</td>
+						<td ><img src='../immagini/loghi/".$row["logo"]."' width='60em' height='75em' alt'".$row["squadra"]."'> </td>
+						<td>".$row["partite"]."</td>
+						<td>".$row["vittorie"]."</td>
+						<td>".$row["pareggi"]."</td>
+						<td>".$row["sconfitte"]."</td>
+						<td>".$row["punti"]."</td>
+						<td>".$row["golf"]."/".$row["gols"]."</td>
+						<td>".$row["diff_reti"]."</td>
+              </tr>
+			  
 			";
+			$pos=$pos+1;
 		};
+	}
+		else {
+    printf("Query failed: %s\n", $DB->error);
 	};
 	$DB->close();
 					?>
-					<tr>
-                <td class="rank">1</td>
-                <td class="team">Spain</td>
-                <td class="points">1460</td>
-                <td class="up-down">0</td>
-              </tr>
               
 					</tbody>
 				</table>

@@ -79,11 +79,6 @@ border-bottom: 3px solid #336633;
     background-color: darkgrey;
 }
 
-#content3 td.rank {
-	text-transform: capitalize;
-}
-
-
 /*Content1*/
 @media  screen and (max-width:640px)
 {
