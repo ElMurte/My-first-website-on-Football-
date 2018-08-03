@@ -28,7 +28,7 @@ include '../php/connessionedb.php';
             </form>
         </div>
     </div>
-        <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.html">Login/Registati</a> </div></div>
+        <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.php">Login/Registati</a> </div></div>
         
         </div>
     </div>
@@ -46,7 +46,7 @@ include '../php/connessionedb.php';
 
         $result="SELECT idcampionato,logoc as logo,nome FROM `campionato` 
 		where nome COLLATE UTF8_GENERAL_CI LIKE '%$query%'";
-		$result1="SELECT logo,nome FROM `Squadra` where nome COLLATE UTF8_GENERAL_CI LIKE '%$query%' ";
+		$result1="SELECT logo,nome,campionato FROM `Squadra` where nome COLLATE UTF8_GENERAL_CI LIKE '%$query%' ";
          $rawresults=$DB->query($result);
 			$rawresults1=$DB->query($result1);
          
@@ -61,7 +61,7 @@ include '../php/connessionedb.php';
 			}
 					if(($rawresults1)->num_rows > 0){
 							while($row1=$rawresults1->fetch_assoc()){
-								echo "<a href='squadra.php?idc=".$row1["nome"]."'> <img src='../immagini/loghi/".$row1["logo"]."' alt='logo ".$row1["nome"]."'>
+								echo "<a href='squadra.php?squadra=".$row1["nome"]."&idc=".$row1["campionato"]."'> <img src='../immagini/loghi/".$row1["logo"]."' alt='logo ".$row1["nome"]."'>
 						</a>
 					";
 							}
