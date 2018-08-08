@@ -1,6 +1,18 @@
 <?php
+include '../php/connessionedb.php';
+if (isset($_GET["squadra"]))
 $squadra=$_GET["squadra"];
-$idc=$_GET["idc"];
+$idc=false;
+if (isset($_GET["idc"]))
+	$idc=$_GET["idc"];
+
+else{
+	$cam="SELECT campionato from squadra where nome COLLATE UTF8_GENERAL_CI LIKE '$squadra'";
+	$camp=$DB->query($cam);
+$row=$camp->fetch_assoc();
+		$idc=$row["campionato"];
+}
+var_dump($idc);
 ?>
 <!DOCTYPE html>
 <html>
@@ -100,12 +112,12 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
 (
     SELECT logoc,squadracasa,golcasa,golospite,logoo,squadraospite FROM 
 				(SELECT idpartita,logo as logoc,squadracasa,ngiornata,golcasa from (SELECT * FROM `partita` WHERE 
-				campionato COLLATE UTF8_GENERAL_CI ='SerieA1617' AND datap<=CURRENT_DATE() ORDER BY datap DESC LIMIT 1)as parti 
+				campionato COLLATE UTF8_GENERAL_CI ='$idc' AND datap<CURRENT_DATE() ORDER BY datap DESC)as parti 
 				join `squadra` as sqd WHERE parti.squadracasa=sqd.nome) as casa JOIN
 				(SELECT idpartita,logo as logoo,squadraospite,golospite,datap,ora from 
-				(SELECT * FROM `partita` WHERE campionato COLLATE UTF8_GENERAL_CI ='SerieA1617'  AND datap<=CURRENT_DATE() 
-				ORDER BY datap DESC LIMIT 1)as parti join `squadra` as sqd WHERE parti.squadraospite=sqd.nome)as ospite 
-				WHERE casa.idpartita=ospite.idpartita ORDER BY datap,ora)as p WHERE p.squadracasa='Juventus FC' OR p.squadraospite='Juventus FC';";
+				(SELECT * FROM `partita` WHERE campionato COLLATE UTF8_GENERAL_CI ='$idc'  AND datap<=CURRENT_DATE() 
+				ORDER BY datap DESC)as parti join `squadra` as sqd WHERE parti.squadraospite=sqd.nome)as ospite 
+				WHERE casa.idpartita=ospite.idpartita ORDER BY datap,ora)as p WHERE p.squadracasa='$squadra' OR p.squadraospite='$squadra' LIMIT 1;";
 				$result= $DB->query($giornata);
 					if($result->num_rows>0){
 						while($row=$result->fetch_assoc()){	
@@ -128,7 +140,7 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
 			<thead>
 						<tr>
 							<th></th>
-                            <th>Ultima partita disputata</th>
+                            <th>Prossima partita</th>
                             <th></th>
 						</tr>
 					</thead>
@@ -151,7 +163,7 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
 				(SELECT idpartita,logo as logoo,squadraospite from 
 				(SELECT * FROM `partita` WHERE campionato ='$idc' AND datap>CURRENT_DATE() 
 				ORDER BY datap ASC LIMIT 10)as parti join `squadra` as sqd WHERE parti.squadraospite =sqd.nome)as ospite 
-				WHERE casa.idpartita=ospite.idpartita)as p WHERE p.squadracasa='Juventus FC' OR p.squadraospite='Juventus FC';";
+				WHERE casa.idpartita=ospite.idpartita)as p WHERE p.squadracasa='$squadra' OR p.squadraospite='$squadra';";
 				 $result= $DB->query($giornata);
 					if($result->num_rows>0){
 						while($row=$result->fetch_assoc()){
