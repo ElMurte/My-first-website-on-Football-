@@ -1,18 +1,7 @@
 <?php
 include '../php/connessionedb.php';
-if (isset($_GET["squadra"]))
 $squadra=$_GET["squadra"];
-$idc=false;
-if (isset($_GET["idc"]))
 	$idc=$_GET["idc"];
-
-else{
-	$cam="SELECT campionato from squadra where nome COLLATE UTF8_GENERAL_CI LIKE '$squadra'";
-	$camp=$DB->query($cam);
-$row=$camp->fetch_assoc();
-		$idc=$row["campionato"];
-}
-var_dump($idc);
 ?>
 <!DOCTYPE html>
 <html>
