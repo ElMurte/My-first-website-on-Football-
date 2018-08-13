@@ -1,11 +1,4 @@
 <?PHP
-require_once("./include/membersite_config.php");
-if(!$fgmembersite->CheckLogin())
-{
-
-    $fgmembersite->RedirectToURL("login.php");
-
-    exit;
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,7 +25,7 @@ if(!$fgmembersite->CheckLogin())
             </form>
         </div>
     </div>
-        <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.html">Login/Registati</a> </div></div>
+        <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.php">Login/Registati</a> </div></div>
         
         </div>
     </div>
@@ -47,28 +40,25 @@ if(!$fgmembersite->CheckLogin())
 						<h3>AGGIUNGI notizia</h3>
                         <form action="upload.php" method="post" enctype="multipart/form-data">
                             Seleziona l'immagine da caricare:
-                            <input type="file" name="fileToUpload" id="fileToUpload">
-                            <br></br>
-                            <input type="submit" value="Upload Image" name="submit">
-                        </form>
-                         <br></br>
-                                <form>
+                            <input type="file" name="fileToUpload" id="fileToUpload" required><br>
+
+							<label for="id-not">id notizia:</label><br>
+                                         <input type="text" placeholder="ex(not0000007)"name="idnot" id="idnot" ><br>
+										 <br>
+										  
+                      
                                      <label for="titolo">titolo notizia:</label><br>
-                                     <input name="titolo" id="titolo">
-                                    </form>
-                                      <form>
-                                         <label for="nome-img">nome immagine caricata:</label><br>
-                                         <input name="nome-img" id="immagine">
-                                        </form>
-                                            <form>
+                                     <input name="titolo" id="titolo" ><br>
+									 
                                              <label for="contenuto-news">contenuto:</label><br>
-                                             <input name="contenuto-news" id="contenuto">
-                                            </form>
-                                            <label for="tag-notizia">tag</label><br>
-                                             <input type="text" name="tag-notizia" id="tag">
-                                            </form>
+                                             <input name="contenutonews" id="contenutonews" ><br>
+                                          
+                                            <label for="tag-notizia">tag:</label><br>
+                                             <input type="text" placeholder="seriea,bignews..." name="tagnotizia" id="tag" >
                             <br></br>
-							<button type="submit" name="inserisci">Inserisci</button>
+							<input type="submit" value="Inserisci" name="submit"><br>
+									</form>
+                         
 					</div>
 				
                             <div class="del">

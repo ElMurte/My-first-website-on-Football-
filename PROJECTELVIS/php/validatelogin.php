@@ -26,5 +26,6 @@ $getString = http_build_query(array ( 'squadra'=>$row["squadrapref"],
                                       'idc'=>$row1["campionato"]));
 			header("Location: ../php/squadra.php?$getString");
 		}
-	else echo"errore,credenziali errate";
+	else
+		header("Location: ../php/login.php");
 	?>

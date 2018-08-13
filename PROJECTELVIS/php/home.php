@@ -21,8 +21,10 @@
             </form>
         </div>
     </div>
-        <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.php">Login/Registati</a> </div></div>
-        
+        <div class=utentelog><div id="registrazione">
+		<div id="login"> <a href="login.php">Login/Registati</a> </div>
+		<div id="logout"> <a href="sessionend.php">Logout</a> </div>
+		</div>
         </div>
     </div>
 	

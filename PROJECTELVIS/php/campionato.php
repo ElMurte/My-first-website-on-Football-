@@ -272,9 +272,7 @@ DESC) as sqd2) WHERE sqd.nome = sqd2.squadra ORDER BY punti DESC,diff_reti DESC;
 			$pos=$pos+1;
 		};
 	}
-		else {
-    printf("Query failed: %s\n", $DB->error);
-	};
+		
 	$DB->close();
 					?>
               

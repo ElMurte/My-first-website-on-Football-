@@ -42,6 +42,15 @@
     font-size:0.8em;
      position: relative;
 }
+#logout{
+	display:none;
+    font-size:0.8em;
+     position: relative;
+}
+/*#logout{
+	 font-size:0.8em;
+   display:none;
+}*/
 /*fine header*/
 /*BARRARICERCA*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
