@@ -27,7 +27,7 @@
             </form>
         </div>
     </div>
-        <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.php">Login/Registati</a> </div></div>
+        <div class=utentelog><div id="login"> <a href="login.php">Login</a> </div></div>
         </div>
     </div>
 	
@@ -37,19 +37,12 @@
 <main class="content">
    <div class="login-page">
   <div class="form">
-    <form method="POST" class="register-form">
-      <input type="text" placeholder="nome" name="user" required>
-      <input type="password" placeholder="password" name="pass" required>
-      <input type="text" placeholder="email address" name="email" required>
-        <input type="text" placeholder="squadrapreferita" name="squadra" required>
-      <button>create</button>
-      <p class="message">Già registrato?<a href="#">Sign In</a></p>
-    </form>
+  
     <form method="POST" class="login-form" action="validatelogin.php">
       <input type="text" placeholder="username" name="username" required>
       <input type="password" placeholder="password" name="userpass" required>
       <button type="submit" name="login" >login</button>
-      <p class="message">Non registrato? <a href="#">Create an account</a></p>
+      <p class="message">Solo per moderatori</p>
     </form>
         <script>
        $('.message a').click(function(){

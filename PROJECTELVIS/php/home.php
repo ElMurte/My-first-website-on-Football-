@@ -22,7 +22,7 @@
         </div>
     </div>
         <div class=utentelog><div id="registrazione">
-		<div id="login"> <a href="login.php">Login/Registati</a> </div>
+		<div id="login"> <a href="login.php">Login</a> </div>
 		<div id="logout"> <a href="sessionend.php">Logout</a> </div>
 		</div>
         </div>
@@ -62,7 +62,7 @@ $logo="SELECT idcampionato,logoc,nome FROM `campionato` WHERE (nome=('Bundesliga
         <div>
 		<?php
 		include '../php/connessionedb.php';
-		$sql="SELECT idnotizia,immagine,titolo FROM `notizie` WHERE (tag LIKE '%bignews%') ORDER BY datan DESC LIMIT 5;";
+		$sql="SELECT idnotizia,immagine,titolo FROM `notizie` WHERE (tag COLLATE UTF8_GENERAL_CI LIKE '%bignews%') ORDER BY datan DESC LIMIT 5;";
 		$resultnews= $DB->query($sql);
 		$row=$resultnews->fetch_assoc();
 		

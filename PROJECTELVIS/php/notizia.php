@@ -22,7 +22,7 @@ $val = $_GET["val"];
        </button>
         </div>
     </div>
-        <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.php">Login/Registati</a> </div></div>
+        <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.php">Login</a> </div></div>
         
         </div>
     </div>

@@ -43,17 +43,15 @@
 .form button:hover,.form button:active,.form button:focus {
   background: #336633;
 }
-.form .message {
-  margin: 15px 0 0;
-  color: #b3b3b3;
-  font-size: 12px;
+p.message {
+    text-align: center;
+  color: red;
+    background-color: yellow;
+  font-size: 1.2em;
 }
 .form .message a {
   color: #4CAF50;
   text-decoration: none;
-}
-.form .register-form {
-  display: none;
 }
 .container {
   position: relative;

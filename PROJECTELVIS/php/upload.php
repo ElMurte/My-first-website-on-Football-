@@ -10,7 +10,7 @@ if(isset($_POST["submit"])) {
 
 $sql="INSERT INTO notizie (idnotizia,datan ,titolo,immagine,articolo,tag) VALUES (?,?,?,?,?,?)";
 $stmt = mysqli_prepare($DB,$sql);
-$stmt->bind_param("ssssss",$_POST["idnot"],time(),$_POST["titolo"],$_FILES["fileToUpload"]["name"],$_POST["contenutonews"],$_POST["tagnotizia"]);
+$stmt->bind_param("ssssss",$_POST["idnot"],date('Y-m-d H:i:s'),$_POST["titolo"],$_FILES["fileToUpload"]["name"],$_POST["contenutonews"],$_POST["tagnotizia"]);
 $stmt->execute();
 
 if (mysqli_query($DB, $sql)) {
@@ -58,6 +58,15 @@ if ($uploadOk == 0) {
         echo "Errore nel caricamento del file";
     }
 }
-
+if(isset($_POST["submitd"]))
+		{
+			$sqld="DELETE FROM notizie  WHERE idnotizia='".$_POST["elimnews"]."'";
+			
+						if (mysqli_query($DB, $sqld)) {
+						echo "New record created successfully";
+						} else {
+						echo "Error: " . $sql . "<br>" . mysqli_error($DB);
+						}
+		}
 
 ?>

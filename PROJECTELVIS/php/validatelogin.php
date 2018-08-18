@@ -24,7 +24,7 @@ $_SESSION["$pass"] = "$pass";
 echo "Session variables are set.";
 $getString = http_build_query(array ( 'squadra'=>$row["squadrapref"], 
                                       'idc'=>$row1["campionato"]));
-			header("Location: ../php/squadra.php?$getString");
+			header("Location: ../php/admin.php");
 		}
 	else
 		header("Location: ../php/login.php");

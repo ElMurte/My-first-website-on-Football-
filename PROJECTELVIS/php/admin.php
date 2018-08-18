@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Notizia</title>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/body.css">
     <link rel="stylesheet" type="text/css" href="../css/campionato.css">
     <link rel="stylesheet" type="text/css" href="../css/admin.css">
+	
 </head>
 <body>
 <header id="header">
@@ -25,7 +26,7 @@
             </form>
         </div>
     </div>
-        <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.php">Login/Registati</a> </div></div>
+        <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.php">Login</a> </div></div>
         
         </div>
     </div>
@@ -63,10 +64,10 @@
 				
                             <div class="del">
                                 <h3>ELIMINA notizia</h3>
-                                <form method="POST" action="">
+                                <form action="deleten.php" method="post" >
                                     <label for="elimnews">id della notizia da eliminare:</label>
-                                    <input type="text" name="elimnews" id="news"><br></br>
-                                    <button type="submit" name="submit">Delete</button>
+                                    <input type="text" name="elimnews" id="elimnews"><br></br>
+                                    <input type="submit" name="submitd" value="elimina">
                                 </form>	
                             </div>
 </main>
