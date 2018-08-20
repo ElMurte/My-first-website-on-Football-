@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+	?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +26,7 @@
         </div>
     </div>
         <div class=utentelog><div id="registrazione">
-		<div id="login"> <a href="login.php">Login</a> </div>
-		<div id="logout"> <a href="sessionend.php">Logout</a> </div>
+		<?php include '../php/log.php'?>
 		</div>
         </div>
     </div>

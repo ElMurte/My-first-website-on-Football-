@@ -20,7 +20,7 @@ if (mysqli_query($DB, $sql)) {
 }
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
+        echo "Il file è un immagine" . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
         echo "Il file non è un immagine";
@@ -30,7 +30,7 @@ if (file_exists($target_file)) {
     echo "Immagine già presente";
     $uploadOk = 0;
 }
-}
+
 
 // Check file size
 if ($_FILES["fileToUpload"]["size"] > 500000) {
@@ -54,9 +54,11 @@ if ($uploadOk == 0) {
                                      ));
 			header("Location: ../php/notizia.php?$getString");
     }
+
 	else {
         echo "Errore nel caricamento del file";
     }
+}
 }
 if(isset($_POST["submitd"]))
 		{

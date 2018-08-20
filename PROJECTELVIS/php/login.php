@@ -1,3 +1,9 @@
+<?php
+if (session_status() == PHP_SESSION_ACTIVE) {
+  header("Location: ../php/admin.php");
+}
+
+?>
 <!DOCTYPE html>
 <html>	
     <head>
@@ -26,10 +32,10 @@
        </button>
             </form>
         </div>
-    </div>
-        <div class=utentelog><div id="login"> <a href="login.php">Login</a> </div></div>
+    </div><div id="registrazione">
+        <div class=utentelog><?php include '../php/log.php'?></div>
         </div>
-    </div>
+		</div>
 	
     </header>
     

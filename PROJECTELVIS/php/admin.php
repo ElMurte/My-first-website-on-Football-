@@ -1,4 +1,8 @@
-<?PHP
+<?php
+session_start();
+if (!isset($_SESSION["username"])){
+  header("Location: ../php/login.php");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,7 +30,9 @@
             </form>
         </div>
     </div>
-        <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.php">Login</a> </div></div>
+        <div class=utentelog><div id="registrazione">
+		<?php include '../php/log.php'?>
+		</div>
         
         </div>
     </div>
@@ -34,7 +40,12 @@
     </header>
     
 <main class="content">
-
+<span class="errormessage"><?php 
+if(isset($_SESSION["message"])) {
+    echo $_SESSION["message"];
+    unset($_SESSION["message"]);
+}
+?></span>
     <h1>Aministrazione Dati</h1>
 			<div class="admin">
 					<div class="insertNews">
@@ -44,18 +55,18 @@
                             <input type="file" name="fileToUpload" id="fileToUpload" required><br>
 
 							<label for="id-not">id notizia:</label><br>
-                                         <input type="text" placeholder="ex(not0000007)"name="idnot" id="idnot" ><br>
+                                         <input type="text" placeholder="ex(not0000007)"name="idnot" id="idnot" required><br>
 										 <br>
 										  
                       
                                      <label for="titolo">titolo notizia:</label><br>
-                                     <input name="titolo" id="titolo" ><br>
+                                     <input name="titolo" id="titolo" required><br>
 									 
                                              <label for="contenuto-news">contenuto:</label><br>
-                                             <input name="contenutonews" id="contenutonews" ><br>
+                                             <input name="contenutonews" id="contenutonews" required><br>
                                           
                                             <label for="tag-notizia">tag:</label><br>
-                                             <input type="text" placeholder="seriea,bignews..." name="tagnotizia" id="tag" >
+                                             <input type="text" placeholder="seriea,bignews..." name="tagnotizia" id="tag" required>
                             <br></br>
 							<input type="submit" value="Inserisci" name="submit"><br>
 									</form>

@@ -83,7 +83,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `Notizie` (
   `idnotizia` VARCHAR(20) NOT NULL,
   `datan` DATETIME NOT NULL,
-  `titolo` VARCHAR(50) NOT NULL,
+  `titolo` VARCHAR(70) NOT NULL,
   `immagine` VARCHAR(100) NOT NULL,
   `articolo` text NOT NULL,
   `tag` VARCHAR(250) NOT NULL,

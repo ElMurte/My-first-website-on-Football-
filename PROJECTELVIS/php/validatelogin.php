@@ -1,8 +1,6 @@
 <?php
 // Start the session
 session_start();
-?>
-<?php
 include '../php/connessionedb.php';
 // Grab User submitted information
 $user = $_POST["username"];
@@ -19,8 +17,7 @@ $row1=$camp->fetch_assoc();
 		if(	$row["username"]==$user && $row["password"]==$pass	)
 		{
 // Set session variables
-$_SESSION["$user"] = "$user";
-$_SESSION["$pass"] = "$pass";
+$_SESSION["username"] = "$user";
 echo "Session variables are set.";
 $getString = http_build_query(array ( 'squadra'=>$row["squadrapref"], 
                                       'idc'=>$row1["campionato"]));

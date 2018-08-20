@@ -1,4 +1,8 @@
 <?php
+// Start the session
+session_start();
+?>
+<?php
 include '../php/connessionedb.php';
  $query=false;
    if (isset($_GET['query']))
@@ -28,7 +32,9 @@ include '../php/connessionedb.php';
             </form>
         </div>
     </div>
-        <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.php">Login/Registati</a> </div></div>
+        <div class=utentelog><div id="registrazione">
+		<?php include '../php/log.php'?>
+		</div>
         
         </div>
     </div>

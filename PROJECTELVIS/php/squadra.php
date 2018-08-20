@@ -1,4 +1,6 @@
+
 <?php
+session_start();
 include '../php/connessionedb.php';
 $squadra=$_GET["squadra"];
 	$idc=$_GET["idc"];
@@ -28,7 +30,9 @@ $squadra=$_GET["squadra"];
             </form>
         </div>
     </div>
-        <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.php">Login/Registati</a> </div></div>
+        <div class=utentelog><div id="registrazione">
+		<?php include '../php/log.php'?>
+		</div>
         
         </div>
     </div>

@@ -1,4 +1,6 @@
+
 <?php
+session_start();
 $idc=$_GET["idc"];
 ?>
 <!DOCTYPE html>
@@ -26,7 +28,9 @@ $idc=$_GET["idc"];
             </form>
         </div>
     </div>
-        <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.php">Login/Registati</a> </div></div>
+        <div class=utentelog><div id="registrazione">
+		<?php include '../php/log.php'?>
+		</div>
         
         </div>
     </div>
@@ -63,7 +67,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 	
          <?php
 		include '../php/connessionedb.php';
-		$sql="SELECT idnotizia,immagine,titolo FROM `notizie` WHERE (tag COLLATE UTF8_GENERAL_CI LIKE '%$idc%') ORDER BY datan DESC LIMIT 4;";
+		$sql="SELECT idnotizia,immagine,titolo FROM `notizie` WHERE (tag COLLATE UTF8_GENERAL_CI LIKE '%".$row["nome"]."%') ORDER BY datan DESC LIMIT 4;";
 		$resultnews= $DB->query($sql);
 		if($result->num_rows>0){
 		while($row=$resultnews->fetch_assoc()){

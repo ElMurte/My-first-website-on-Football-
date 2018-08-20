@@ -1,5 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
+#login{
+	display:none;
+}
 .login-page {
   width: 23em;
   padding: 8% 0 0;

@@ -1,4 +1,6 @@
+
 <?php
+session_start();
 $val = $_GET["val"];
 ?>
 <!DOCTYPE html>
@@ -22,7 +24,7 @@ $val = $_GET["val"];
        </button>
         </div>
     </div>
-        <div class=utentelog><div id="registrazione"><div id="login"> <a href="login.php">Login</a> </div></div>
+        <div class=utentelog><div id="registrazione"><?php include '../php/log.php'?></div>
         
         </div>
     </div>
