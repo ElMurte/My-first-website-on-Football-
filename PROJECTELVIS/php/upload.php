@@ -60,15 +60,5 @@ if ($uploadOk == 0) {
     }
 }
 }
-if(isset($_POST["submitd"]))
-		{
-			$sqld="DELETE FROM notizie  WHERE idnotizia='".$_POST["elimnews"]."'";
-			
-						if (mysqli_query($DB, $sqld)) {
-						echo "New record created successfully";
-						} else {
-						echo "Error: " . $sql . "<br>" . mysqli_error($DB);
-						}
-		}
 
 ?>

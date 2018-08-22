@@ -14,7 +14,7 @@ $val = $_GET["val"];
 </head>
 <body>
 <header id="header">
-<h1><a href="home.php"><img src="../immagini/loghi/logooff.png" alt="logo" lang="it"></a> Easyfootball</h1>
+<h1><a href="home.php"><img src="../immagini/loghi/logooff.png" alt="logo" ></a> Easyfootball</h1>
     <div id="boxuf">
     <div class="wrap">
         <div class="search">

@@ -67,7 +67,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 	
          <?php
 		include '../php/connessionedb.php';
-		$sql="SELECT idnotizia,immagine,titolo FROM `notizie` WHERE (tag COLLATE UTF8_GENERAL_CI LIKE '%".$row["nome"]."%') ORDER BY datan DESC LIMIT 4;";
+		$sql="SELECT idnotizia,immagine,titolo FROM `notizie` WHERE (tag COLLATE UTF8_GENERAL_CI LIKE '%$idc%') ORDER BY datan DESC LIMIT 4;";
 		$resultnews= $DB->query($sql);
 		if($result->num_rows>0){
 		while($row=$resultnews->fetch_assoc()){
@@ -86,7 +86,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
     </div>
     
     <div id="content2">
-        <div class="partite" lang="it">
+        <div class="partite" >
             <table>
 					<thead>
                         <tr>

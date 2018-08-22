@@ -1,0 +1,11 @@
+[value|=elimina],[value|=Inserisci] {
+    background:white;
+	border:3px solid #336633;
+	border-radius:3px;
+	}
+[value|=elimina]:hover,[value|=Inserisci]:hover {
+    background:#336633;
+	border:3px solid black;
+	border-radius:3px;
+	color:white;
+	}
