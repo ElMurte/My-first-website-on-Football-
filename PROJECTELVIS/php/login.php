@@ -2,7 +2,7 @@
 if (session_status() == PHP_SESSION_ACTIVE) {
   header("Location: ../php/admin.php");
 }
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html>	
@@ -49,7 +49,17 @@ if (session_status() == PHP_SESSION_ACTIVE) {
       <input type="password" placeholder="password" name="userpass" required>
       <button type="submit" name="login" >login</button>
       <p class="message">Solo per moderatori</p>
+	  	<span class="error">
+<?php 
+
+	if(isset($_SESSION["logerror"])) {
+   $error=$_SESSION["logerror"];
+    unset($_SESSION["logerror"]);
+echo"$error";
+	}
+?>	</span>
     </form>
+
         <script>
        $('.message a').click(function(){
    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");

@@ -8,18 +8,18 @@ if(isset($_POST["submitd"]))
 			$dir='./';
 			$file=$immnews["immagine"];
 var_dump($file);
-    if (file_exists($file)) {
+$stmt = mysqli_prepare($DB,$sqld);
+		$stmt->execute();
+    if ((file_exists($file))&&(mysqli_query($DB, $sqld))) {
         unlink($file);
+		$_SESSION["deln"]="notizia eliminata con successo";
+		header("Location: ../php/admin.php");
     } else {
-        // File not found.
-    }
-			$stmt = mysqli_prepare($DB,$sqld);
-			$stmt->execute();
-						if (mysqli_query($DB, $sqld)) {
-						echo "notizia eliminata con successo";
-						} else {
-						echo "Error: " . $sqld . "<br>" . mysqli_error($DB);
-						}
+       $_SESSION["errdeln"]="Errore nel eliminare la notizia ";
+		header("Location: ../php/admin.php");
+	}
+			
 		}
+		
 		
 ?>

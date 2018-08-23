@@ -2,6 +2,9 @@
 #login{
 	display:none;
 }
+.content span.error{
+	color:Red;
+}
 .login-page {
   width: 23em;
   padding: 8% 0 0;

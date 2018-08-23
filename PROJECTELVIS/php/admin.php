@@ -40,12 +40,16 @@ if (!isset($_SESSION["username"])){
     </header>
     
 <main class="content">
-<span class="errormessage"><?php 
-if(isset($_SESSION["message"])) {
-    echo $_SESSION["message"];
-    unset($_SESSION["message"]);
-}
-?></span>
+<br>
+  	<span class="succ">
+<?php 
+
+	if(isset($_SESSION["logsucc"])) {
+   $error=$_SESSION["logsucc"];
+    unset($_SESSION["logsucc"]);
+	echo"<h2>$error</h2>";
+	}
+?>	</span><br>
     <h1>Aministrazione Dati</h1>
 			<div class="admin">
 					<div class="insertNews">
@@ -70,15 +74,42 @@ if(isset($_SESSION["message"])) {
                             <br></br>
 							<input type="submit" value="Inserisci" name="submit"><br>
 									</form>
-                         
+                         <?php 
+						 if(isset($_SESSION["messagefil"])) {
+						   $succ=$_SESSION["messagefil"];
+							unset($_SESSION["messagefil"]);
+							echo"<h4>$succ</h4>";
+							}echo"<br>";
+								if(isset($_SESSION["imgfl"])) {
+							   $succ1=$_SESSION["imgfl"];
+								unset($_SESSION["imgfl"]);
+								echo"<h4>$succ1</h4>";
+								}
+						 ?>
 					</div>
 				
                             <div class="del">
                                 <h3>ELIMINA notizia</h3>
                                 <form action="deleten.php" method="post" >
                                     <label for="elimnews">id della notizia da eliminare:</label>
-                                    <input type="text" name="elimnews" id="elimnews"><br></br>
+                                    <input type="text" name="elimnews" id="elimnews" required><br></br>
                                     <input type="submit" name="submitd" value="elimina">
+									<h4><?php 
+
+	if(isset($_SESSION["deln"])) {
+   $succ=$_SESSION["deln"];
+    unset($_SESSION["deln"]);
+	echo"<h4>$succ</h4>";
+	}
+	else{
+
+	if(isset($_SESSION["errdeln"])) {
+   $error=$_SESSION["errdeln"];
+    unset($_SESSION["errdeln"]);
+	echo"$error";
+	}
+	}
+?>	</h4>
                                 </form>	
                             </div>
 </main>
