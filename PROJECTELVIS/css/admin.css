@@ -13,3 +13,10 @@
 	color:green;
 	text-align:center;
 }
+#amministrazione{
+	display:none;
+}
+.content span.errnews{
+	color:red;
+	text-align:center;
+}

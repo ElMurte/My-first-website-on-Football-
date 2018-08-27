@@ -30,9 +30,18 @@ $val = $_GET["val"];
     </div>
     </header>
     <main class="content">
+	<span class="succ">
+<?php 
+	if(isset($_SESSION["carsucc"])) {
+   $messsucc=$_SESSION["carsucc"];
+    unset($_SESSION["carsucc"]);
+	echo"<h2>$messsucc</h2>";
+	}
+?>	</span>
     <?php 
 include '../php/connessionedb.php';
 $notizia="SELECT titolo,immagine,articolo FROM `notizie` WHERE idnotizia='$val';";
+ $notizia= mysqli_real_escape_string($DB,$notizia);
  $result= $DB->query($notizia);
 	if($result->num_rows>0){
 		while($row=$result->fetch_assoc()){
@@ -49,14 +58,14 @@ $notizia="SELECT titolo,immagine,articolo FROM `notizie` WHERE idnotizia='$val';
   </main>
    
   
-<footer id="footer" lang="it">
+<footer id="footer">
         <h3>Chi Siamo</h3>
     <li>
        <a href=""> <ul>L'Azienda</ul></a>
         <a href=""><ul>Lavora con noi</ul></a>
         <a href=""><ul>Contatti</ul></a>
     </li>
-   <div id="motto" lan="en"> 
+   <div id="motto" lang="en"> 
        <span>&copy; EasyFootball-Because football is much then just a sport.</span>
     </div>
     

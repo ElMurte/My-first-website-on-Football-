@@ -93,7 +93,7 @@ include '../php/connessionedb.php';
         <a href=""><ul>Lavora con noi</ul></a>
         <a href=""><ul>Contatti</ul></a>
     </li>
-   <div id="motto"> 
+   <div id="motto" lang="en"> 
        <span>&copy; EasyFootball-Because football is much then just a sport.</span>
     </div>
     

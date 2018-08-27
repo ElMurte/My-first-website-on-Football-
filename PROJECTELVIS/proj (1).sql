@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `Notizie` (
   `titolo` VARCHAR(70) NOT NULL,
   `immagine` VARCHAR(100) NOT NULL,
   `articolo` text NOT NULL,
-  `tag` VARCHAR(250) NOT NULL,
+  `tag` VARCHAR(250) NOT NULL DEFAULT 'bignews',
   `fonte` VARCHAR(50) NOT NULL DEFAULT 'Easyfootball',
   PRIMARY KEY (`idnotizia`)
   )

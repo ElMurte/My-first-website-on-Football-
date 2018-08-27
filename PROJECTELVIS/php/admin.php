@@ -18,7 +18,7 @@ if (!isset($_SESSION["username"])){
 </head>
 <body>
 <header id="header">
-<h1><a href="home.php"><img src="../immagini/loghi/logooff.png" alt="logo"></a> Easyfootball</h1>
+<h1 lang="en"><a href="home.php"><img src="../immagini/loghi/logooff.png" alt="logo"></a> Easyfootball</h1>
     <div id="boxuf">
     <div class="wrap">
         <div class="search">
@@ -50,6 +50,19 @@ if (!isset($_SESSION["username"])){
 	echo"<h2>$error</h2>";
 	}
 ?>	</span><br>
+<span class="errnews">
+								<?php
+						 if(isset($_SESSION["messagefil"])) {
+						   $mess=$_SESSION["messagefil"];
+							unset($_SESSION["messagefil"]);
+							echo"$mess";
+							}echo"<br>";
+								if(isset($_SESSION["imgfl"])) {
+							   $mess1=$_SESSION["imgfl"];
+								unset($_SESSION["imgfl"]);
+								echo"$mess1";
+								}
+						 ?></span><br>
     <h1>Aministrazione Dati</h1>
 			<div class="admin">
 					<div class="insertNews">
@@ -74,18 +87,7 @@ if (!isset($_SESSION["username"])){
                             <br></br>
 							<input type="submit" value="Inserisci" name="submit"><br>
 									</form>
-                         <?php 
-						 if(isset($_SESSION["messagefil"])) {
-						   $succ=$_SESSION["messagefil"];
-							unset($_SESSION["messagefil"]);
-							echo"<h4>$succ</h4>";
-							}echo"<br>";
-								if(isset($_SESSION["imgfl"])) {
-							   $succ1=$_SESSION["imgfl"];
-								unset($_SESSION["imgfl"]);
-								echo"<h4>$succ1</h4>";
-								}
-						 ?>
+								
 					</div>
 				
                             <div class="del">
@@ -104,9 +106,9 @@ if (!isset($_SESSION["username"])){
 	else{
 
 	if(isset($_SESSION["errdeln"])) {
-   $error=$_SESSION["errdeln"];
+   $error1=$_SESSION["errdeln"];
     unset($_SESSION["errdeln"]);
-	echo"$error";
+	echo"$error1";
 	}
 	}
 ?>	</h4>
