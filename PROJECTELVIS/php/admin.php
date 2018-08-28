@@ -59,13 +59,13 @@ include'../php/header.php';
 										  
                       
                                      <label for="titolo">titolo notizia:</label><br>
-                                     <input name="titolo" id="titolo" required><br>
+                                     <input type="text" placeholder="max 70 caratteri" name="titolo" id="titolo"maxlength="70" required><br>
 									 
                                              <label for="contenuto-news">contenuto:</label><br>
-                                             <textarea name="contenutonews" id="contenutonews" required></textarea><br>
+                                             <textarea name="contenutonews" id="contenutonews" rows="7" cols="50"required></textarea><br>
                                           
                                             <label for="tag-notizia">tag:</label><br>
-                                             <input type="text" placeholder="seriea,bignews..." name="tagnotizia" id="tag" required>
+                                             <textarea placeholder="seriea,bignews..." name="tagnotizia" id="tag" required></textarea>
                             <br></br>
 							<input type="submit" value="Inserisci" name="submit"><br>
 									</form>
@@ -74,6 +74,7 @@ include'../php/header.php';
 				
                             <div class="del">
                                 <h3>ELIMINA notizia</h3>
+								<a href="deletenews.php">Dio cane</a>
                                 <form action="deleten.php" method="post" >
                                     <label for="elimnews">id della notizia da eliminare:</label>
                                     <input type="text" name="elimnews" id="elimnews" required><br></br>

@@ -56,7 +56,7 @@ $logo="SELECT idcampionato,logoc,nome FROM `campionato` WHERE (nome=('Bundesliga
 			echo "<a href='notizia.php?val=".$row["idnotizia"]."'>
 		<span class='BimgContainer'>
 			<img src='../immagini/news/".$row["immagine"]."' alt='immagine notizia' ></span>
-			<span class='newsdescrBig'>".$row["titolo"]."</span>
+			<h2 class='newsdescrBig'>".$row["titolo"]."</h2>
 			</a>
 			</div>
 			</div>
@@ -67,7 +67,7 @@ $logo="SELECT idcampionato,logoc,nome FROM `campionato` WHERE (nome=('Bundesliga
         <span class='imgContainer'>
             <img src='../immagini/news/".$row["immagine"]."' alt='immagine notizia'>
         </span>
-            <span class='newsdescr'>".$row["titolo"]."</span>
+            <h2 class='newsdescr'>".$row["titolo"]."</h2>
         </a>
         </div>";
 		};

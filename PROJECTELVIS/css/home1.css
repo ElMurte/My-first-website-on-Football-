@@ -50,12 +50,12 @@
     overflow : hidden;
  
 }
-
-.mainnews h2 span.newsdescrBig{
+h2.newsdescrBig{
     float: left;
-    width: 60%;
+    max-width: 60%;
     color: white;
-    font-size:3em;
+    font-size:2em;
+	text-align:left;
 }
 span.BimgContainer {  
     position: relative;
@@ -103,6 +103,7 @@ span.BimgContainer {
 }
 
 .news span{
+    
     font-size: 1.3em;
     color: white;
     padding: 2% 2% 5% 2%;
@@ -171,9 +172,9 @@ span.imgContainer {
      .mainnews span.BimgContainer{
             width:100%;
     }
-      .mainnews span.newsdescrBig{
-            width:100%;
-          font-size:1.2em;
+      .mainnews h2.newsdescrBig{
+            max-width:100%;
+          font-size:1.6em;
     }
     .news img:hover { 
     transform: none;
@@ -200,7 +201,7 @@ span.imgContainer {
      .mainnews span.BimgContainer{
             width:100%;
     }
-      .mainnews span.newsdescrBig{
+      .mainnews h2.newsdescrBig{
             width:100%;
           font-size:2em;
           padding: 0.5em;
@@ -217,7 +218,10 @@ span.imgContainer {
         width:45%;
         font-size: 0.8em;
     }
-   
+     .mainnews h2.newsdescrBig{
+            max-width:60%;
+          font-size:1.4em;
+    }
     
 }
 

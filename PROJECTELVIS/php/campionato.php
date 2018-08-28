@@ -46,7 +46,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 </div>
     </div>
     <div id="content1" class="active">
-	
+	<h1>Ultime Notizie</h1><br>
          <?php
 		include '../php/connessionedb.php';
 		$sql="SELECT idnotizia,immagine,titolo FROM `notizie` WHERE (tag COLLATE UTF8_GENERAL_CI LIKE '%$idc%') ORDER BY datan DESC LIMIT 4;";
@@ -68,6 +68,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
     </div>
     
     <div id="content2">
+	<h1>Partite</h1>
         <div class="partite" >
             <table>
 					<thead>

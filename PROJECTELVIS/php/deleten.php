@@ -1,29 +1,28 @@
 <?php 
-if(isset($_POST["submitd"]))
+if(isset($_POST["idNotizia"]))
 {
 	include '../php/connessionedb.php';
 	
-	$sqld="DELETE FROM notizie  WHERE idnotizia='".$_POST["elimnews"]."'";
-	$sqld = mysqli_real_escape_string($DB,$sqld);
-	$nomen="SELECT immagine FROM notizie  WHERE idnotizia='".$_POST["elimnews"]."'";
+	
+	$nomen="SELECT immagine FROM notizie  WHERE idnotizia='".$_POST["idNotizia"]."'";
 	$row = $DB->query($nomen);
 	$immnews=$row->fetch_assoc();
-	$dir='./';
-	$file=$immnews["immagine"];
-	var_dump($file);
-	$stmt = mysqli_prepare($DB,$sqld);
-	$stmt->execute();
-		if ((file_exists($file))&&(mysqli_query($DB, $sqld))) 
+	$dir='../immagini/news/';
+	$file=$dir.$immnews["immagine"];
+		if (is_file($file) &&(file_exists($file)) && unlink($file)) 
 		{
-		unlink($file);
-		$_SESSION["deln"]="notizia eliminata con successo";
-		header("Location: ../php/admin.php");
-		}
-			else 	
-			{
-			   $_SESSION["errdeln"]="Errore nel eliminare la notizia ";
-				header("Location: ../php/admin.php");
+			$sqld="DELETE FROM notizie WHERE idnotizia='".$_POST["idNotizia"]."';";
+			if ($DB->query($sqld) === TRUE) {
+			
+			$_SESSION["deln"]="notizia eliminata con successo";
+			header("Location: ../php/deletenews.php");
+			} else {
+				echo "Errore nell'eliminazione ";
 			}
+		}else{
+			$_SESSION["errdeln"]="Errore nel eliminare la notizia ";
+			//header("Location: ../php/admin.php");
+		}
 			
 }
 		
