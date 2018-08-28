@@ -12,26 +12,9 @@ session_start();
     <link rel="stylesheet" type="text/css" href="../css/body.css">
 </head>
 <body>
-<header id="header">
-<h1><a href="home.php"><img src="../immagini/loghi/logooff.png" alt="logo"></a> Easyfootball</h1>
-    <div id="boxuf">
-    <div class="wrap">
-        <div class="search">
-            <form action="search.php" method="get"> 
-        <input type="text" class="searchTerm" placeholder="Ricerca Squadre o Campionati" name="query">
-        <button type="submit" class="searchButton" value="search" onsubmit="<a href='search.php?query='$query'</a>" >
-        <i class="fa fa-search"></i> 
-       </button>
-            </form>
-        </div>
-    </div>
-        <div class=utentelog><div id="registrazione">
-		<?php include '../php/log.php'?>
-		</div>
-        </div>
-    </div>
-	
-    </header>
+<?php
+include'../php/header.php';
+?>
 <main class="content">
 
 <div class='principali'>
@@ -62,7 +45,7 @@ $logo="SELECT idcampionato,logoc,nome FROM `campionato` WHERE (nome=('Bundesliga
     <div class="notizie"><h1>Notizie Principali</h1>
 
     <div class="mainnews">
-        <div>
+        <div class="inutile">
 		<?php
 		include '../php/connessionedb.php';
 		$sql="SELECT idnotizia,immagine,titolo FROM `notizie` WHERE (tag COLLATE UTF8_GENERAL_CI LIKE '%bignews%') ORDER BY datan DESC LIMIT 5;";
@@ -95,16 +78,9 @@ $logo="SELECT idcampionato,logoc,nome FROM `campionato` WHERE (nome=('Bundesliga
     </div>
     </div>
     </main>
-<footer id="footer">
-        <h3>Chi Siamo</h3>
-    <li>
-       <a href=""> <ul>L'Azienda</ul></a>
-        <a href=""><ul>Lavora con noi</ul></a>
-        <a href=""><ul>Contatti</ul></a>
-    </li>
-   <div id="motto"> 
-       <span>&copy; EasyFootball-Because football is much then just a sport.</span>
-    </div>
+<?php
+include'../php/footer.php'
+?>
     
 </footer>
 

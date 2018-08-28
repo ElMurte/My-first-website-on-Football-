@@ -128,29 +128,24 @@ a:inactive{
 
 
 /*FOOTER*/
-footer, h2{
+#footer, h2{
     font-size: 1.4em;
     padding-left: 5%;
     color: white;
     display: inline-block;
     
 }
-footer li{
+#footer li{
     width: 13%;
+	margin-bottom:0.6em;
     height:10%;
     list-style: none;
     font-size: 0.7em;
 }
-footer p{
-    display: inline-block;
-    vertical-align: middle;
-    left:50%;
-    bottom:5%;
-}
 a:visited {
     color:violet;
 }
-footer{
+#footer{
     height: auto;
 	background-color: #303030;
     width: 95%;

@@ -2,8 +2,11 @@
 if (session_status() == PHP_SESSION_ACTIVE) {
   header("Location: ../php/admin.php");
 }
-else
+
 session_start();
+if (isset($_SESSION["username"])){
+  header("Location: ../php/admin.php");
+}
 ?>
 <!DOCTYPE html>
 <html>	
@@ -21,24 +24,9 @@ session_start();
 </head>
 <body>
     
-<header id="header">
-<h1><a href="home.php"><img src="../immagini/loghi/logooff.png" alt="logo"></a> Easyfootball</h1>
-    <div id="boxuf">
-    <div class="wrap">
-        <div class="search">
-            <form action="search.php" method="get"> 
-        <input type="text" class="searchTerm" placeholder="Ricerca Squadre o Campionati" name="query">
-        <button type="submit" class="searchButton" value="search" onsubmit="<a href='search.php?query='$query'</a>" >
-        <i class="fa fa-search"></i> 
-       </button>
-            </form>
-        </div>
-    </div><div id="registrazione">
-        <div class=utentelog><?php include '../php/log.php'?></div>
-        </div>
-		</div>
-	
-    </header>
+<?php
+include'../php/header.php';
+?>
     
     
 <main class="content">
@@ -71,20 +59,9 @@ echo"$error";
 </div>
  
 </main>
-
-
-<footer id="footer">
-        <h3>Chi Siamo</h3>
-    <li>
-       <a href=""> <ul>L'Azienda</ul></a>
-        <a href=""><ul>Lavora con noi</ul></a>
-        <a href=""><ul>Contatti</ul></a>
-    </li>
-   <div id="motto" lang="en"> 
-       <span>&copy; EasyFootball-Because football is much then just a sport.</span>
-    </div>
-    
-</footer>
+<?php
+include'../php/footer.php';
+?>
 </body>
         
 </html>

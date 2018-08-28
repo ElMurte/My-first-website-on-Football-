@@ -44,13 +44,17 @@ if ($uploadOk == 0) {
 else{ 
     if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) { 
 	$_SESSION["carsucc"]="Il file ". basename( $_FILES["fileToUpload"]["name"]). " è stato caricato con successo";
-	$getString = http_build_query(array ( 'val'=>$_POST["idnot"]));}
-	   $sql="INSERT INTO notizie (idnotizia,datan ,titolo,immagine,articolo,tag) VALUES (?,?,?,?,?,?)";
+	
+	   $sql="INSERT INTO notizie (datan ,titolo,immagine,articolo,tag) VALUES (?,?,?,?,?)";
 	   $stmt = mysqli_prepare($DB,$sql);
 	   $user = mysqli_real_escape_string($DB,$stmt);
 		$datcur=date('Y-m-d H:i:s');
-		$stmt->bind_param("ssssss",$_POST["idnot"],$datcur,$_POST["titolo"],$_FILES["fileToUpload"]["name"],$_POST["contenutonews"],$_POST["tagnotizia"]);
+		$stmt->bind_param("sssss",$datcur,$_POST["titolo"],$_FILES["fileToUpload"]["name"],$_POST["contenutonews"],$_POST["tagnotizia"]);
 		$stmt->execute();
+		$ultima="SELECT idnotizia FROM `notizie` Order by datan DESC limit 1";
+		$row = $DB->query($ultima);
+		$resultultima=$row->fetch_assoc();
+		$getString = http_build_query(array ( 'val'=>$resultultima["idnotizia"]));}
 			header("Location: ../php/notizia.php?$getString");
     }
 

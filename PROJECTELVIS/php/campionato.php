@@ -15,27 +15,9 @@ $idc=$_GET["idc"];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<header id="header">
-<h1><a href="home.php"><img src="../immagini/loghi/logooff.png" alt="logo"></a> Easyfootball</h1>
-    <div id="boxuf">
-    <div class="wrap">
-        <div class="search">
-            <form action="search.php" method="get"> 
-        <input type="text" class="searchTerm" placeholder="Ricerca Squadre o Campionati" name="query">
-        <button type="submit" class="searchButton" value="search" onsubmit="<a href='search.php?query='$query'</a>" >
-        <i class="fa fa-search"></i> 
-       </button>
-            </form>
-        </div>
-    </div>
-        <div class=utentelog><div id="registrazione">
-		<?php include '../php/log.php'?>
-		</div>
-        
-        </div>
-    </div>
-	
-    </header>
+<?php
+include'../php/header.php';
+?>
     
     <noscript>
     <p><img src="../immagini/immaginivarie/attenzione.png" alt="attenzione">   Per favore attivare javascript sul browser altrimenti il contenuto non è completamente accessibile</p>
@@ -297,17 +279,9 @@ DESC) as sqd2) WHERE sqd.nome = sqd2.squadra ORDER BY punti DESC,diff_reti DESC;
     });
 
     </script>
-    <footer id="footer">
-        <h3>Chi Siamo</h3>
-    <li>
-       <a href=""> <ul>L'Azienda</ul></a>
-        <a href=""><ul>Lavora con noi</ul></a>
-        <a href=""><ul>Contatti</ul></a>
-    </li>
-   <div id="motto"> 
-       <span>&copy; EasyFootball-Because football is much then just a sport.</span>
-    </div>
-    </footer>
+    <?php
+include'../php/footer.php'
+?>
 
 </body>
 </html>
