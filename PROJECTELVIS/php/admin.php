@@ -49,7 +49,7 @@ include'../php/header.php';
     <h1>Aministrazione Dati</h1>
 			<div class="admin">
 					<div class="insertNews">
-						<h3>AGGIUNGI notizia</h3>
+						<h2>AGGIUNGI notizia</h2>
                         <form action="upload.php" method="post" enctype="multipart/form-data">
                             Seleziona l'immagine da caricare:
                             <input type="file" name="fileToUpload" id="fileToUpload" required><br>
@@ -70,32 +70,10 @@ include'../php/header.php';
 							<input type="submit" value="Inserisci" name="submit"><br>
 									</form>
 								
-					</div>
+					</div><br>
 				
-                            <div class="del">
-                                <h3>ELIMINA notizia</h3>
-								<a href="deletenews.php">Dio cane</a>
-                                <form action="deleten.php" method="post" >
-                                    <label for="elimnews">id della notizia da eliminare:</label>
-                                    <input type="text" name="elimnews" id="elimnews" required><br></br>
-                                    <input type="submit" name="submitd" value="elimina">
-									<h4><?php 
-
-	if(isset($_SESSION["deln"])) {
-   $succ=$_SESSION["deln"];
-    unset($_SESSION["deln"]);
-	echo"<h4>$succ</h4>";
-	}
-	else{
-
-	if(isset($_SESSION["errdeln"])) {
-   $error1=$_SESSION["errdeln"];
-    unset($_SESSION["errdeln"]);
-	echo"$error1";
-	}
-	}
-?>	</h4>
-                                </form>	
+                            <div class="del">                             
+								<h2>Per eliminare una notizia -><a href="deletenews.php">clicca qui</a></h2>
                             </div>
 </main>
     

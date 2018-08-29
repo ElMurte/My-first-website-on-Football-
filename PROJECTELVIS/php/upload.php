@@ -16,13 +16,6 @@ if(isset($_POST["submit"])) {
         $_SESSION["imgfl"]="Il file non è un immagine o file troppo grande";
         $uploadOk = 0;
     }//check se il file esiste
-if (file_exists($target_file)) {
-     $_SESSION["imgfl"]="Immagine già presente";
-    $uploadOk = 0;
-	
-}
-
-
 // la dimensione
 if ($_FILES["fileToUpload"]["size"] > 500000) {
     $_SESSION["imgfl"]="file troppo grande(dimensione massima 500Kb)";
@@ -41,8 +34,23 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 
 }
+if (file_exists($target_file)) {
+					$sql="INSERT INTO notizie (datan ,titolo,immagine,articolo,tag) VALUES (?,?,?,?,?)";
+					   $stmt = mysqli_prepare($DB,$sql);
+					   $user = mysqli_real_escape_string($DB,$stmt);
+						$datcur=date('Y-m-d H:i:s');
+						$stmt->bind_param("sssss",$datcur,$_POST["titolo"],$_FILES["fileToUpload"]["name"],$_POST["contenutonews"],$_POST["tagnotizia"]);
+						$stmt->execute();
+						$ultima="SELECT idnotizia FROM `notizie` Order by datan DESC limit 1";
+						$row = $DB->query($ultima);
+						$resultultima=$row->fetch_assoc();
+						$getString = http_build_query(array ( 'val'=>$resultultima["idnotizia"]));
+					header("Location: ../php/notizia.php?$getString");
+					
+					}
 else{ 
-    if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) { 
+    if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) 
+		{ 
 	$_SESSION["carsucc"]="Il file ". basename( $_FILES["fileToUpload"]["name"]). " è stato caricato con successo";
 	
 	   $sql="INSERT INTO notizie (datan ,titolo,immagine,articolo,tag) VALUES (?,?,?,?,?)";
@@ -54,8 +62,10 @@ else{
 		$ultima="SELECT idnotizia FROM `notizie` Order by datan DESC limit 1";
 		$row = $DB->query($ultima);
 		$resultultima=$row->fetch_assoc();
-		$getString = http_build_query(array ( 'val'=>$resultultima["idnotizia"]));}
+		$getString = http_build_query(array ( 'val'=>$resultultima["idnotizia"]));
 			header("Location: ../php/notizia.php?$getString");
+		}
+		
     }
 
 ?>

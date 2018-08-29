@@ -6,7 +6,7 @@ $idc=$_GET["idc"];
 <!DOCTYPE html>
 <html lang=it>
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <title>Campionato</title>
@@ -68,7 +68,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
     </div>
     
     <div id="content2">
-	<h1>Partite</h1>
+	<h1>Partite</h1><br>
         <div class="partite" >
             <table>
 					<thead>
@@ -176,7 +176,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
     
     <div id="content3">
          <div class="wrapper">
-                    <h1>Classifica</h1>
+                    <h1>Classifica</h1><br>
 				<table>
 					<thead>
 						<tr>
@@ -268,9 +268,7 @@ DESC) as sqd2) WHERE sqd.nome = sqd2.squadra ORDER BY punti DESC,diff_reti DESC;
 			</div>
     </div>
 
-
-</main>
-        <script>
+ <script>
     $('.menuHandler').on('click', function() {
         $('a[href="#'+$('.active').attr("id")+'"]').removeClass('current');
         $('.active').removeClass('active').hide();
@@ -280,6 +278,8 @@ DESC) as sqd2) WHERE sqd.nome = sqd2.squadra ORDER BY punti DESC,diff_reti DESC;
     });
 
     </script>
+</main>
+       
     <?php
 include'../php/footer.php'
 ?>
