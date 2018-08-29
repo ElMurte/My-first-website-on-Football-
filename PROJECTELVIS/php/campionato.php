@@ -45,6 +45,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 <a href="#content3" id="classifica" class="menuHandler">Classifica</a>
 </div>
     </div>
+	<div>
     <div id="content1" class="active">
 	<h1>Ultime Notizie</h1><br>
          <?php
@@ -267,6 +268,7 @@ DESC) as sqd2) WHERE sqd.nome = sqd2.squadra ORDER BY punti DESC,diff_reti DESC;
 				</table>
 			</div>
     </div>
+	</div>
 
  <script>
     $('.menuHandler').on('click', function() {

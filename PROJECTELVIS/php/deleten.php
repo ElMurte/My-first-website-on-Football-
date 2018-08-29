@@ -10,14 +10,14 @@ if(isset($_POST["idNotizia"]))
 	$immnews=$row->fetch_assoc();
 	$numero="select COUNT(immagine) as numero FROM notizie  WHERE immagine='".$immnews["immagine"]."'";
 	$row1 = $DB->query($numero);
-	$numero1=$row->fetch_assoc();
+	$numero1=$row1->fetch_assoc();
 	$numerof=$numero1["numero"];
 	$dir='../immagini/news/';
+	$uno='1';
 	$file=$dir.$immnews["immagine"];
-	if($numerof===1)
-			{if (is_file($file) &&(file_exists($file)) && unlink($file)) //se la news in questiona è "unica"
+			if (is_file($file) &&(file_exists($file))&&($numerof==$uno)) //se la news in questiona è "unica"
 				{
-					
+					unlink($file);
 					if ($DB->query($sqld) === TRUE) {
 					
 					$_SESSION["deln"]="notizia eliminata con successo";
@@ -28,7 +28,7 @@ if(isset($_POST["idNotizia"]))
 							//header("Location: ../php/admin.php");
 						}
 				}
-			}
+			
 		//elimino solo dal DB
 			else{
 				if ($DB->query($sqld) === TRUE) {
