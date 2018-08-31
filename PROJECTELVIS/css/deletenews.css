@@ -1,0 +1,51 @@
+.content input[type=text] {
+    width: 30%;
+	min-width:10em;
+    padding: 0.5em 0.5em;
+    margin-top: 1%;
+    display: inline-block;
+    border: 3px solid #336633;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+.content input[type=text],[value|=Cerca]{
+	display:inline-block;
+}
+.content [value|=Cerca] {
+	border:3px solid #303030;
+	border-radius:3px;
+	width:5em;
+	margin-top:0.3em;
+	 padding: 0.5em 0.5em;
+	margin-left:0.7em;
+}
+.content [value|=Elimina] {
+	color:black;
+    background:white;
+	border:3px solid #336633;
+	border-radius:3px;
+	padding:0.3em 0.3em;
+	}
+.content [value=Elimina]:hover
+	{
+	color:white;
+	background:#336633;
+	border:3px solid black;
+	border-radius:3px;
+	}
+	.content a,.content [value|=Elimina] {
+		margin-bottom:0.7em;
+		display:inline-block;
+	}
+	.content a {
+		background-color:white;
+		padding:0.3em 0.3em;
+		border:1px solid blue;
+	}
+	@media  screen and (max-width:640px)
+{		
+	.content a,.content [value|=Elimina],.content input[type=text]
+	{
+	float:left;
+	}
+}

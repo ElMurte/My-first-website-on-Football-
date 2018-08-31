@@ -40,3 +40,7 @@
 h2{
 	color:black;
 }
+textarea,.content input[type=text]{
+	border:2px solid #303030;
+	padding:0.3em 0.3em;
+}
