@@ -9,7 +9,7 @@ if (isset($_SESSION["username"])){
 }
 ?>
 <!DOCTYPE html>
-<html>	
+<html lang="it">	
     <head>
 <meta charset="UTF-8">  
 <title>Login</title>
@@ -34,8 +34,8 @@ include'../php/header.php';
   <div class="form">
   
     <form method="POST" class="login-form" action="validatelogin.php">
-      <input type="text" placeholder="username" name="username" required>
-      <input type="password" placeholder="password" name="userpass" required>
+      <input type="text" placeholder="username" name="username" title="nomeutente"required>
+      <input type="password" placeholder="password" name="userpass" title="password"required>
       <button type="submit" name="login" >login</button>
       <p class="message">Solo per moderatori</p>
 	  	<span class="error">
@@ -49,11 +49,6 @@ echo"$error";
 ?>	</span>
     </form>
 
-        <script>
-       $('.message a').click(function(){
-   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-});    
-    </script>
   </div>
        
 </div>

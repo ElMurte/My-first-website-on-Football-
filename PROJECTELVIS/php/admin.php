@@ -6,7 +6,7 @@ if (!isset($_SESSION["username"])){
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <meta charset="UTF-8">
 
@@ -51,7 +51,7 @@ include'../php/header.php';
 						<h2>AGGIUNGI notizia</h2>
                         <form action="upload.php" method="post" enctype="multipart/form-data">
                             Seleziona l'immagine da caricare:
-                            <input type="file" name="fileToUpload" id="fileToUpload" required><br>
+                            <input type="file" name="fileToUpload" id="fileToUpload" title="file da caricare" required><br>
 
 					
 										 <br>
@@ -60,20 +60,21 @@ include'../php/header.php';
                                      <label for="titolo">titolo notizia:</label><br>
                                      <input type="text" placeholder="max 70 caratteri" name="titolo" id="titolo"maxlength="70" required><br>
 									 
-                                             <label for="contenuto-news">contenuto:</label><br>
-                                             <textarea name="contenutonews" id="contenutonews" rows="7" cols="50"required></textarea><br>
+                                             <label for="contenutonotizia">contenuto:</label><br>
+                                             <textarea name="contenutonews" id="contenutonotizia" rows="7" cols="50"required></textarea><br>
                                           
-                                            <label for="tag-notizia">tag:</label><br>
+                                            <label for="tag">tag:</label><br>
                                              <textarea placeholder="seriea,bignews..." name="tagnotizia" id="tag" required></textarea>
-                            <br></br>
+                            <br>
 							<input type="submit" value="Inserisci" name="submit"><br>
 									</form>
 								
 					</div><br>
 				
                             <div class="del">                             
-								<h2>Per eliminare una notizia -><a href="deletenews.php">clicca qui</a></h2>
+								<h2>Per eliminare una notizia &rarr;<a href="deletenews.php">clicca qui</a></h2>
                             </div>
+							</div>
 </main>
     
     <?php

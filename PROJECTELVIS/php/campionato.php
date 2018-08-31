@@ -71,7 +71,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
     <div id="content2">
 	<h1>Partite</h1><br>
         <div class="partite" >
-            <table>
+            <table title="Ultima giornata giocata">
 					<thead>
                         <tr>
 							<th></th>
@@ -124,7 +124,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
             </table>
         </div>
         <div class="prossime">
-            <table>
+            <table title="Prossima giornata">
               
 					<thead>
                          <tr>
@@ -178,7 +178,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
     <div id="content3">
          <div class="wrapper">
                     <h1>Classifica</h1><br>
-				<table>
+				<table title="Classifica">
 					<thead>
 						<tr>
 							<th>Pos</th>
@@ -246,7 +246,7 @@ DESC) as sqd2) WHERE sqd.nome = sqd2.squadra ORDER BY punti DESC,diff_reti DESC;
 								echo "
 				<tr>
 						<td>$pos</td>
-						<td ><img src='../immagini/loghi/".$row["logo"]."' width='60em' height='75em' alt'".$row["squadra"]."'> </td>
+						<td ><img src='../immagini/loghi/".$row["logo"]."' width='50' height='65' alt='".$row["squadra"]."'> </td>
 						<td>".$row["partite"]."</td>
 						<td>".$row["vittorie"]."</td>
 						<td>".$row["pareggi"]."</td>

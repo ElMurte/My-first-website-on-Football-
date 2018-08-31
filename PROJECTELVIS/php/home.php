@@ -3,7 +3,7 @@ session_start();
 
 	?>
 <!DOCTYPE html>
-<html moznomarginboxes mozdisallowselectionprint>
+<html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -82,8 +82,6 @@ $logo="SELECT idcampionato,logoc,nome FROM `campionato` WHERE (nome=('Bundesliga
 <?php
 include'../php/footer.php'
 ?>
-    
-</footer>
 
 </body>
 </html>

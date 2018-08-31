@@ -6,7 +6,7 @@ $squadra=$_GET["squadra"];
 	$idc=$_GET["idc"];
 ?>
 <!DOCTYPE html>
-<html>
+<html lang=it>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -66,15 +66,14 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
     <div id="content2">
 	<h1>Partite</h1><br>
         <div class="partite">
-            <table>
-			<thead>
-						<tr>
+            <table title="Ultima partita giocata">
+			
+					<thead>
+					<tr>
 							<th></th>
-                            <th>Ultima partita disputata</th>
+                            <th>Ultima Parita</th>
                             <th></th>
 						</tr>
-					</thead>
-					<thead>
 						<tr>
 							<th>Casa</th>
                             <th>risultato</th>
@@ -113,15 +112,14 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
 					?>
                     </tbody>
             </table>
-			<table>
-			<thead>
-						<tr>
+			<table title="prossima partita">
+			
+					<thead>
+					<tr>
 							<th></th>
-                            <th>Prossima partita</th>
+                            <th>Prossima Partita</th>
                             <th></th>
 						</tr>
-					</thead>
-					<thead>
 						<tr>
 							<th>Casa</th>
                             <th>risultato</th>
@@ -163,7 +161,7 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
      </div>
     <div id="content3">
 		<h1>Classifica</h1>
-				<table>
+				<table title="classifica"> 
 					<thead>
 						<tr>
 							<th>Pos</th>
@@ -231,7 +229,7 @@ DESC) as sqd2) WHERE sqd.nome = sqd2.squadra ORDER BY punti DESC,diff_reti DESC;
 								echo "
 				<tr>
 						<td>$pos</td>
-						<td ><img src='../immagini/loghi/".$row["logo"]."' width='60em' height='75em' alt'".$row["squadra"]."'> </td>
+						<td ><img src='../immagini/loghi/".$row["logo"]."' width='50' height='65' alt='".$row["squadra"]."'> </td>
 						<td>".$row["partite"]."</td>
 						<td>".$row["vittorie"]."</td>
 						<td>".$row["pareggi"]."</td>
