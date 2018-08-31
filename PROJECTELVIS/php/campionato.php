@@ -4,7 +4,7 @@ session_start();
 $idc=$_GET["idc"];
 ?>
 <!DOCTYPE html>
-<html lang=it>
+<html lang="it">
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,7 +52,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 		include '../php/connessionedb.php';
 		$sql="SELECT idnotizia,immagine,titolo FROM `notizie` WHERE (tag COLLATE UTF8_GENERAL_CI LIKE '%$idc%') ORDER BY datan DESC LIMIT 4;";
 		$resultnews= $DB->query($sql);
-		if($result->num_rows>0){
+		if($resultnews->num_rows>0){
 		while($row=$resultnews->fetch_assoc()){
 			echo"<div class='news'>
         <a href='notizia.php?val=".$row["idnotizia"]."' >
@@ -65,7 +65,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 	};
 	$DB->close();
 	?>
-  
+  <footer class="barranotizie"><a href="notizie.php?idc=<?php echo"$idc"?>">Vedi Altre Notizie</a></footer>
     </div>
     
     <div id="content2">

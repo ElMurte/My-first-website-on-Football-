@@ -44,9 +44,9 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
 	<h1>Ultime Notizie</h1><br>
        <?php
 		include '../php/connessionedb.php';
-		$sql="SELECT idnotizia,immagine,titolo FROM notizie where tag COLLATE UTF8_GENERAL_CI LIKE '%$squadra%' OR '%$idc%' ORDER BY datan DESC LIMIT 4;";
+		$sql="SELECT idnotizia,immagine,titolo FROM notizie where tag COLLATE UTF8_GENERAL_CI LIKE '%$squadra%' OR '%$idc%' ORDER BY datan DESC LIMIT 8;";
 		$resultnews= $DB->query($sql);
-		if($result->num_rows>0){
+		if($resultnews->num_rows>0){
 		while($row=$resultnews->fetch_assoc()){
 			echo"<div class='news'>
         <a href='notizia.php?val=".$row["idnotizia"]."' >

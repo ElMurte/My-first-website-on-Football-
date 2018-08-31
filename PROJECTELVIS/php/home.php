@@ -53,7 +53,7 @@ $logo="SELECT idcampionato,logoc,nome FROM `campionato` WHERE (nome=('Bundesliga
 		$resultnews= $DB->query($sql);
 		$row=$resultnews->fetch_assoc();
 		
-		if($result->num_rows>0){
+		if($resultnews->num_rows>0){
 			echo "<a href='notizia.php?val=".$row["idnotizia"]."'>
 		<span class='BimgContainer'>
 			<img src='../immagini/news/".$row["immagine"]."' alt='immagine notizia' ></span>
@@ -61,7 +61,7 @@ $logo="SELECT idcampionato,logoc,nome FROM `campionato` WHERE (nome=('Bundesliga
 			</a>
 			</div>
 			</div>
-			<div>";
+			<div class='varie'>";
 		while($row=$resultnews->fetch_assoc()){
 			echo"<div class='news'>
         <a href='notizia.php?val=".$row["idnotizia"]."' >
@@ -75,9 +75,12 @@ $logo="SELECT idcampionato,logoc,nome FROM `campionato` WHERE (nome=('Bundesliga
 	};
 	$DB->close();
 	?>
- 
+	
     </div>
+	
     </div>
+	<br><br>
+	<footer class="barranotizie"><a href="notizie.php">Vedi Altre Notizie</a></footer>
     </main>
 <?php
 include'../php/footer.php'

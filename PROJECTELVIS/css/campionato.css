@@ -148,7 +148,7 @@ border-bottom: 3px solid #336633;
     display: block;
 }
 .newsdescr{
-    height:auto;
+    height:6em;
     overflow: hidden;
 }
 .content h2{
@@ -245,4 +245,16 @@ noscript p{
 noscript img{
     width:5em;
     margin-left: 0.4em;
+}
+.content .barranotizie {
+	margin-top:3%;
+	float:left;
+	border-bottom:3px solid black;
+	width:100%;
+}
+.content .barranotizie a{
+	width:25%;
+	background-color:white;
+	text-align:center;
+	float:right;
 }

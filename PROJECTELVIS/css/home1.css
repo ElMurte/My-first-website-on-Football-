@@ -103,7 +103,7 @@ span.BimgContainer {
     display: block;
 }
 .newsdescr{
-    height:auto;
+    height:6em;;
     overflow: hidden;
 }
 
@@ -140,6 +140,18 @@ span.imgContainer {
 }
 /*Fine news*//*FINE NOTIZIE*/
 
+.content .barranotizie {
+	margin-top:3%;
+	float:left;
+	border-bottom:3px solid black;
+	width:100%;
+}
+.content .barranotizie a{
+	width:25%;
+	background-color:white;
+	text-align:center;
+	float:right;
+}
 
 
 
