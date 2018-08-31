@@ -128,7 +128,7 @@ a:inactive{
 
 
 /*FOOTER*/
-#footer, h2{
+#footer, #footer h2{
     font-size: 1.4em;
     padding-left: 5%;
     color: white;

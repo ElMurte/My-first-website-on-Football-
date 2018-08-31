@@ -1,0 +1,15 @@
+#header,#footer{
+	display:none;
+}
+	body #footer{
+		margin:0;
+	display:none;
+	}
+		img{
+		max-width:500px;
+		}
+	@media print{.content{
+		 page-break-after: always;
+	}		
+	}
+	

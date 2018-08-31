@@ -41,6 +41,7 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
 </div>
     </div>
     <div id="content1" class="active">
+	<h1>Ultime Notizie</h1><br>
        <?php
 		include '../php/connessionedb.php';
 		$sql="SELECT idnotizia,immagine,titolo FROM notizie where tag COLLATE UTF8_GENERAL_CI LIKE '%$squadra%' OR '%$idc%' ORDER BY datan DESC LIMIT 4;";
@@ -52,7 +53,7 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
         <span class='imgContainer'>
             <img src='../immagini/news/".$row["immagine"]."' alt='fotonews'>
         </span>
-            <span class='newsdescr'>".$row["titolo"]."</span>
+            <h2 class='newsdescr'>".$row["titolo"]."</h2>
         </a>  </div>";
 		};
 	};
@@ -63,6 +64,7 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
     
     
     <div id="content2">
+	<h1>Partite</h1><br>
         <div class="partite">
             <table>
 			<thead>

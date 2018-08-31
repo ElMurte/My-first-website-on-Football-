@@ -59,7 +59,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
         <span class='imgContainer'>
             <img src='../immagini/news/".$row["immagine"]."' alt='fotonews'>
         </span>
-            <span class='newsdescr'>".$row["titolo"]."</span>
+            <h2 class='newsdescr'>".$row["titolo"]."</h2>
         </a>  </div>";
 		};
 	};

@@ -30,14 +30,14 @@ $val = $_GET["val"];
     </div>
     </header>
     <main class="content">
-	<span class="succ">
+	<h2 class="succ">
 <?php 
 	if(isset($_SESSION["carsucc"])) {
    $messsucc=$_SESSION["carsucc"];
     unset($_SESSION["carsucc"]);
 	echo"<h2>$messsucc</h2>";
 	}
-?>	</span>
+?>	</h2>
     <?php 
 include '../php/connessionedb.php';
 $notizia="SELECT titolo,immagine,articolo FROM `notizie` WHERE idnotizia='$val';";

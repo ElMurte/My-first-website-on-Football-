@@ -134,6 +134,7 @@ border-bottom: 3px solid #336633;
 #content1{
     width: 100%;
 }
+
 .news{
     margin-top: 2%;
     margin-left: 1.5%;
@@ -147,8 +148,12 @@ border-bottom: 3px solid #336633;
     display: block;
 }
 .newsdescr{
-    height:4em;
+    height:auto;
     overflow: hidden;
+}
+.content h2{
+	color:white;
+	text-align:center;
 }
 
 .news span{
@@ -182,6 +187,8 @@ span.imgContainer {
 .fournews {
     width: 100%;
 }
+/*Fine news*//*FINE NOTIZIE*/
+
 /*Fine news*//*F
 /*content1*/
 

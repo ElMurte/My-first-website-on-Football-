@@ -3,13 +3,14 @@ session_start();
 
 	?>
 <!DOCTYPE html>
-<html>
+<html moznomarginboxes mozdisallowselectionprint>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Home</title>
+<link rel="stylesheet" type="text/css" href="../css/print.css" media="print">
 <link rel="stylesheet" type="text/css" href="../css/home1.css">
-    <link rel="stylesheet" type="text/css" href="../css/body.css">
+<link rel="stylesheet" type="text/css" href="../css/body.css">
 </head>
 <body>
 <?php
