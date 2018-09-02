@@ -8,9 +8,9 @@ $idc=$_GET["idc"];
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home</title>
+<title>Notizie Easyfootball</title>
 <link rel="stylesheet" type="text/css" href="../css/print.css" media="print">
-<link rel="stylesheet" type="text/css" href="../css/home1.css">
+<link rel="stylesheet" type="text/css" href="../css/campionato.css">
 <link rel="stylesheet" type="text/css" href="../css/body.css">
 </head>
 <body>
@@ -32,7 +32,7 @@ include'../php/header.php';
 		if($resultnews->num_rows>0){
 		while($row=$resultnews->fetch_assoc()){
 			echo"<div class='news'>
-        <a href='notizia.php?val=".$row["idnotizia"]."' >
+        <a href='notizia.php?val=".$row["idnotizia"]."&titolo=".$row["titolo"]."' >
         <span class='imgContainer'>
             <img src='../immagini/news/".$row["immagine"]."' alt='immagine notizia'>
         </span>

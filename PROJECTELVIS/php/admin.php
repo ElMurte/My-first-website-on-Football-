@@ -10,7 +10,7 @@ if (!isset($_SESSION["username"])){
 <head>
 <meta charset="UTF-8">
 
-<title>Notizia</title>
+<title>Amministrazione Easyfootball</title>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/body.css">
     <link rel="stylesheet" type="text/css" href="../css/admin.css">

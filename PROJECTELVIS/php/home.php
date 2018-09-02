@@ -1,13 +1,12 @@
 <?php
 session_start();
-
-	?>
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home</title>
+<title>Home Easyfootball</title>
 <link rel="stylesheet" type="text/css" href="../css/print.css" media="print">
 <link rel="stylesheet" type="text/css" href="../css/home1.css">
 <link rel="stylesheet" type="text/css" href="../css/body.css">
@@ -54,7 +53,7 @@ $logo="SELECT idcampionato,logoc,nome FROM `campionato` WHERE (nome=('Bundesliga
 		$row=$resultnews->fetch_assoc();
 		
 		if($resultnews->num_rows>0){
-			echo "<a href='notizia.php?val=".$row["idnotizia"]."'>
+			echo "<a href='notizia.php?val=".$row["idnotizia"]."&titolo=".$row["titolo"]."'>
 		<span class='BimgContainer'>
 			<img src='../immagini/news/".$row["immagine"]."' alt='immagine notizia' ></span>
 			<h2 class='newsdescrBig'>".$row["titolo"]."</h2>
@@ -64,7 +63,7 @@ $logo="SELECT idcampionato,logoc,nome FROM `campionato` WHERE (nome=('Bundesliga
 			<div class='varie'>";
 		while($row=$resultnews->fetch_assoc()){
 			echo"<div class='news'>
-        <a href='notizia.php?val=".$row["idnotizia"]."' >
+        <a href='notizia.php?val=".$row["idnotizia"]."&titolo=".$row["titolo"]."' >
         <span class='imgContainer'>
             <img src='../immagini/news/".$row["immagine"]."' alt='immagine notizia'>
         </span>

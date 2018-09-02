@@ -10,11 +10,13 @@ $squadra=$_GET["squadra"];
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Notizia</title>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<title><?php echo"$squadra-Easyfootball";?> </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="../css/body.css">
     <link rel="stylesheet" type="text/css" href="../css/campionato.css">
     <link rel="stylesheet" type="text/css" href="../css/squadra.css">
+	<link rel="stylesheet" type="text/css" href="../css/print.css" media="print">
 </head>
 <body>
 <?php
@@ -49,7 +51,7 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
 		if($resultnews->num_rows>0){
 		while($row=$resultnews->fetch_assoc()){
 			echo"<div class='news'>
-        <a href='notizia.php?val=".$row["idnotizia"]."' >
+        <a href='notizia.php?val=".$row["idnotizia"]."&titolo=".$row["titolo"]."' >
         <span class='imgContainer'>
             <img src='../immagini/news/".$row["immagine"]."' alt='fotonews'>
         </span>
@@ -251,18 +253,11 @@ DESC) as sqd2) WHERE sqd.nome = sqd2.squadra ORDER BY punti DESC,diff_reti DESC;
 					</tbody>
 					</table>
         </div>
-
+	<?php
+include'../javascript/nav.js';
+?>
 </main>
-     <script>
-    $('.menuHandler').on('click', function() {
-        $('a[href="#'+$('.active').attr("id")+'"]').removeClass('current');
-        $('.active').removeClass('active').hide();
-        $($(this).attr('href')).addClass('active').show();
-        $(this).addClass('current');
-        return false;
-    });
-
-    </script>
+     
 <?php
 include'../php/footer.php';
 ?>

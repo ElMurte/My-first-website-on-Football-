@@ -51,7 +51,7 @@ if (file_exists($target_file)) {
 else{ 
     if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) 
 		{ 
-	$_SESSION["carsucc"]="Il file ". basename( $_FILES["fileToUpload"]["name"]). " è stato caricato con successo";
+	
 	
 	   $sql="INSERT INTO notizie (datan ,titolo,immagine,articolo,tag) VALUES (?,?,?,?,?)";
 	   $stmt = mysqli_prepare($DB,$sql);
@@ -63,6 +63,7 @@ else{
 		$row = $DB->query($ultima);
 		$resultultima=$row->fetch_assoc();
 		$getString = http_build_query(array ( 'val'=>$resultultima["idnotizia"]));
+			$_SESSION["carsucc"]="La notizia è stato caricato con successo";
 			header("Location: ../php/notizia.php?$getString");
 		}
 		

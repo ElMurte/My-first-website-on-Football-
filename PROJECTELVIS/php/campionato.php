@@ -9,7 +9,9 @@ $idc=$_GET["idc"];
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
-<title>Campionato</title>
+<title><?php
+echo"$idc-Easyfootball"
+?></title>
     <link rel="stylesheet" type="text/css" href="../css/body.css">
     <link rel="stylesheet" type="text/css" href="../css/campionato.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -55,7 +57,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 		if($resultnews->num_rows>0){
 		while($row=$resultnews->fetch_assoc()){
 			echo"<div class='news'>
-        <a href='notizia.php?val=".$row["idnotizia"]."' >
+        <a href='notizia.php?val=".$row["idnotizia"]."&titolo=".$row["titolo"]."' >
         <span class='imgContainer'>
             <img src='../immagini/news/".$row["immagine"]."' alt='fotonews'>
         </span>
@@ -270,16 +272,10 @@ DESC) as sqd2) WHERE sqd.nome = sqd2.squadra ORDER BY punti DESC,diff_reti DESC;
     </div>
 	</div>
 
- <script>
-    $('.menuHandler').on('click', function() {
-        $('a[href="#'+$('.active').attr("id")+'"]').removeClass('current');
-        $('.active').removeClass('active').hide();
-        $($(this).attr('href')).addClass('active').show();
-        $(this).addClass('current');
-        return false;
-    });
+    <?php
+include'../javascript/nav.js'
+?>
 
-    </script>
 </main>
        
     <?php
