@@ -28,7 +28,7 @@ include'../php/header.php';
  <table>
   					<thead>
                         <tr>
-                            <th>Titolo</th>
+                            <th>Titolo Notizia</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -55,12 +55,16 @@ include'../php/header.php';
                         </tr>
 							";
 		};
-	};
+	}
+	else{
+		echo"<h2>nessuna notizia trovata</h2>";
+	}
+	
 	$DB->close();
-					?>
+					?></tbody>
 					<tfoot>
 					<tr>
-                            <th>Titolo</th>
+                            <th>Fine Notizie</th>
 							<th></th>
 						</tr>
 					</tfoot>

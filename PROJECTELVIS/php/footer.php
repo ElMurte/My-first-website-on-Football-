@@ -1,5 +1,5 @@
 <footer id="footer">
-        <p class="azienda">Chi Siamo<p>
+        <strong><p class="azienda">Chi Siamo<p></strong>
     <ul>
        <li><a href="#"> L'Azienda</a></li>
         <li><a href="#">Lavora con noi</a></li>
