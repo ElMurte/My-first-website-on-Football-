@@ -41,11 +41,11 @@ if (file_exists($target_file)) {
 						$datcur=date('Y-m-d H:i:s');
 						$stmt->bind_param("sssss",$datcur,$_POST["titolo"],$_FILES["fileToUpload"]["name"],$_POST["contenutonews"],$_POST["tagnotizia"]);
 						$stmt->execute();
-						$ultima="SELECT idnotizia FROM `notizie` Order by datan DESC limit 1";
+						$ultima="SELECT idnotizia,titolo FROM `notizie` Order by datan DESC limit 1";
 						$row = $DB->query($ultima);
 						$resultultima=$row->fetch_assoc();
-						$getString = http_build_query(array ( 'val'=>$resultultima["idnotizia"]));
-					header("Location: ../php/notizia.php?$getString");
+						$getString = http_build_query(array ( 'val'=>$resultultima["idnotizia"],'titolo'=>$resultultima["titolo"]));
+					header("Location: ./notizia.php?$getString");
 					
 					}
 else{ 
@@ -64,7 +64,7 @@ else{
 		$resultultima=$row->fetch_assoc();
 		$getString = http_build_query(array ( 'val'=>$resultultima["idnotizia"]));
 			$_SESSION["carsucc"]="La notizia è stato caricato con successo";
-			header("Location: ../php/notizia.php?$getString");
+			header("Location: ./notizia.php?$getString");
 		}
 		
     }

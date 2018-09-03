@@ -20,9 +20,12 @@ $squadra=$_GET["squadra"];
 </head>
 <body>
 <?php
-include'../php/header.php';
+include'./header.php';
 ?>
 <main class="content">
+<noscript>
+    <p><img src="../immagini/immaginivarie/attenzione.png" alt="attenzione">   Per favore attivare javascript sul browser altrimenti il contenuto non è completamente accessibile</p>
+    </noscript>
     <div id="menucampionato">
 	 <?php 
 include '../php/connessionedb.php';
@@ -246,7 +249,7 @@ DESC) as sqd2) WHERE sqd.nome = sqd2.squadra ORDER BY punti DESC,diff_reti DESC;
 		};
 	}
 		else {
-    printf("Query failed: %s\n", $DB->error);
+    printf("Errore", $DB->error);
 	};
 	$DB->close();
 					?>
@@ -259,7 +262,7 @@ include'../javascript/nav.js';
 </main>
      
 <?php
-include'../php/footer.php';
+include'./footer.php';
 ?>
    </body>
 </html>

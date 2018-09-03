@@ -2,20 +2,22 @@
 <?php
 session_start();
 $val = $_GET["val"];
+if(isset($_GET["titolo"]))
 $titolo = $_GET["titolo"];
+else $titolo=$_POST["titolo"];
 ?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title><?php echo"$titolo Easyfootball";?></title>
+<title><?php echo"".$titolo."";?>Easyfootball</title>
     <link rel="stylesheet" type="text/css" href="../css/body.css">
     <link rel="stylesheet" type="text/css" href="../css/notizia.css">
 </head>
 <body>
 <?php
-include '../php/header.php';
+include './header.php';
 ?>
     <main class="content">
 	<h2 class='messnews'>
@@ -49,7 +51,7 @@ $notizia="SELECT titolo,immagine,articolo FROM `notizie` WHERE idnotizia='$val';
    
   
 <?php
-include'../php/footer.php'
+include'./footer.php'
 ?>
 
 </body>

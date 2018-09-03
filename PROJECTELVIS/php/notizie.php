@@ -15,7 +15,7 @@ $idc=$_GET["idc"];
 </head>
 <body>
 <?php
-include'../php/header.php';
+include'./header.php';
 ?>
 <main class="content">
 <div class="notizie">
@@ -50,7 +50,7 @@ include'../php/header.php';
 
 </main>
 <?php
-include'../php/footer.php'
+include'./footer.php'
 ?>
 
 </body>

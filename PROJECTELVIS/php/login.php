@@ -1,11 +1,11 @@
 <?php
 if (session_status() == PHP_SESSION_ACTIVE) {
-  header("Location: ../php/admin.php");
+  header("Location: ./admin.php");
 }
 
 session_start();
 if (isset($_SESSION["username"])){
-  header("Location: ../php/admin.php");
+  header("Location: ./admin.php");
 }
 ?>
 <!DOCTYPE html>
@@ -16,16 +16,12 @@ if (isset($_SESSION["username"])){
 <link rel="stylesheet" type="text/css" href="../css/body.css">
 <link rel="stylesheet" type="text/css" href="../css/login.css">
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   <script>
-       $('.message a').click(function(){
-   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-});    
-    </script>
+   
 </head>
 <body>
     
 <?php
-include'../php/header.php';
+include'./header.php';
 ?>
     
     
@@ -55,7 +51,7 @@ echo"$error";
  
 </main>
 <?php
-include'../php/footer.php';
+include'./footer.php';
 ?>
 </body>
         

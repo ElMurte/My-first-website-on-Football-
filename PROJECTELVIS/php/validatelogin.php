@@ -15,11 +15,11 @@ $pass= mysqli_real_escape_string($DB,$pass);
 			$_SESSION["username"] = "$user";
 $_SESSION[logsucc]="Login effettuato con successo";
 //$getString = http_build_query(array ( 'squadra'=>$row["squadrapref"],'idc'=>$row1["campionato"]));
-			header("Location: ../php/admin.php");
+			header("Location: ./admin.php");
 		}
 	else
 	{
 		$_SESSION["logerror"]="nome utente o password sbagliata";
-		header("Location: ../php/login.php");
+		header("Location: ./login.php");
 	}
 ?>

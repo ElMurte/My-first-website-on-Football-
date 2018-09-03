@@ -20,7 +20,7 @@ include '../php/connessionedb.php';
 </head>
 <body>
 <?php
-include'../php/header.php';
+include'./header.php';
 ?>
 <main class="content">
 <div class="searched">
@@ -70,7 +70,7 @@ include'../php/header.php';
     
     </main>
 	<?php
-include'../php/footer.php';
+include'./footer.php';
 ?>
 </body>
 </html>

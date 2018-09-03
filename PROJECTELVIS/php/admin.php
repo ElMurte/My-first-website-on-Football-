@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["username"])){
-  header("Location: ../php/login.php");
+  header("Location: ./login.php");
 }
 
 ?>
@@ -18,7 +18,7 @@ if (!isset($_SESSION["username"])){
 </head>
 <body>
 <?php
-include'../php/header.php';
+include'./header.php';
 ?>
     
 <main class="content">
@@ -78,7 +78,7 @@ include'../php/header.php';
 </main>
     
     <?php
-include'../php/footer.php'
+include'./footer.php'
 ?>
    </body>
 </html>

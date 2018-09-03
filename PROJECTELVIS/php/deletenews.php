@@ -1,34 +1,33 @@
 <?php
 session_start();
 if (!isset($_SESSION["username"])){
-  header("Location: ../php/login.php");
+  header("Location: ./login.php");
 }
 
 	?>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home</title>
-
+<title>EliminaNews Easyfootball</title>
     <link rel="stylesheet" type="text/css" href="../css/body.css">
 	<link rel="stylesheet" type="text/css" href="../css/deletenews.css">
 </head>
 <body>
 <?php
-include'../php/header.php';
+include'./header.php';
 ?>
 <main class="content">
 <h1>Seleziona o cerca una notiza da eliminare</h1>
 <form method="get" action="deletenews.php">
-<input type="text" name="keyword" placeholder="Inserire una parola chiave"/>
+<input type="text" name="keyword" placeholder="Inserire una parola chiave o tag" title="Ricerca una notizia"/>
 <input type="submit" value="Cerca"/>
 </form><br>
- <table>
+ <table title="tabella notizie">
   					<thead>
                         <tr>
-                            <th>Titolo Notizia</th>
+                            <th>Inizio Tabella Notizie</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -64,7 +63,7 @@ include'../php/header.php';
 					?></tbody>
 					<tfoot>
 					<tr>
-                            <th>Fine Notizie</th>
+                            <th>Fine Tabella Notizie</th>
 							<th></th>
 						</tr>
 					</tfoot>
@@ -72,10 +71,7 @@ include'../php/header.php';
 
 </main>
 <?php
-include'../php/footer.php'
+include'./footer.php'
 ?>
-    
-</footer>
-
 </body>
 </html>
