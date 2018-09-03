@@ -221,7 +221,7 @@ FROM
         CASE WHEN golcasa > golospite THEN 3 WHEN golcasa = golospite THEN 1 ELSE 0
 END AS punteggio
 FROM
-    Partita
+    partita
 WHERE
     campionato = '$idc' AND datap < CURRENT_DATE()
 UNION ALL
@@ -233,7 +233,7 @@ SELECT
     CASE WHEN golospite > golcasa THEN 3 WHEN golospite = golcasa THEN 1 ELSE 0
 END AS punteggio
 FROM
-    Partita
+    partita
 WHERE
     campionato = '$idc' AND datap < CURRENT_DATE()
 ) AS tab

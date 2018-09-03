@@ -34,6 +34,8 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 
 }
+$titolo=$_POST["titolo"];
+$chacktitolo=SELECT titolo from notizie where titolo="".$titolo.""
 if (file_exists($target_file)) {
 					$sql="INSERT INTO notizie (datan ,titolo,immagine,articolo,tag) VALUES (?,?,?,?,?)";
 					   $stmt = mysqli_prepare($DB,$sql);

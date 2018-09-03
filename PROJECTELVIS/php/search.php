@@ -35,7 +35,7 @@ include'./header.php';
 
         $result="SELECT idcampionato,logoc as logo,nome FROM `campionato` 
 		where nome COLLATE UTF8_GENERAL_CI LIKE '%$query%'";
-		$result1="SELECT logo,nome,campionato FROM `Squadra` where nome COLLATE UTF8_GENERAL_CI LIKE '%$query%' ";
+		$result1="SELECT logo,nome,campionato FROM `squadra` where nome COLLATE UTF8_GENERAL_CI LIKE '%$query%' ";
          $rawresults=$DB->query($result);
 			$rawresults1=$DB->query($result1);
          

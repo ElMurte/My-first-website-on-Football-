@@ -23,7 +23,7 @@ include'./header.php';
 
 
 <?php 
-include '../php/connessionedb.php';
+include './connessionedb.php';
 $logo="SELECT idcampionato,logoc,nome FROM `campionato` WHERE (nome=('Bundesliga'|| 'Serie A'|| 'Liga Santander'||'Premier League'));";
  $result= $DB->query($logo);
 	if($result->num_rows>0){

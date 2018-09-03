@@ -122,7 +122,7 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
 					<thead>
 					<tr>
 							<th></th>
-                            <th>Prossima Partita</th>
+                            <th>Prossima partita</th>
                             <th></th>
 						</tr>
 						<tr>
@@ -170,7 +170,7 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
 					<thead>
 						<tr>
 							<th>Pos</th>
-							<th>Squadra</th>
+							<th>squadra</th>
 							<th>G</th>
 							<th>V</th>
 							<th>P</th>
@@ -184,7 +184,7 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
 					<?php
 					include '../php/connessionedb.php';
 					$pos=1;
-			$ciao="
+			$classifica="
 SELECT logo,squadra,partite,vittorie,pareggi,sconfitte,punti,golf,gols,diff_reti FROM (squadra as sqd
 JOIN
 (SELECT
@@ -207,7 +207,7 @@ FROM
         CASE WHEN golcasa > golospite THEN 3 WHEN golcasa = golospite THEN 1 ELSE 0
 END AS punteggio
 FROM
-    Partita
+    partita
 WHERE
     campionato = '$idc' AND datap < CURRENT_DATE()
 UNION ALL
@@ -219,7 +219,7 @@ SELECT
     CASE WHEN golospite > golcasa THEN 3 WHEN golospite = golcasa THEN 1 ELSE 0
 END AS punteggio
 FROM
-    Partita
+    partita
 WHERE
     campionato = '$idc' AND datap < CURRENT_DATE()
 ) AS tab
@@ -228,7 +228,7 @@ GROUP BY
 ORDER BY
     punteggio,diff_reti
 DESC) as sqd2) WHERE sqd.nome = sqd2.squadra ORDER BY punti DESC,diff_reti DESC;";
-			 $result= $DB->query($ciao);
+			 $result= $DB->query($classifica);
 						if($result->num_rows>0){
 							while($row=$result->fetch_assoc()){
 								echo "
