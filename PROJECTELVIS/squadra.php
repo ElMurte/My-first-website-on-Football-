@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-include '../php/connessionedb.php';
+require_once("./php/connessionedb.php");
 $squadra=$_GET["squadra"];
 	$idc=$_GET["idc"];
 ?>
@@ -13,56 +13,56 @@ $squadra=$_GET["squadra"];
 <title><?php echo"$squadra-Easyfootball";?> </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="../css/body.css">
-    <link rel="stylesheet" type="text/css" href="../css/campionato.css">
-    <link rel="stylesheet" type="text/css" href="../css/squadra.css">
-	<link rel="stylesheet" type="text/css" href="../css/print.css" media="print">
+    <link rel="stylesheet" type="text/css" href="./css/body.css">
+    <link rel="stylesheet" type="text/css" href="./css/campionato.css">
+    <link rel="stylesheet" type="text/css" href="./css/squadra.css">
+	<link rel="stylesheet" type="text/css" href="./css/print.css" media="print">
 </head>
 <body>
 <?php
-include'./header.php';
+require_once("./php/header.php");
 ?>
 <main class="content">
 <noscript>
-    <p><img src="../immagini/immaginivarie/attenzione.png" alt="attenzione">   Per favore attivare javascript sul browser altrimenti il contenuto non è completamente accessibile</p>
+    <p><img src="./immagini/immaginivarie/attenzione.png" alt="attenzione">   Per favore attivare javascript sul browser altrimenti il contenuto non è completamente accessibile</p>
     </noscript>
     <div id="menucampionato">
 	 <?php 
-include '../php/connessionedb.php';
+require_once("./php/connessionedb.php");
 $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
  $result= $DB->query($logo);
 	if($result->num_rows>0){
 		while($row=$result->fetch_assoc()){
 			echo "
-  <img src='../immagini/loghi/".$row["logo"]."' alt='logo ".$row["nome"]."' >";
+  <img src='./immagini/loghi/".$row["logo"]."' title='".$row["nome"]."' alt='logo ".$row["nome"]."' ><h1>".$row["nome"]."</h1>";
 		};
 	};
 
 	?>
 <div class="topnav" id="navcamp" >
-<a href="#content1" id="news" class="menuHandler current">Notizie</a>
-<a href="#content2" id="partite" class="menuHandler">Prossime Partite</a>
-<a href="#content3" id="classifica" class="menuHandler">Classifica</a>
+<a href="#content1" title="Notizie" id="news" class="menuHandler current">Notizie</a>
+<a href="#content2" title="Partite" id="partite" class="menuHandler">Partite</a>
+<a href="#content3" title="Classifica" id="classifica" class="menuHandler">Classifica</a>
 </div>
     </div>
     <div id="content1" class="active">
 	<h1>Ultime Notizie</h1><br>
        <?php
-		include '../php/connessionedb.php';
+		
 		$sql="SELECT idnotizia,immagine,titolo FROM notizie where tag COLLATE UTF8_GENERAL_CI LIKE '%$squadra%' OR '%$idc%' ORDER BY datan DESC LIMIT 8;";
 		$resultnews= $DB->query($sql);
 		if($resultnews->num_rows>0){
 		while($row=$resultnews->fetch_assoc()){
-			echo"<div class='news'>
-        <a href='notizia.php?val=".$row["idnotizia"]."&titolo=".$row["titolo"]."' >
+			echo"<div class='news' title='".$row["titolo"]."'>
+        <a href='notizia.php?val=".$row["idnotizia"]."&titolo=".rawurlencode($row["titolo"])."' >
         <span class='imgContainer'>
-            <img src='../immagini/news/".$row["immagine"]."' alt='fotonews'>
+            <img src='./immagini/news/".$row["immagine"]."' alt='fotonews'>
         </span>
             <h2 class='newsdescr'>".$row["titolo"]."</h2>
         </a>  </div>";
 		};
 	};
-	$DB->close();
+	
 	?>
        
     </div>
@@ -71,23 +71,23 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
     <div id="content2">
 	<h1>Partite</h1><br>
         <div class="partite">
-            <table title="Ultima partita giocata">
+            <table title="Ultime partite giocate">
 			
 					<thead>
 					<tr>
 							<th></th>
-                            <th>Ultima Parita</th>
+                            <th>Ultime Parite giocate</th>
                             <th></th>
 						</tr>
 						<tr>
-							<th>Casa</th>
-                            <th>risultato</th>
-                            <th>Ospite</th>
+							<th title="squadra casa">Casa</th>	
+                            <th title="risultato">risultato</th>
+                            <th title="squadra ospite">Ospite</th>
 						</tr>
 					</thead>
 					<tbody>
 					<?php
-					include '../php/connessionedb.php';
+			
 					
 				$giornata="SELECT logoc,squadracasa,golcasa,golospite,logoo,squadraospite FROM
 (
@@ -98,42 +98,41 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
 				(SELECT idpartita,logo as logoo,squadraospite,golospite,datap,ora from 
 				(SELECT * FROM `partita` WHERE campionato COLLATE UTF8_GENERAL_CI ='$idc'  AND datap<=CURRENT_DATE() 
 				ORDER BY datap DESC)as parti join `squadra` as sqd WHERE parti.squadraospite=sqd.nome)as ospite 
-				WHERE casa.idpartita=ospite.idpartita ORDER BY datap,ora)as p WHERE p.squadracasa='$squadra' OR p.squadraospite='$squadra' LIMIT 1;";
+				WHERE casa.idpartita=ospite.idpartita ORDER BY datap,ora)as p WHERE p.squadracasa='$squadra' OR p.squadraospite='$squadra' LIMIT 3;";
 				$result= $DB->query($giornata);
 					if($result->num_rows>0){
 						while($row=$result->fetch_assoc()){	
 							echo "
 							 <tr>
-                        <td><img src='../immagini/loghi/".$row["logoc"]."' alt='".$row["squadracasa"]."'>  </td>
+                        <td title='squadracasa'><img src='./immagini/loghi/".$row["logoc"]."' alt='".$row["squadracasa"]."'>  </td>
                        
-                        <td>".$row["golcasa"]." : ".$row["golospite"]."</td>
+                        <td title='risultato'>".$row["golcasa"]." : ".$row["golospite"]."</td>
                        
-                        <td> <img src='../immagini/loghi/".$row["logoo"]."' alt='".$row["squadraospite"]."'></td>
+                        <td title='squadraospite'> <img src='./immagini/loghi/".$row["logoo"]."' alt='".$row["squadraospite"]."'></td>
                         </tr>
 							";
 		};
 	};
-	$DB->close();
 					?>
                     </tbody>
             </table>
-			<table title="prossima partita">
+			<table title="prossime partite">
 			
 					<thead>
 					<tr>
 							<th></th>
-                            <th>Prossima partita</th>
+                            <th>Prossime partite</th>
                             <th></th>
 						</tr>
 						<tr>
-							<th>Casa</th>
-                            <th>risultato</th>
-                            <th>Ospite</th>
+							<th title="squadra casa">Casa</th>	
+                            <th title="orario">ora</th>
+                            <th title="squadra ospite">Ospite</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
-					include '../php/connessionedb.php';
+				
 				$giornata="SELECT logoc,squadracasa,datap,ora,logoo,squadraospite FROM
 (
 				SELECT logoc,squadracasa,datap,ora,logoo,squadraospite FROM 
@@ -143,22 +142,22 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
 				(SELECT idpartita,logo as logoo,squadraospite from 
 				(SELECT * FROM `partita` WHERE campionato ='$idc' AND datap>CURRENT_DATE() 
 				ORDER BY datap ASC LIMIT 10)as parti join `squadra` as sqd WHERE parti.squadraospite =sqd.nome)as ospite 
-				WHERE casa.idpartita=ospite.idpartita)as p WHERE p.squadracasa='$squadra' OR p.squadraospite='$squadra';";
+				WHERE casa.idpartita=ospite.idpartita)as p WHERE p.squadracasa='$squadra' OR p.squadraospite='$squadra' LIMIT 3;";
 				 $result= $DB->query($giornata);
 					if($result->num_rows>0){
 						while($row=$result->fetch_assoc()){
 							echo "
 							 <tr>
-                        <td><img src='../immagini/loghi/".$row["logoc"]."' alt='".$row["squadracasa"]."'>  </td>
+                        <td title='squadracasa'><img src='./immagini/loghi/".$row["logoc"]."' alt='".$row["squadracasa"]."'>  </td>
                        
-                        <td> ".$row["datap"]." ".$row["ora"]."</td>
+                        <td title='orario'> ".$row["datap"]." ".$row["ora"]."</td>
                         
-                        <td> <img src='../immagini/loghi/".$row["logoo"]."' alt='".$row["squadraospite"]."'> </td>
+                        <td title='squadraospite'> <img src='./immagini/loghi/".$row["logoo"]."' alt='".$row["squadraospite"]."'> </td>
                         </tr>
 							";
 		};
 	};
-	$DB->close();
+
 					?>
                     </tbody>
             </table>
@@ -169,20 +168,20 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
 				<table title="classifica"> 
 					<thead>
 						<tr>
-							<th>Pos</th>
-							<th>squadra</th>
-							<th>G</th>
-							<th>V</th>
-							<th>P</th>
-							<th>S</th>
-							<th>Punti</th>
-							<th>+/-</th>
-							<th>DR</th>
+							<th title="posizione">Pos</th>
+							<th title="squadra">squadra</th>
+							<th title="giocate">G</th>
+							<th title="vinttorie">V</th>
+							<th title="pareggi">P</th>
+							<th title="sconfitte">S</th>
+							<th title="punti">Punti</th>
+							<th title="fatti e subiti">+/-</th>
+							<th title="differenza reti">DR</th>
 						</tr>
 					</thead>
 					<tbody>
 					<?php
-					include '../php/connessionedb.php';
+					
 					$pos=1;
 			$classifica="
 SELECT logo,squadra,partite,vittorie,pareggi,sconfitte,punti,golf,gols,diff_reti FROM (squadra as sqd
@@ -233,15 +232,15 @@ DESC) as sqd2) WHERE sqd.nome = sqd2.squadra ORDER BY punti DESC,diff_reti DESC;
 							while($row=$result->fetch_assoc()){
 								echo "
 				<tr>
-						<td>$pos</td>
-						<td ><img src='../immagini/loghi/".$row["logo"]."' width='50' height='65' alt='".$row["squadra"]."'> </td>
-						<td>".$row["partite"]."</td>
-						<td>".$row["vittorie"]."</td>
-						<td>".$row["pareggi"]."</td>
-						<td>".$row["sconfitte"]."</td>
-						<td>".$row["punti"]."</td>
-						<td>".$row["golf"]."/".$row["gols"]."</td>
-						<td>".$row["diff_reti"]."</td>
+						<td title='posizione'>$pos</td>
+						<td title='squadra'><img src='./immagini/loghi/".$row["logo"]."' width='50' height='65' alt='".$row["squadra"]."'> </td>
+						<td title='giocate'>".$row["partite"]."</td>
+						<td title='vittorie'>".$row["vittorie"]."</td>
+						<td title='pareggi'>".$row["pareggi"]."</td>
+						<td title='sconfitte'>".$row["sconfitte"]."</td>
+						<td title='punti'>".$row["punti"]."</td>
+						<td title='gol fatti e subiti'>".$row["golf"]."/".$row["gols"]."</td>
+						<td title='differenza reti'>".$row["diff_reti"]."</td>
               </tr>
 			  
 			";
@@ -257,12 +256,12 @@ DESC) as sqd2) WHERE sqd.nome = sqd2.squadra ORDER BY punti DESC,diff_reti DESC;
 					</table>
         </div>
 	<?php
-include'../javascript/nav.js';
+include'./javascript/nav.js';
 ?>
 </main>
      
 <?php
-include'./footer.php';
+require_once("./php/footer.html");;
 ?>
    </body>
 </html>

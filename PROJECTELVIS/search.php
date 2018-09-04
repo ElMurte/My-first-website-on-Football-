@@ -3,7 +3,7 @@
 session_start();
 ?>
 <?php
-include '../php/connessionedb.php';
+require_once("./php/connessionedb.php");
  $query=false;
    if (isset($_GET['query']))
 	   $query = $_GET['query']; 
@@ -15,24 +15,19 @@ include '../php/connessionedb.php';
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Risultati ricerca Easyfootball</title>
-     <link rel="stylesheet" type="text/css" href="../css/search.css">
-	 <link rel="stylesheet" type="text/css" href="../css/body.css">
+     <link rel="stylesheet" type="text/css" href="./css/search.css">
+	 <link rel="stylesheet" type="text/css" href="./css/body.css">
 </head>
 <body>
 <?php
-include'./header.php';
+require_once("./php/header.php");
 ?>
 <main class="content">
 <div class="searched">
 <h1>Risultati ricerca:</h1><br>
 	<?php
-    
-     
-    if(strlen($query)>= 2){ // se la parola cercate ha almeno 2 caratteri
-         
+    if(strlen($query)>= 2){ // se la parola cercate ha almeno 2 caratteri        
 		 $query = mysqli_real_escape_string($DB,$query);
-      
-
         $result="SELECT idcampionato,logoc as logo,nome FROM `campionato` 
 		where nome COLLATE UTF8_GENERAL_CI LIKE '%$query%'";
 		$result1="SELECT logo,nome,campionato FROM `squadra` where nome COLLATE UTF8_GENERAL_CI LIKE '%$query%' ";
@@ -43,14 +38,14 @@ include'./header.php';
              if(($rawresults)->num_rows > 0){
 			   while($row=$rawresults->fetch_assoc()){
 
-					echo "<a href='campionato.php?idc=".$row["idcampionato"]."'> <img src='../immagini/loghi/".$row["logo"]."' alt='logo ".$row["nome"]."'>
+					echo "<a href='campionato.php?idc=".rawurlencode($row["idcampionato"])."'> <img src='./immagini/loghi/".$row["logo"]."' alt='logo ".$row["nome"]."'>
 						</a>
 					";
 				}
 			}
 					if(($rawresults1)->num_rows > 0){
 							while($row1=$rawresults1->fetch_assoc()){
-								echo "<a href='squadra.php?squadra=".$row1["nome"]."&idc=".$row1["campionato"]."'> <img src='../immagini/loghi/".$row1["logo"]."' alt='logo ".$row1["nome"]."'>
+								echo "<a href='squadra.php?squadra=".$row1["nome"]."&idc=".$row1["campionato"]."'> <img src='./immagini/loghi/".$row1["logo"]."' alt='logo ".$row1["nome"]."'>
 						</a>
 					";
 							}
@@ -70,7 +65,7 @@ include'./header.php';
     
     </main>
 	<?php
-include'./footer.php';
+require_once("./php/footer.html");;
 ?>
 </body>
 </html>

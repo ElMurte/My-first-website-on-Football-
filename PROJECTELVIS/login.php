@@ -13,15 +13,15 @@ if (isset($_SESSION["username"])){
     <head>
 <meta charset="UTF-8">  
 <title>Login</title>
-<link rel="stylesheet" type="text/css" href="../css/body.css">
-<link rel="stylesheet" type="text/css" href="../css/login.css">
+<link rel="stylesheet" type="text/css" href="./css/body.css">
+<link rel="stylesheet" type="text/css" href="./css/login.css">
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    
 </head>
 <body>
     
 <?php
-include'./header.php';
+require_once("./php/header.php");
 ?>
     
     
@@ -29,7 +29,7 @@ include'./header.php';
    <div class="login-page">
   <div class="form">
   
-    <form method="POST" class="login-form" action="validatelogin.php">
+    <form method="POST" class="login-form" action="./php/validatelogin.php">
       <input type="text" placeholder="username" name="username" title="nomeutente"required>
       <input type="password" placeholder="password" name="userpass" title="password"required>
       <button type="submit" name="login" >login</button>
@@ -51,7 +51,7 @@ echo"$error";
  
 </main>
 <?php
-include'./footer.php';
+require_once("./php/footer.html");;
 ?>
 </body>
         

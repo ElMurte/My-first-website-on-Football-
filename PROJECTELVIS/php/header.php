@@ -1,5 +1,5 @@
 <header id="header">
-<h1><a href="home.php"><img src="../immagini/loghi/logooff.png" alt="logo Easyfootball"></a> Easyfootball</h1>
+<h1><a href="home.php" title="HOME"><img src="./immagini/loghi/logooff.png" alt="logo Easyfootball"></a> Easyfootball</h1>
     <div id="boxuf">
     <div class="wrap">
         <div class="search">
@@ -12,7 +12,7 @@
         </div>
     </div>
         <div class=utentelog><div id="registrazione">
-		<?php include '../php/log.php'?>
+		<?php require_once('log.php');?>
 		</div>
         </div>
     </div>

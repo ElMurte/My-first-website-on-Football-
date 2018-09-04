@@ -12,13 +12,13 @@ if (!isset($_SESSION["username"])){
 
 <title>Amministrazione Easyfootball</title>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/body.css">
-    <link rel="stylesheet" type="text/css" href="../css/admin.css">
+    <link rel="stylesheet" type="text/css" href="./css/body.css">
+    <link rel="stylesheet" type="text/css" href="./css/admin.css">
 	
 </head>
 <body>
 <?php
-include'./header.php';
+require_once("./php/header.php");
 ?>
     
 <main class="content">
@@ -49,7 +49,7 @@ include'./header.php';
 			<div class="admin">
 					<div class="insertNews">
 						<h2>AGGIUNGI notizia</h2>
-                        <form action="upload.php" method="post" enctype="multipart/form-data">
+                        <form action="./php/upload.php" method="post" enctype="multipart/form-data">
                             Seleziona l'immagine da caricare:
                             <input type="file" name="fileToUpload" id="fileToUpload" title="file da caricare" required><br>
 
@@ -58,13 +58,13 @@ include'./header.php';
 										  
                       
                                      <label for="titolo">titolo notizia:</label><br>
-                                     <input type="text" placeholder="max 70 caratteri" name="titolo" id="titolo"maxlength="70" required><br>
+                                     <input type="text" placeholder="max 70 caratteri" title="compila questo campo con un titolo" name="titolo" id="titolo"maxlength="70" required><br>
 									 
                                              <label for="contenutonotizia">contenuto:</label><br>
-                                             <textarea name="contenutonews" id="contenutonotizia" rows="7" cols="50"required></textarea><br>
+                                             <textarea name="contenutonews" title="contenuto della notizia" id="contenutonotizia" rows="7" cols="50"required></textarea><br>
                                           
                                             <label for="tag">tag:</label><br>
-                                             <textarea placeholder="seriea,bignews..." name="tagnotizia" id="tag" required></textarea>
+                                             <textarea placeholder="serieA,Premier League,bignews..." title="tag per linkare" name="tagnotizia" id="tag" required></textarea>
                             <br>
 							<input type="submit" value="Inserisci" name="submit"><br>
 									</form>
@@ -78,7 +78,7 @@ include'./header.php';
 </main>
     
     <?php
-include'./footer.php'
+require_once("./php/footer.html");
 ?>
    </body>
 </html>

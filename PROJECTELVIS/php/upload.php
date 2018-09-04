@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../php/connessionedb.php';
+require_once("./connessionedb.php");
 $target_dir = "../immagini/news/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -30,26 +30,32 @@ if($imageFileType != "jpg" && $imageFileType != "jpeg" ) {
 //controllo se il file presenta qualche tipo di errore
 if ($uploadOk == 0) {
     $_SESSION["messagefil"]="Errore,File non caricato";
-	header("Location: ../php/admin.php");
+	header("Location: ../admin.php");
 // if everything is ok, try to upload file
 
 }
-$titolo=$_POST["titolo"];
-$chacktitolo=SELECT titolo from notizie where titolo="".$titolo.""
-if (file_exists($target_file)) {
-					$sql="INSERT INTO notizie (datan ,titolo,immagine,articolo,tag) VALUES (?,?,?,?,?)";
-					   $stmt = mysqli_prepare($DB,$sql);
-					   $user = mysqli_real_escape_string($DB,$stmt);
-						$datcur=date('Y-m-d H:i:s');
-						$stmt->bind_param("sssss",$datcur,$_POST["titolo"],$_FILES["fileToUpload"]["name"],$_POST["contenutonews"],$_POST["tagnotizia"]);
-						$stmt->execute();
-						$ultima="SELECT idnotizia,titolo FROM `notizie` Order by datan DESC limit 1";
-						$row = $DB->query($ultima);
-						$resultultima=$row->fetch_assoc();
-						$getString = http_build_query(array ( 'val'=>$resultultima["idnotizia"],'titolo'=>$resultultima["titolo"]));
-					header("Location: ./notizia.php?$getString");
-					
-					}
+		if (file_exists($target_file)) {
+							$sql="INSERT INTO notizie (datan ,titolo,immagine,articolo,tag) VALUES (?,?,?,?,?)";
+							   $stmt = mysqli_prepare($DB,$sql);
+							   $user = mysqli_real_escape_string($DB,$stmt);
+								$datcur=date('Y-m-d H:i:s');
+								$stmt->bind_param("sssss",$datcur,$_POST["titolo"],$_FILES["fileToUpload"]["name"],$_POST["contenutonews"],$_POST["tagnotizia"]);
+								$stmt->execute();
+								if($stmt->execute()===TRUE){
+									move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file); 
+								$ultima="SELECT idnotizia,titolo FROM `notizie` Order by datan DESC limit 1";
+								$row = $DB->query($ultima);
+								$resultultima=$row->fetch_assoc();
+								$getString = http_build_query(array ( 'val'=>$resultultima["idnotizia"],'titolo'=>$resultultima["titolo"]));
+								$_SESSION["carsucc"]="La notizia è stato caricato con successo";
+									header("Location: ../notizia.php?$getString");
+									
+								}
+								else{
+										$_SESSION["messagefil"]="Notizia già presente";
+										header("Location: ../admin.php");
+									}
+		}
 else{ 
     if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) 
 		{ 
@@ -64,9 +70,10 @@ else{
 		$ultima="SELECT idnotizia FROM `notizie` Order by datan DESC limit 1";
 		$row = $DB->query($ultima);
 		$resultultima=$row->fetch_assoc();
-		$getString = http_build_query(array ( 'val'=>$resultultima["idnotizia"]));
+		$getString = http_build_query(array ( 'val'=>$resultultima["idnotizia"],'titolo'=>$resultultima["titolo"]));
 			$_SESSION["carsucc"]="La notizia è stato caricato con successo";
-			header("Location: ./notizia.php?$getString");
+			header("Location: ../notizia.php?$getString");
+			$DB->close();
 		}
 		
     }

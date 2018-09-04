@@ -1,7 +1,7 @@
 <?php
 // Start the session
 session_start();
-include '../php/connessionedb.php';
+require_once("./connessionedb.php");
 $user = $_POST["username"];
 $pass = $_POST["userpass"];
 $sqll ="SELECT username,password,squadrapref FROM utente WHERE username ='$user' AND password='$pass';";
@@ -13,13 +13,15 @@ $pass= mysqli_real_escape_string($DB,$pass);
 		if(	$row["username"]==$user && $row["password"]==$pass	)
 		{
 			$_SESSION["username"] = "$user";
-$_SESSION[logsucc]="Login effettuato con successo";
+			$_SESSION[logsucc]="Login effettuato con successo";
 //$getString = http_build_query(array ( 'squadra'=>$row["squadrapref"],'idc'=>$row1["campionato"]));
-			header("Location: ./admin.php");
+			$DB->close();
+			header("Location: ../admin.php");
 		}
 	else
 	{
 		$_SESSION["logerror"]="nome utente o password sbagliata";
-		header("Location: ./login.php");
+		$DB->close();
+		header("Location: ../login.php");
 	}
 ?>

@@ -11,18 +11,18 @@ if (!isset($_SESSION["username"])){
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EliminaNews Easyfootball</title>
-    <link rel="stylesheet" type="text/css" href="../css/body.css">
-	<link rel="stylesheet" type="text/css" href="../css/deletenews.css">
+    <link rel="stylesheet" type="text/css" href="./css/body.css">
+	<link rel="stylesheet" type="text/css" href="./css/deletenews.css">
 </head>
 <body>
 <?php
-include'./header.php';
+require_once("./php/header.php");
 ?>
 <main class="content">
 <h1>Seleziona o cerca una notiza da eliminare</h1>
-<form method="get" action="deletenews.php">
+<form method="get" action="./deletenews.php">
 <input type="text" name="keyword" placeholder="Inserire una parola chiave o tag" title="Ricerca una notizia"/>
-<input type="submit" value="Cerca"/>
+<input type="submit" title="cerca notizia"value="Cerca"/>
 </form><br>
  <table title="tabella notizie">
   					<thead>
@@ -33,7 +33,7 @@ include'./header.php';
 					</thead>
 					<tbody>
 					<?php
-					include '../php/connessionedb.php';
+					require_once("./php/connessionedb.php");
 				$query="SELECT idnotizia, titolo from notizie order by datan DESC;";
 					if(isset($_GET["keyword"])){
 				$query="SELECT idnotizia, titolo from notizie WHERE titolo OR tag COLLATE UTF8_GENERAL_CI like '%".$_GET["keyword"]."%';";
@@ -43,12 +43,12 @@ include'./header.php';
 						while($row=$result->fetch_assoc()){
 							echo "
 							 <tr>
-                        <td><a href='notizia.php?val=".$row["idnotizia"]."'>".$row["titolo"]."</a> </td>
+                        <td><a href='notizia.php?val=".$row["idnotizia"]."&titolo=".rawurlencode($row["titolo"])."' title='".$row["titolo"]."'>".$row["titolo"]."</a> </td>
                        
                         <td>
-						<form method=\"POST\" action=\"deleten.php\">
+						<form method=\"POST\" action=\"./php/deleten.php\">
 						<input type=\"hidden\" name=\"idNotizia\" value=".$row["idnotizia"].">
-						<input type=\"submit\" value=\"Elimina\"/>
+						<input title='elimina notizia' type=\"submit\" value=\"Elimina\"/>
 						</form>
 						</td>
                         </tr>
@@ -71,7 +71,7 @@ include'./header.php';
 
 </main>
 <?php
-include'./footer.php'
+require_once("./php/footer.html");
 ?>
 </body>
 </html>
