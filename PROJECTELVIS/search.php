@@ -17,6 +17,7 @@ require_once("./php/connessionedb.php");
 <title>Risultati ricerca Easyfootball</title>
      <link rel="stylesheet" type="text/css" href="./css/search.css">
 	 <link rel="stylesheet" type="text/css" href="./css/body.css">
+	 <link rel="stylesheet" type="text/css" href="./css/print.css" media="print"> 
 </head>
 <body>
 <?php

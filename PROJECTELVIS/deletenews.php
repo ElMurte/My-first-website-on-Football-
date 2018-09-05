@@ -13,6 +13,8 @@ if (!isset($_SESSION["username"])){
 <title>EliminaNews Easyfootball</title>
     <link rel="stylesheet" type="text/css" href="./css/body.css">
 	<link rel="stylesheet" type="text/css" href="./css/deletenews.css">
+	<link rel="stylesheet" type="text/css" href="./css/print.css" media="print"> 
+	<link rel="stylesheet" type="text/css" href="./css/mobile.css">
 </head>
 <body>
 <?php

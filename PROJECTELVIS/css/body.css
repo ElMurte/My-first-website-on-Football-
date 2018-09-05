@@ -157,9 +157,11 @@ a:visited {
 }
 #motto{
     margin-bottom:0.5%;
-    width: 100%;
     text-align: center;
     font-size: 0.7em;
+}
+#footer .rightlogo{
+	float:right;
 }
 /*social*/
 
@@ -168,23 +170,22 @@ a:visited {
 /*MOBILE*/
 @media  screen and (max-width:640px)
 {
-  
-  .search { position: relative;
-        width: 100%;
-        display: inline-block;
-      font-size: 0.7em;
-      margin-left:5%; 
+  .search,.wrap { position: relative;
+        width: 90%;
+       
+      font-size: 0.8em;
+      margin-left:4%;
+		
     }
 	.content{
 	margin-top:2em;
-	}
-   
-  
+	} 
 }
 @media only screen and (min-width : 640px) and (max-width:768px){
     .search { 
-      margin-right:3%; 
+    
         font-size: 0.7em;
+		margin-left:5%;
     }
 
 }

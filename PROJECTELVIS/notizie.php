@@ -9,7 +9,8 @@ $idc=$_GET["idc"];
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Notizie Easyfootball</title>
-<link rel="stylesheet" type="text/css" href="./css/print.css" media="print">
+<link rel="stylesheet" type="text/css" href="./css/print.css" media="print"> 
+<link rel="stylesheet" type="text/css" href="./css/mobile.css">
 <link rel="stylesheet" type="text/css" href="./css/campionato.css">
 <link rel="stylesheet" type="text/css" href="./css/body.css">
 </head>

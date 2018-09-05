@@ -7,7 +7,8 @@ session_start();
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>L'azienda Easyfootball</title>
-<link rel="stylesheet" type="text/css" href="./css/print.css" media="print">
+<link rel="stylesheet" type="text/css" href="./css/print.css" media="print"> 
+<link rel="stylesheet" type="text/css" href="./css/mobile.css">
 <link rel="stylesheet" type="text/css" href="./css/body.css">
 </head>
 <body>

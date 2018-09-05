@@ -16,6 +16,7 @@ else
 echo"$idc-Easyfootball"
 ?></title>
     <link rel="stylesheet" type="text/css" href="./css/body.css">
+	<link rel="stylesheet" type="text/css" href="./css/print.css" media="print"> 
     <link rel="stylesheet" type="text/css" href="./css/campionato.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -45,7 +46,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 	?>
 
 <div class="topnav" id="navcamp" >
-<a href="#content1"  title="Notizie "id="news" class="menuHandler current">Notizie</a>
+<a href="#content1"  title="Notizie" id="news" class="menuHandler current">Notizie</a>
 <a href="#content2" title="Partite" id="partite" class="menuHandler">Partite</a>
 <a href="#content3" title="Classifica" id="classifica" class="menuHandler">Classifica</a>
 </div>
@@ -62,7 +63,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 			echo"<div class='news' title='".$row["titolo"]."'>
         <a href='notizia.php?val=".$row["idnotizia"]."&titolo=".rawurlencode($row["titolo"])."' >
         <span class='imgContainer'>
-            <img src='./immagini/news/".$row["immagine"]."' alt='fotonews'>
+            <img src='./immagini/news/".$row["immagine"]."' alt='immagine notizia'>
         </span>
             <h2 class='newsdescr'>".$row["titolo"]."</h2>
         </a>  </div>";
@@ -88,7 +89,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 							<th></th>
 						</tr>
 						<tr>
-							<<th title="squadra casa">Casa</th>
+							<th title="squadra casa">Casa</th>
                             <th title="risultato">Risultato</th>	
                             <th title="squadra ospite">Ospite</th>					
 						</tr>
@@ -109,11 +110,11 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 						while($row=$result->fetch_assoc()){
 							echo "
 							 <tr>
-                        <td title='squadracasa'><img src='./immagini/loghi/".$row["logoc"]."' alt='".$row["squadracasa"]."'>  </td>
+                        <td title='".$row["squadracasa"]."'><img src='./immagini/loghi/".$row["logoc"]."' alt='".$row["squadracasa"]."'>  </td>
                        
                         <td title='risultato'>".$row["golcasa"]." : ".$row["golospite"]."</td>
                        
-                        <td title='squadraospite'> <img src='./immagini/loghi/".$row["logoo"]."' alt='".$row["squadraospite"]."'></td>
+                        <td title='".$row["squadraospite"]."'> <img src='./immagini/loghi/".$row["logoo"]."' alt='".$row["squadraospite"]."'></td>
                         </tr>
 							";
 		};
@@ -160,11 +161,11 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 						while($row=$result->fetch_assoc()){
 							echo "
 							 <tr>
-                        <td title='squadracasa'><img src='./immagini/loghi/".$row["logoc"]."' alt='".$row["squadracasa"]."'>  </td>
+                        <td title='".$row["squadracasa"]."'><img src='./immagini/loghi/".$row["logoc"]."' alt='".$row["squadracasa"]."'>  </td>
                        
                         <td title='orario inizio'> ".$row["datap"]." ".$row["ora"]."</td>
                         
-                        <td title='squadraospite'> <img src='./immagini/loghi/".$row["logoo"]."' alt='".$row["squadraospite"]."'> </td>
+                        <td title='".$row["squadraospite"]."'> <img src='./immagini/loghi/".$row["logoo"]."' alt='".$row["squadraospite"]."'> </td>
                         </tr>
 							";
 		};
@@ -248,7 +249,7 @@ DESC) as sqd2) WHERE sqd.nome = sqd2.squadra ORDER BY punti DESC,diff_reti DESC;
 								echo "
 				<tr>
 						<td title='posizione'>$pos</td>
-						<td title='squadra'><img src='./immagini/loghi/".$row["logo"]."' width='50' height='65' alt='".$row["squadra"]."'> </td>
+						<td title='".$row["squadra"]."'><img src='./immagini/loghi/".$row["logo"]."' width='50' height='65' alt='".$row["squadra"]."'> </td>
 						<td title='giocate'>".$row["partite"]."</td>
 						<td title='vittorie'>".$row["vittorie"]."</td>
 						<td title='pareggi'>".$row["pareggi"]."</td>

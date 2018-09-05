@@ -15,7 +15,8 @@ if (isset($_SESSION["username"])){
 <title>Login</title>
 <link rel="stylesheet" type="text/css" href="./css/body.css">
 <link rel="stylesheet" type="text/css" href="./css/login.css">
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/print.css" media="print"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    
 </head>
 <body>

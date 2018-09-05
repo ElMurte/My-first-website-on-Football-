@@ -16,6 +16,7 @@ $titolo=$_POST["titolo"];
 <title><?php echo"".$titolo."";?> Easyfootball</title>
     <link rel="stylesheet" type="text/css" href="./css/body.css">
     <link rel="stylesheet" type="text/css" href="./css/notizia.css">
+	<link rel="stylesheet" type="text/css" href="./css/print.css" media="print"> 
 </head>
 <body>
 <?php

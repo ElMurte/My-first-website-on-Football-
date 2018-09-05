@@ -169,8 +169,10 @@ span.imgContainer {
     }
     
    .mainnews{
-       min-width: 16em;
+          margin-left:3%; 
         width:100%;
+         max-width:25em;
+        font-size: 0.8em;
     }
       .mainnews img:hover {
     transform: none;

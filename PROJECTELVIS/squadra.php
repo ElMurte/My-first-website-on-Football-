@@ -16,7 +16,8 @@ $squadra=$_GET["squadra"];
     <link rel="stylesheet" type="text/css" href="./css/body.css">
     <link rel="stylesheet" type="text/css" href="./css/campionato.css">
     <link rel="stylesheet" type="text/css" href="./css/squadra.css">
-	<link rel="stylesheet" type="text/css" href="./css/print.css" media="print">
+	<link rel="stylesheet" type="text/css" href="./css/print.css" media="print"> 
+	<link rel="stylesheet" type="text/css" href="./css/mobile.css">
 </head>
 <body>
 <?php
@@ -56,7 +57,7 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
 			echo"<div class='news' title='".$row["titolo"]."'>
         <a href='notizia.php?val=".$row["idnotizia"]."&titolo=".rawurlencode($row["titolo"])."' >
         <span class='imgContainer'>
-            <img src='./immagini/news/".$row["immagine"]."' alt='fotonews'>
+            <img src='./immagini/news/".$row["immagine"]."' alt='immagine notizia'>
         </span>
             <h2 class='newsdescr'>".$row["titolo"]."</h2>
         </a>  </div>";
@@ -104,11 +105,11 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
 						while($row=$result->fetch_assoc()){	
 							echo "
 							 <tr>
-                        <td title='squadracasa'><img src='./immagini/loghi/".$row["logoc"]."' alt='".$row["squadracasa"]."'>  </td>
+                        <td title='".$row["squadracasa"]."'><img src='./immagini/loghi/".$row["logoc"]."' alt='".$row["squadracasa"]."'>  </td>
                        
                         <td title='risultato'>".$row["golcasa"]." : ".$row["golospite"]."</td>
                        
-                        <td title='squadraospite'> <img src='./immagini/loghi/".$row["logoo"]."' alt='".$row["squadraospite"]."'></td>
+                        <td title='".$row["squadraospite"]."'> <img src='./immagini/loghi/".$row["logoo"]."' alt='".$row["squadraospite"]."'></td>
                         </tr>
 							";
 		};
@@ -148,11 +149,11 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
 						while($row=$result->fetch_assoc()){
 							echo "
 							 <tr>
-                        <td title='squadracasa'><img src='./immagini/loghi/".$row["logoc"]."' alt='".$row["squadracasa"]."'>  </td>
+                        <td title='".$row["squadracasa"]."'><img src='./immagini/loghi/".$row["logoc"]."' alt='".$row["squadracasa"]."'>  </td>
                        
                         <td title='orario'> ".$row["datap"]." ".$row["ora"]."</td>
                         
-                        <td title='squadraospite'> <img src='./immagini/loghi/".$row["logoo"]."' alt='".$row["squadraospite"]."'> </td>
+                        <td title='".$row["squadraospite"]."'> <img src='./immagini/loghi/".$row["logoo"]."' alt='".$row["squadraospite"]."'> </td>
                         </tr>
 							";
 		};
@@ -233,7 +234,7 @@ DESC) as sqd2) WHERE sqd.nome = sqd2.squadra ORDER BY punti DESC,diff_reti DESC;
 								echo "
 				<tr>
 						<td title='posizione'>$pos</td>
-						<td title='squadra'><img src='./immagini/loghi/".$row["logo"]."' width='50' height='65' alt='".$row["squadra"]."'> </td>
+						<td title='".$row["squadra"]."'><img src='./immagini/loghi/".$row["logo"]."' width='55' height='65' alt='".$row["squadra"]."'> </td>
 						<td title='giocate'>".$row["partite"]."</td>
 						<td title='vittorie'>".$row["vittorie"]."</td>
 						<td title='pareggi'>".$row["pareggi"]."</td>
