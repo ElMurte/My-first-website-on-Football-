@@ -9,6 +9,7 @@ if(isset($_POST["titolo"]))
 $titolo=$_POST["titolo"];
 ?>
 <!DOCTYPE html>
+<a href="#contprinc" class="nonvedente">Vai al contenuto</a>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
@@ -22,7 +23,7 @@ $titolo=$_POST["titolo"];
 <?php
 require_once("./php/header.php");
 ?>
-    <main class="content">
+    <main id="contprinc" class="content">
 	<h2 class='messnews'>
 <?php 
 

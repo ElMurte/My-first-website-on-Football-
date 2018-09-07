@@ -5,20 +5,21 @@ $idc=$_GET["idc"];
 	?>
 <!DOCTYPE html>
 <html lang="it">
+<a href="#contprinc" class="nonvedente">Vai al contenuto</a>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Notizie Easyfootball</title>
 <link rel="stylesheet" type="text/css" href="./css/print.css" media="print"> 
-<link rel="stylesheet" type="text/css" href="./css/mobile.css">
 <link rel="stylesheet" type="text/css" href="./css/campionato.css">
 <link rel="stylesheet" type="text/css" href="./css/body.css">
+<link rel="stylesheet" type="text/css" href="./css/notizie.css">
 </head>
 <body>
 <?php
 require_once("./php/header.php");
 ?>
-<main class="content">
+<main id="contprinc" class="content">
 <div class="notizie">
 <h1>Notizie Principali</h1>
 			<div class='varie'>

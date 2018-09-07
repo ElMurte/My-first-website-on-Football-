@@ -8,7 +8,6 @@ session_start();
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Home Easyfootball</title>
 <link rel="stylesheet" type="text/css" href="./css/print.css" media="print">
- <link rel="stylesheet" type="text/css" href="./css/mobile.css">
 <link rel="stylesheet" type="text/css" href="./css/home1.css">
 <link rel="stylesheet" type="text/css" href="./css/body.css">
 </head>
@@ -16,7 +15,7 @@ session_start();
 <?php
 require_once("./php/header.php");
 ?>
-<main class="content">
+<main id="contprinc" class="content">
 
 <div class='principali'>
 	<h1>Campionati principali</h1>

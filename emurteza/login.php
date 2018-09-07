@@ -26,7 +26,7 @@ require_once("./php/header.php");
 ?>
     
     
-<main class="content">
+<main id="contprinc" class="content">
    <div class="login-page">
   <div class="form">
   

@@ -21,7 +21,7 @@ if (!isset($_SESSION["username"])){
 require_once("./php/header.php");
 ?>
     
-<main class="content">
+<main id="contprinc" class="content">
 <br>
   	<span class="succ">
 <?php 

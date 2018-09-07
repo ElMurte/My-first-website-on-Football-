@@ -1,3 +1,4 @@
+<a href="#contprinc" class="nonvedente">Vai al contenuto</a>
 <header id="header">
 <h1><a href="home.php" title="HOME"><img src="./immagini/loghi/logooff.png" alt="logo Easyfootball"></a> Easyfootball</h1>
     <div id="boxuf">

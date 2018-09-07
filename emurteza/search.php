@@ -23,7 +23,7 @@ require_once("./php/connessionedb.php");
 <?php
 require_once("./php/header.php");
 ?>
-<main class="content">
+<main id="contprinc" class="content">
 <div class="searched">
 <h1>Risultati ricerca:</h1><br>
 	<?php

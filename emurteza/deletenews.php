@@ -14,13 +14,12 @@ if (!isset($_SESSION["username"])){
     <link rel="stylesheet" type="text/css" href="./css/body.css">
 	<link rel="stylesheet" type="text/css" href="./css/deletenews.css">
 	<link rel="stylesheet" type="text/css" href="./css/print.css" media="print"> 
-	<link rel="stylesheet" type="text/css" href="./css/mobile.css">
 </head>
 <body>
 <?php
 require_once("./php/header.php");
 ?>
-<main class="content">
+<main id="contprinc" class="content">
 <h1>Seleziona o cerca una notiza da eliminare</h1>
 <form method="get" action="./deletenews.php">
 <input type="text" name="keyword" placeholder="Inserire una parola chiave o tag" title="Ricerca una notizia"/>

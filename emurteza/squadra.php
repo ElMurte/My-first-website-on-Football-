@@ -3,7 +3,13 @@
 session_start();
 require_once("./php/connessionedb.php");
 $squadra=$_GET["squadra"];
+	if(isset($_GET["idc"]))
 	$idc=$_GET["idc"];
+if(!isset($squadra))
+	header("Location: ./search.php?query=$idc");
+if(!isset($idc))
+		header("Location: ./search.php?query=$squadra");
+	
 ?>
 <!DOCTYPE html>
 <html lang=it>
@@ -17,26 +23,27 @@ $squadra=$_GET["squadra"];
     <link rel="stylesheet" type="text/css" href="./css/campionato.css">
     <link rel="stylesheet" type="text/css" href="./css/squadra.css">
 	<link rel="stylesheet" type="text/css" href="./css/print.css" media="print"> 
-	<link rel="stylesheet" type="text/css" href="./css/mobile.css">
 </head>
 <body>
 <?php
 require_once("./php/header.php");
 ?>
-<main class="content">
+<main id="contprinc" class="content">
 <noscript>
     <p><img src="./immagini/immaginivarie/attenzione.png" alt="attenzione">   Per favore attivare javascript sul browser altrimenti il contenuto non è completamente accessibile</p>
     </noscript>
     <div id="menucampionato">
 	 <?php 
 require_once("./php/connessionedb.php");
-$logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
+$logo="SELECT logo,nome,campionato FROM `squadra` WHERE nome='$squadra';";
  $result= $DB->query($logo);
 	if($result->num_rows>0){
 		while($row=$result->fetch_assoc()){
+		
 			echo "
   <img src='./immagini/loghi/".$row["logo"]."' title='".$row["nome"]."' alt='logo ".$row["nome"]."' ><h1>".$row["nome"]."</h1>";
 		};
+		
 	};
 
 	?>
@@ -63,6 +70,7 @@ $logo="SELECT logo,nome FROM `squadra` WHERE nome='$squadra';";
         </a>  </div>";
 		};
 	};
+	
 	
 	?>
        

@@ -3,22 +3,21 @@
 session_start();
 if(isset($_GET["idc"]))
 $idc=$_GET["idc"];
-else
-	header
 ?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <title><?php
 echo"$idc-Easyfootball"
 ?></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/body.css">
 	<link rel="stylesheet" type="text/css" href="./css/print.css" media="print"> 
     <link rel="stylesheet" type="text/css" href="./css/campionato.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
 <?php
@@ -28,7 +27,7 @@ require_once("./php/header.php");
     <noscript>
     <p><img src="./immagini/immaginivarie/attenzione.png" alt="attenzione">   Per favore attivare javascript sul browser altrimenti il contenuto non è completamente accessibile</p>
     </noscript>
-<main class="content">
+<main id="contprinc" class="content">
    
 <div id="menucampionato">
     <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
@@ -41,7 +40,9 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 			echo "
    <div id='campionato'><img src='./immagini/loghi/".$row["logoc"]."'  title='".$row["nome"]."' alt='logo ".$row["nome"]."' > </div>";
 		};
-	};
+	}
+	else
+		header("Location: ./search.php?query=$idc")
 
 	?>
 
@@ -69,6 +70,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
         </a>  </div>";
 		};
 	};
+	
 
 	?>
   <footer class="barranotizie"><a href="notizie.php?idc=<?php echo"$idc"?>">Vedi Altre Notizie</a></footer>
