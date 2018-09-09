@@ -141,10 +141,9 @@ a:inactive{
     
 }
 #footer li a{
-	background-color:white;
+	color:white;
 }
 #footer li{
-	
     width: 13%;
 	margin-bottom:0.6em;
     list-style: none;
