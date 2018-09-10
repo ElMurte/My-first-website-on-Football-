@@ -78,7 +78,7 @@ $logo="SELECT idcampionato,logoc,nome FROM `campionato` WHERE (nome=('Bundesliga
 	
     </div>
 	<br><br>
-	<footer class="barranotizie"><a href="notizie.php">Vedi Altre Notizie</a></footer>
+	<footer class="barranotizie"><a href="notizie.php"><u>Vedi Altre Notizie</u></a></footer>
     </main>
 <?php
 require_once("./php/footer.html");
