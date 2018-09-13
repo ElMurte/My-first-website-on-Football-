@@ -5,7 +5,6 @@ $idc=$_GET["idc"];
 	?>
 <!DOCTYPE html>
 <html lang="it">
-<a href="#contprinc" class="nonvedente">Vai al contenuto</a>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

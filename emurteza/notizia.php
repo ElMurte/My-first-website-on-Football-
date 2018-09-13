@@ -9,7 +9,6 @@ if(isset($_POST["titolo"]))
 $titolo=$_POST["titolo"];
 ?>
 <!DOCTYPE html>
-<a href="#contprinc" class="nonvedente">Vai al contenuto</a>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
@@ -24,16 +23,15 @@ $titolo=$_POST["titolo"];
 require_once("./php/header.php");
 ?>
     <main id="contprinc" class="content">
-	<h2 class='messnews'>
 <?php 
 
 	if(isset($_SESSION["carsucc"])) {
    $messsucc=$_SESSION["carsucc"];
     unset($_SESSION["carsucc"]);
-	echo"$messsucc";
+	echo"<h2 class='messnews'>$messsucc</h2>";
 	}
 	
-?>	</h2>
+?>	
     <?php 
 require_once("./php/connessionedb.php");
 $notizia="SELECT titolo,immagine,articolo FROM `notizie` WHERE idnotizia='$val';";
