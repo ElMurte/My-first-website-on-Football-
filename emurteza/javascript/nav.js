@@ -1,4 +1,4 @@
-<script >
+<script>
     $('.menuHandler').on('click', function() {
         $('a[href="#'+$('.active').attr("id")+'"]').removeClass('current');
         $('.active').removeClass('active').hide();
@@ -6,5 +6,4 @@
         $(this).addClass('current');
         return false;
     });
-
-    </script>
+</script>

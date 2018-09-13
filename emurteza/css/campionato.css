@@ -256,5 +256,6 @@ noscript img{
 	width:25%;
 	background-color:white;
 	text-align:center;
+	text-decoration:underline;
 	float:right;
 }

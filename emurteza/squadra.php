@@ -18,7 +18,6 @@ if(!isset($idc))
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?php echo"$squadra-Easyfootball";?> </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="./css/body.css">
     <link rel="stylesheet" type="text/css" href="./css/campionato.css">
     <link rel="stylesheet" type="text/css" href="./css/squadra.css">

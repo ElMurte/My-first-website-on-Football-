@@ -40,7 +40,7 @@ if ($uploadOk == 0) {
 							   $user = mysqli_real_escape_string($DB,$stmt);
 								$datcur=date('Y-m-d H:i:s');
 								$stmt->bind_param("sssss",$datcur,$_POST["titolo"],$_FILES["fileToUpload"]["name"],$_POST["contenutonews"],$_POST["tagnotizia"]);
-								$stmt->execute();
+								
 								if($stmt->execute()===TRUE){
 									move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file); 
 								$ultima="SELECT idnotizia,titolo FROM `notizie` Order by datan DESC limit 1";

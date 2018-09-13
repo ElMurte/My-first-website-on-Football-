@@ -73,7 +73,7 @@ $logo="SELECT logoc,nome FROM `campionato` WHERE idcampionato='$idc';";
 	
 
 	?>
-  <footer class="barranotizie"><a href="notizie.php?idc=<?php echo"$idc"?>"><u>Vedi Altre Notizie</u></a></footer>
+  <footer class="barranotizie"><a href="notizie.php?idc=<?php echo"$idc"?>">Vedi Altre Notizie</a></footer>
     </div>
     
     <div id="content2">

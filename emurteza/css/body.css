@@ -126,6 +126,9 @@ body{
 a:link{
      text-decoration: none;
 }
+#footer li :link{
+     text-decoration: underline;
+}
 a:inactive{
     color:white;
 }
@@ -150,6 +153,9 @@ a:inactive{
     font-size: 0.8em;
 }
 a:visited {
+    color:violet;
+}
+#footer a:visited {
     color:violet;
 }
 #footer{
